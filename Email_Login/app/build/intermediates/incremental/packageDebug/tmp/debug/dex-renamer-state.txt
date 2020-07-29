@@ -1,0 +1,7 @@
+#Wed Jul 29 19:50:11 KST 2020
+base.0=C\:\\Users\\sheep\\AndroidStudioProjects\\Email_Login\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
+path.1=classes.dex
+renamed.1=classes2.dex
+path.0=classes.dex
+renamed.0=classes.dex
+base.1=C\:\\Users\\sheep\\AndroidStudioProjects\\Email_Login\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\classes.dex
