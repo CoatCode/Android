@@ -8,7 +8,7 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/title"
         android:layout_width="316dp"
         android:layout_height="93dp"
         android:layout_marginTop="148dp"
@@ -24,45 +24,46 @@
         app:layout_constraintVertical_bias="0.325" />
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="287dp"
-        android:layout_height="59dp"
-        android:layout_marginTop="269dp"
-        android:layout_marginBottom="296dp"
+        android:id="@+id/social_login_button"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="514dp"
+        android:layout_marginBottom="196dp"
         android:background="@drawable/login_button"
         android:text="소셜 로그인"
         android:textColor="#fcfcfc"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.501" />
 
     <Button
-        android:id="@+id/button2"
-        android:layout_width="287dp"
-        android:layout_height="59dp"
-        android:layout_marginTop="22.7dp"
+        android:id="@+id/email_login_button"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="40dp"
         android:background="@drawable/login_button"
         android:text="이메일 로그인"
         android:textColor="#fcfcfc"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintTop_toBottomOf="@+id/social_login_button" />
 
     <Button
-        android:id="@+id/button3"
-        android:layout_width="287dp"
-        android:layout_height="59dp"
-        android:layout_marginTop="22dp"
-        android:layout_marginBottom="133dp"
+        android:id="@+id/sign_up_button"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="40dp"
         android:background="@drawable/login_button"
         android:text="이메일 회원가입"
         android:textColor="#fcfcfc"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
+        app:layout_constraintTop_toBottomOf="@+id/email_login_button"
+        app:layout_constraintVertical_bias="0.0" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -14,8 +14,8 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
-                            <entry key="outputName" value="ic_login_button" />
-                            <entry key="sourceFile" value="C:\Users\sheep\OneDrive\바탕 화면\CoCo프로젝트\drawable\login_button.svg" />
+                            <entry key="outputName" value="ic_x_button" />
+                            <entry key="sourceFile" value="C:\Users\sheep\OneDrive\바탕 화면\CoCo프로젝트\drawable\x_button.svg" />
                           </map>
                         </option>
                       </PersistentState>
