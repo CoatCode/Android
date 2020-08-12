@@ -1,4 +1,4 @@
-package Daedo.EmailLogin
+package com.junhyuk.daedo.EmailLogin
 
 import android.content.Intent
 import android.os.Bundle
