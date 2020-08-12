@@ -9,8 +9,8 @@
 
     <TextView
         android:id="@+id/title"
-        android:layout_width="316dp"
-        android:layout_height="93dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="74.3dp"
         android:layout_marginBottom="159.3dp"
         android:fontFamily="@font/title_font"
@@ -18,8 +18,8 @@
         android:textColor="#ffffff"
         android:textSize="53dp"
         android:shadowColor="#19222222"
-        android:shadowDx="2"
-        android:shadowDy="2"
+        android:shadowDx="6"
+        android:shadowDy="6"
         android:shadowRadius="1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -42,7 +42,7 @@
             android:id="@+id/social_login_button"
             android:layout_width="250dp"
             android:layout_height="50dp"
-            android:layout_marginBottom="6dp"
+            android:layout_marginBottom="12dp"
             android:background="@drawable/login_button"
             android:text="소셜 로그인"
             android:textColor="#fcfcfc" />
@@ -51,7 +51,7 @@
             android:id="@+id/email_login_button"
             android:layout_width="250dp"
             android:layout_height="50dp"
-            android:layout_marginBottom="6dp"
+            android:layout_marginBottom="12dp"
             android:background="@drawable/login_button"
             android:text="이메일 로그인"
             android:textColor="#fcfcfc" />
