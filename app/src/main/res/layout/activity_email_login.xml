@@ -72,6 +72,7 @@
         android:background="@drawable/login_button"
         android:fontFamily="sans-serif"
         android:text="로그인"
+        android:textSize="17.3dp"
         android:textColor="#ebebeb"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/editText_background"
