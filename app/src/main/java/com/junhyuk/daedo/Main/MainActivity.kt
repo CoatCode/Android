@@ -3,7 +3,7 @@ package com.junhyuk.daedo.Main
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.junhyuk.daedo.EmailLogin.EmailLoginActivity
+import com.junhyuk.daedo.EmailLogin.Activity.EmailLoginActivity
 import com.junhyuk.daedo.R
 import com.junhyuk.daedo.SignUp.Activity.SignUpActivity
 import kotlinx.android.synthetic.main.activity_main.*
