@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/xmain"
-    tools:context=".MainActivity">
+    tools:context=".Main.MainActivity">
 
     <TextView
         android:id="@+id/title"
@@ -36,7 +36,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title"
         app:layout_constraintVertical_bias="1.0"
-        android:layout_marginBottom="20dp">
+        android:layout_marginBottom="40dp">
 
         <Button
             android:id="@+id/social_login_button"

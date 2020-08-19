@@ -2,15 +2,24 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.junhyuk.daedo">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
+        android:name=".Application.DaedoApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".EmailLogin.EmailLoginActivity"></activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".SignUp.Activity.SignUpNameActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".SignUp.Activity.SignUpActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".EmailLogin.EmailLoginActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Main.MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
