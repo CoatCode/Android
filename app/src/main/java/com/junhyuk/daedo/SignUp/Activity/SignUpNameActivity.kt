@@ -1,22 +1,29 @@
 package com.junhyuk.daedo.SignUp.Activity
 
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.provider.MediaStore
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.junhyuk.daedo.Application.DaedoApplication
 import com.junhyuk.daedo.R
 import com.junhyuk.daedo.SignUp.Base64.Base64Encoding
-import com.junhyuk.daedo.SignUp.Server.SignUp
 import com.junhyuk.daedo.SignUp.Server.SignUpBody
+import com.junhyuk.daedo.SignUp.Server.SignUpDialog
 import com.junhyuk.daedo.SignUp.Server.SignUpService
-import com.junhyuk.daedo.SignUp.Server.WorkingSignUp
 import kotlinx.android.synthetic.main.activity_sign_up_name.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.io.InputStream
+import java.math.BigInteger
+import java.security.MessageDigest
+
 
 //이름을 입력하고 서버에 전송을 담당하는 엑티비티
 open class SignUpNameActivity : AppCompatActivity() {
@@ -31,13 +38,29 @@ open class SignUpNameActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up_name)
 
-        val intent: Intent = intent
+        val intent: Intent = intent //getIntent
 
-        email = intent.extras?.getString("userInfoEmail").toString()
-        password = intent.extras?.getString("userInfoPassword").toString()
+        email = intent.extras?.getString("userInfoEmail").toString() //이메일 저장
+        password = intent.extras?.getString("userInfoPassword").toString() //password 저장
 
-        //Base64 인코딩
-        base64 = base64Encoding.encoding(applicationContext)
+        val encodePassword: String = sha256(password) //password sha256 암호화
+
+        password = encodePassword //password 저장
+
+        //갤러리에서 프로필 사진 가져오기
+        user_image.setOnClickListener {
+
+            val imageIntent = Intent() //기기 기본 갤러리 접근
+
+            imageIntent.type = MediaStore.Images.Media.CONTENT_TYPE
+
+            //구글 갤러리 접근
+            //intent.setType("image/*");
+
+            imageIntent.action = Intent.ACTION_GET_CONTENT
+            startActivityForResult(imageIntent, 101)
+
+        }
 
         //sign_up 버튼을 누르면 모든 값을 서버로 전송
         sign_up_button.setOnClickListener {
@@ -73,30 +96,30 @@ open class SignUpNameActivity : AppCompatActivity() {
             (application as DaedoApplication).retrofit.create(SignUpService::class.java)
 
         signUpService.requestSignUp(SignUpBody(email, password, userName, base64))
-            .enqueue(object : Callback<SignUp> {
-                val workingSignUp = WorkingSignUp()
+            .enqueue(object : Callback<String> {
+                val signUpDialog = SignUpDialog()
 
-                override fun onFailure(call: Call<SignUp>, t: Throwable) {
-                    workingSignUp.connectionFail(this@SignUpNameActivity)
+                override fun onFailure(call: Call<String>, t: Throwable) {
+                    signUpDialog.connectionFail(this@SignUpNameActivity)
                 }
 
-                override fun onResponse(call: Call<SignUp>, response: Response<SignUp>) {
+                override fun onResponse(call: Call<String>, response: Response<String>) {
 
                     //통신 성공 응답값을 받아옴
-
                     Log.d("data2", "data: ${response.code()}")
 
-                    workingSignUp.connectionSuccess(
+                    signUpDialog.connectionSuccess(
                         response.code(),
                         response.message(),
                         this@SignUpNameActivity
                     )
+
                 }
             })
     }
 
     //이름이 입력 될 때 마다 호출되는 함수(이름 형식 검사)
-    private fun checkNameMsg(){
+    private fun checkNameMsg() {
         if (input_name.text.toString().isNotEmpty()) {
             Thread {
                 runOnUiThread {
@@ -118,4 +141,58 @@ open class SignUpNameActivity : AppCompatActivity() {
             }.start()
         }
     }
+
+    private fun sha256(password: String): String {
+
+        val digest = MessageDigest.getInstance("SHA-256")
+        digest.reset()
+        digest.update(password.toByteArray())
+        return java.lang.String.format("%064x", BigInteger(1, digest.digest()))
+
+    }
+
+    override fun onRequestPermissionsResult(
+
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+
+    ) {
+
+        if (requestCode == 1) {
+
+            val length = permissions.size
+
+            for (i in 0..length) {
+                if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {
+                    Log.d("MainActivity", "권환 허용" + permissions[i])
+                }
+            }
+
+        }
+
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == 101 && resultCode == RESULT_OK) {
+            try {
+                val inputStream: InputStream? = contentResolver.openInputStream(data?.data!!)
+                val bm = BitmapFactory.decodeStream(inputStream)
+                inputStream?.close()
+                user_image.setImageBitmap(bm)
+
+                base64 = base64Encoding.encoding(bm) //Base64 인코딩
+
+                Log.d("base64Data", "base64: $base64")
+
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        } else if (requestCode == 101 && resultCode == RESULT_CANCELED) {
+            Toast.makeText(this, "취소", Toast.LENGTH_SHORT).show()
+        }
+    }
 }
+

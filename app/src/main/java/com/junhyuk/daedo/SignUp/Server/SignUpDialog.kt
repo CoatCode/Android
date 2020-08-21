@@ -3,7 +3,7 @@ package com.junhyuk.daedo.SignUp.Server
 import android.content.Context
 import androidx.appcompat.app.AlertDialog
 
-class WorkingSignUp {
+class SignUpDialog {
 
     fun connectionSuccess(responseCode: Int, responseMsg: String, context: Context) {
         //통신 성공
@@ -11,7 +11,7 @@ class WorkingSignUp {
             201 -> {
                 val dialog = AlertDialog.Builder(context)
                 dialog.setTitle("성공!")
-                dialog.setMessage("status: $responseCode msg: $responseMsg")
+                dialog.setMessage("status: $responseCode msg: $responseMsg 이메일이 전송 되었습니다.")
                 dialog.show()
             }
 

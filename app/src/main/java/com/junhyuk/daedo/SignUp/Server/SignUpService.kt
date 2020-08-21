@@ -10,6 +10,6 @@ interface SignUpService {
     fun requestSignUp(
         //INPUT 정의
         @Body signUpBody: SignUpBody
-    ) : Call<SignUp> //OUTPUT 정의
+    ) : Call<String> //OUTPUT 정의
 
 }

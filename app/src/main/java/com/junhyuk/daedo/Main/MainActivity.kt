@@ -1,8 +1,14 @@
 package com.junhyuk.daedo.Main
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
+import android.text.TextUtils
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import com.junhyuk.daedo.EmailLogin.Activity.EmailLoginActivity
 import com.junhyuk.daedo.R
 import com.junhyuk.daedo.SignUp.Activity.SignUpActivity
@@ -13,6 +19,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        checkSelfPermission()
         
         //소셜 로그인 버튼을 클릭 했을 시 EmailLoginActivity 로 이동
         email_login_button.setOnClickListener {
@@ -23,6 +31,34 @@ class MainActivity : AppCompatActivity() {
         sign_up_button.setOnClickListener {
             startActivity(Intent(this, SignUpActivity::class.java))
             finish()
+        }
+
+    }
+
+    fun checkSelfPermission() {
+
+        var temp = ""
+
+        if (ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.READ_EXTERNAL_STORAGE
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            temp += Manifest.permission.READ_EXTERNAL_STORAGE + " "
+        }
+
+        if (ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            temp += Manifest.permission.WRITE_EXTERNAL_STORAGE + " "
+        }
+
+        if (!TextUtils.isEmpty(temp)) {
+            ActivityCompat.requestPermissions(this, temp.trim().split(" ").toTypedArray(), 1)
+        }else{
+            Toast.makeText(this, "권한을 모두 허용", Toast.LENGTH_SHORT).show()
         }
 
     }
