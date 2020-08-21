@@ -4,25 +4,25 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.BitmapFactory
 import android.os.Bundle
-import android.provider.MediaStore
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.junhyuk.daedo.Application.DaedoApplication
+import com.junhyuk.daedo.Main.MainActivity
 import com.junhyuk.daedo.R
 import com.junhyuk.daedo.SignUp.Base64.Base64Encoding
 import com.junhyuk.daedo.SignUp.Server.SignUpBody
 import com.junhyuk.daedo.SignUp.Server.SignUpDialog
+import com.junhyuk.daedo.SignUp.Server.SignUpResponse
 import com.junhyuk.daedo.SignUp.Server.SignUpService
+import com.junhyuk.daedo.SignUp.Sha256.Sha256
 import kotlinx.android.synthetic.main.activity_sign_up_name.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.io.InputStream
-import java.math.BigInteger
-import java.security.MessageDigest
 
 
 //이름을 입력하고 서버에 전송을 담당하는 엑티비티
@@ -43,21 +43,24 @@ open class SignUpNameActivity : AppCompatActivity() {
         email = intent.extras?.getString("userInfoEmail").toString() //이메일 저장
         password = intent.extras?.getString("userInfoPassword").toString() //password 저장
 
-        val encodePassword: String = sha256(password) //password sha256 암호화
+        val sha256Class: Sha256 = Sha256()
+
+        val encodePassword: String = sha256Class.sha256(password) //password sha256 암호화
 
         password = encodePassword //password 저장
+
+        Log.d("base64Data", "sha256: $password")
 
         //갤러리에서 프로필 사진 가져오기
         user_image.setOnClickListener {
 
             val imageIntent = Intent() //기기 기본 갤러리 접근
 
-            imageIntent.type = MediaStore.Images.Media.CONTENT_TYPE
+            imageIntent.type = "image/*"
+            imageIntent.action = Intent.ACTION_GET_CONTENT
 
             //구글 갤러리 접근
             //intent.setType("image/*");
-
-            imageIntent.action = Intent.ACTION_GET_CONTENT
             startActivityForResult(imageIntent, 101)
 
         }
@@ -79,10 +82,12 @@ open class SignUpNameActivity : AppCompatActivity() {
             }
 
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                userName = input_name.text.toString()
                 checkNameMsg()
             }
 
             override fun afterTextChanged(s: Editable) {
+                userName = input_name.text.toString()
                 checkNameMsg()
             }
         })
@@ -96,22 +101,26 @@ open class SignUpNameActivity : AppCompatActivity() {
             (application as DaedoApplication).retrofit.create(SignUpService::class.java)
 
         signUpService.requestSignUp(SignUpBody(email, password, userName, base64))
-            .enqueue(object : Callback<String> {
+            .enqueue(object : Callback<SignUpResponse> {
                 val signUpDialog = SignUpDialog()
 
-                override fun onFailure(call: Call<String>, t: Throwable) {
+                override fun onFailure(call: Call<SignUpResponse>, t: Throwable) {
                     signUpDialog.connectionFail(this@SignUpNameActivity)
                 }
 
-                override fun onResponse(call: Call<String>, response: Response<String>) {
+                override fun onResponse(call: Call<SignUpResponse>, response: Response<SignUpResponse>) {
 
                     //통신 성공 응답값을 받아옴
                     Log.d("data2", "data: ${response.code()}")
 
+                    val intent = Intent(this@SignUpNameActivity, MainActivity::class.java)
+
                     signUpDialog.connectionSuccess(
                         response.code(),
                         response.message(),
-                        this@SignUpNameActivity
+                        this@SignUpNameActivity,
+                        response.errorBody()?.string().toString() ,
+                        intent
                     )
 
                 }
@@ -127,7 +136,6 @@ open class SignUpNameActivity : AppCompatActivity() {
                     check_name_text.setTextColor(getColorStateList(R.color.colorBlue))
                     sign_up_button.setBackgroundResource(R.drawable.login_button)
                     sign_up_button.isEnabled = true
-                    userName = input_name.text.toString()
                 }
             }.start()
         } else {
@@ -142,15 +150,7 @@ open class SignUpNameActivity : AppCompatActivity() {
         }
     }
 
-    private fun sha256(password: String): String {
-
-        val digest = MessageDigest.getInstance("SHA-256")
-        digest.reset()
-        digest.update(password.toByteArray())
-        return java.lang.String.format("%064x", BigInteger(1, digest.digest()))
-
-    }
-
+    //권한 허용 확인
     override fun onRequestPermissionsResult(
 
         requestCode: Int,
@@ -176,21 +176,30 @@ open class SignUpNameActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
+        // 이미지 파일이 넘어 왔을 경우
         if (requestCode == 101 && resultCode == RESULT_OK) {
             try {
                 val inputStream: InputStream? = contentResolver.openInputStream(data?.data!!)
+
                 val bm = BitmapFactory.decodeStream(inputStream)
+
+                Log.d("data3", "data: ${data.data}")
+
                 inputStream?.close()
+
                 user_image.setImageBitmap(bm)
 
-                base64 = base64Encoding.encoding(bm) //Base64 인코딩
+                base64 = "data:image/jpeg;base64,${base64Encoding.encoding(bm)}"  //Base64 인코딩
 
                 Log.d("base64Data", "base64: $base64")
 
             } catch (e: Exception) {
                 e.printStackTrace()
             }
-        } else if (requestCode == 101 && resultCode == RESULT_CANCELED) {
+        } 
+
+        //어떤 파일도 넘어오지 않았을 때
+        else if (requestCode == 101 && resultCode == RESULT_CANCELED) {
             Toast.makeText(this, "취소", Toast.LENGTH_SHORT).show()
         }
     }

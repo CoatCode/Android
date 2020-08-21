@@ -5,7 +5,6 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.text.TextUtils
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -35,7 +34,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun checkSelfPermission() {
+    private fun checkSelfPermission() {
 
         var temp = ""
 
@@ -57,8 +56,6 @@ class MainActivity : AppCompatActivity() {
 
         if (!TextUtils.isEmpty(temp)) {
             ActivityCompat.requestPermissions(this, temp.trim().split(" ").toTypedArray(), 1)
-        }else{
-            Toast.makeText(this, "권한을 모두 허용", Toast.LENGTH_SHORT).show()
         }
 
     }

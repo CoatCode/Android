@@ -8,12 +8,16 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="data4" />
     <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a779d004-bd28-4ee7-9e8a-f1cdca86a7c6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/SignUp/Server/EmailVerifyService.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_f0ris_sweetalert_library_1_5_6_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_pnikosis_materialish_progress_1_7_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/SignUp/Server/SignUpResponse.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/SignUp/Sha256/Sha256.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" afterDir="false" />
@@ -24,19 +28,22 @@
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/md5-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_facebook_stetho_stetho_1_5_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_facebook_stetho_stetho_1_5_0_aar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/app.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/Main/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/Main/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/SignUp/Activity/SignUpActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/SignUp/Activity/SignUpActivity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/SignUp/Activity/SignUpNameActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/SignUp/Activity/SignUpNameActivity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/SignUp/Base64/Base64Encoding.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/SignUp/Base64/Base64Encoding.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/SignUp/Server/SignUp.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/SignUp/Server/SignUpBody.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/SignUp/Server/SignUpBody.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/SignUp/Server/SignUpDialog.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/SignUp/Server/SignUpDialog.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/SignUp/Server/SignUpService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/SignUp/Server/SignUpService.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/SignUp/Server/WorkingSignUp.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/SignUp/Server/SignUpDialog.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxxhdpi/user_profile.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxxhdpi/user_profile.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,9 +74,9 @@
       <list>
         <option value="valueResourceFile" />
         <option value="resourceFile" />
-        <option value="Kotlin Class" />
         <option value="Kotlin Interface" />
         <option value="Kotlin File" />
+        <option value="Kotlin Class" />
       </list>
     </option>
   </component>
@@ -269,7 +276,14 @@
       <option name="project" value="LOCAL" />
       <updated>1597806844038</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="[UPDATE] SignUp">
+      <created>1597975056806</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1597975056806</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -279,7 +293,8 @@
     <MESSAGE value="[Add] DaedoApplication.kt" />
     <MESSAGE value="[ADD] SignUpButton" />
     <MESSAGE value="[ADD] SignUpActivity.kt&#10;[UPDATE] Retrofit" />
-    <option name="LAST_COMMIT_MESSAGE" value="[ADD] SignUpActivity.kt&#10;[UPDATE] Retrofit" />
+    <MESSAGE value="[UPDATE] SignUp" />
+    <option name="LAST_COMMIT_MESSAGE" value="[UPDATE] SignUp" />
   </component>
   <component name="WindowStateProjectService">
     <state x="452" y="95" key="#Inspections" timestamp="1597474278548">
@@ -298,9 +313,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="267" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog/0.0.1920.1040/0.1080.1280.760@0.0.1920.1040" timestamp="1597593122472" />
-    <state x="2627" y="168" key="#com.intellij.ide.util.MemberChooser" timestamp="1597802140223">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state x="-1213" y="168" key="#com.intellij.ide.util.MemberChooser" timestamp="1597978739073">
+      <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
+    <state x="-1213" y="168" key="#com.intellij.ide.util.MemberChooser/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1597978739073" />
     <state x="707" y="168" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/0.1080.1280.760@0.0.1920.1040" timestamp="1597594561340" />
     <state x="2627" y="-126" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/1920.-294.1920.1040@1920.-294.1920.1040" timestamp="1597340957525" />
     <state x="2627" y="168" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/1920.0.1920.1040/0.1080.1280.760@1920.0.1920.1040" timestamp="1597802140223" />
@@ -310,10 +326,11 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2560" y="234" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1040/1920.0.1920.1040/0.1080.1280.760@1920.0.1920.1040" timestamp="1597708058211" />
-    <state x="2349" y="431" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1597805629739">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state x="429" y="431" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1597995336670">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="2349" y="431" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1920.1040/1920.0.1920.1040/0.1080.1280.760@1920.0.1920.1040" timestamp="1597805629739" />
+    <state x="429" y="431" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1597995336670" />
     <state x="2635" y="378" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages" timestamp="1597805631345">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
@@ -343,9 +360,10 @@
     <state x="2460" y="279" key="AndroidCreateResourceFileDialog/0.0.1920.1040/1920.4.1920.1040/757.1084.1371.577@1920.4.1920.1040" timestamp="1597234244108" />
     <state x="540" y="275" key="AndroidCreateResourceFileDialog/0.0.1920.1040/404.1080.1280.760@0.0.1920.1040" timestamp="1597496057405" />
     <state x="540" y="275" key="AndroidCreateResourceFileDialog/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1596628071106" />
-    <state x="445" y="0" key="CommitChangelistDialog2" timestamp="1597812899792">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="-1364" y="0" key="CommitChangelistDialog2" timestamp="1597975055183">
+      <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
+    <state x="-1364" y="0" key="CommitChangelistDialog2/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1597975055183" />
     <state x="445" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1597812899792" />
     <state x="2402" y="15" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040/0.1080.1280.760@1920.0.1920.1040" timestamp="1597806866726" />
     <state x="2476" y="19" key="CommitChangelistDialog2/0.0.1920.1040/1920.4.1920.1040/757.1084.1371.577@1920.4.1920.1040" timestamp="1597238467280" />
@@ -360,8 +378,8 @@
     <state x="645" y="208" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1596900268621" />
     <state x="2726" y="-31" key="FileChooserDialogImpl/0.0.1920.1040/1920.-294.1920.1040@1920.-294.1920.1040" timestamp="1597404805982" />
     <state x="806" y="262" key="FileChooserDialogImpl/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1596630852610" />
-    <state width="1863" height="224" key="GridCell.Tab.0.bottom" timestamp="1597974860437">
-      <screen x="-1920" y="0" width="1920" height="1040" />
+    <state width="1863" height="221" key="GridCell.Tab.0.bottom" timestamp="1597997731670">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1863" height="224" key="GridCell.Tab.0.bottom/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1597974860437" />
     <state width="1491" height="167" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1596899888611" />
@@ -369,9 +387,9 @@
     <state width="1863" height="180" key="GridCell.Tab.0.bottom/0.0.1920.1040/0.1080.1280.760@0.1080.1280.760" timestamp="1597750625724" />
     <state width="1863" height="177" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040/0.1080.1280.760@1920.0.1920.1040" timestamp="1597801480751" />
     <state width="1863" height="267" key="GridCell.Tab.0.bottom/0.0.1920.1040/404.1080.1280.760@0.0.1920.1040" timestamp="1597506693374" />
-    <state width="1863" height="267" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1597488520728" />
-    <state width="1863" height="224" key="GridCell.Tab.0.center" timestamp="1597974860436">
-      <screen x="-1920" y="0" width="1920" height="1040" />
+    <state width="1863" height="221" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1597997731670" />
+    <state width="1863" height="221" key="GridCell.Tab.0.center" timestamp="1597997731670">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1863" height="224" key="GridCell.Tab.0.center/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1597974860436" />
     <state width="1491" height="167" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1596899888611" />
@@ -379,9 +397,9 @@
     <state width="1863" height="180" key="GridCell.Tab.0.center/0.0.1920.1040/0.1080.1280.760@0.1080.1280.760" timestamp="1597750625724" />
     <state width="1863" height="177" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040/0.1080.1280.760@1920.0.1920.1040" timestamp="1597801480751" />
     <state width="1863" height="267" key="GridCell.Tab.0.center/0.0.1920.1040/404.1080.1280.760@0.0.1920.1040" timestamp="1597506693374" />
-    <state width="1863" height="267" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1597488520727" />
-    <state width="1863" height="224" key="GridCell.Tab.0.left" timestamp="1597974860436">
-      <screen x="-1920" y="0" width="1920" height="1040" />
+    <state width="1863" height="221" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1597997731670" />
+    <state width="1863" height="221" key="GridCell.Tab.0.left" timestamp="1597997731670">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1863" height="224" key="GridCell.Tab.0.left/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1597974860436" />
     <state width="1491" height="167" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1596899888611" />
@@ -389,9 +407,9 @@
     <state width="1863" height="180" key="GridCell.Tab.0.left/0.0.1920.1040/0.1080.1280.760@0.1080.1280.760" timestamp="1597750625723" />
     <state width="1863" height="177" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040/0.1080.1280.760@1920.0.1920.1040" timestamp="1597801480750" />
     <state width="1863" height="267" key="GridCell.Tab.0.left/0.0.1920.1040/404.1080.1280.760@0.0.1920.1040" timestamp="1597506693373" />
-    <state width="1863" height="267" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1597488520727" />
-    <state width="1863" height="224" key="GridCell.Tab.0.right" timestamp="1597974860437">
-      <screen x="-1920" y="0" width="1920" height="1040" />
+    <state width="1863" height="221" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1597997731670" />
+    <state width="1863" height="221" key="GridCell.Tab.0.right" timestamp="1597997731670">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1863" height="224" key="GridCell.Tab.0.right/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1597974860437" />
     <state width="1491" height="167" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1596899888611" />
@@ -399,7 +417,7 @@
     <state width="1863" height="180" key="GridCell.Tab.0.right/0.0.1920.1040/0.1080.1280.760@0.1080.1280.760" timestamp="1597750625724" />
     <state width="1863" height="177" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040/0.1080.1280.760@1920.0.1920.1040" timestamp="1597801480751" />
     <state width="1863" height="267" key="GridCell.Tab.0.right/0.0.1920.1040/404.1080.1280.760@0.0.1920.1040" timestamp="1597506693374" />
-    <state width="1863" height="267" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1597488520727" />
+    <state width="1863" height="221" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1597997731670" />
     <state x="2360" y="202" key="IDE.errors.dialog" timestamp="1597806493929">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
@@ -410,9 +428,10 @@
     <state x="277" y="54" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1596898238703" />
     <state x="297" y="154" key="SettingsEditor/0.0.1920.1040/1920.-294.1920.1040@1920.-294.1920.1040" timestamp="1597378599662" />
     <state x="297" y="154" key="SettingsEditor/0.0.1920.1040/404.1080.1280.760@0.0.1920.1040" timestamp="1597489887441" />
-    <state x="2473" y="256" key="Vcs.Push.Dialog.v2" timestamp="1597238473255">
-      <screen x="1920" y="4" width="1920" height="1040" />
+    <state x="-1367" y="252" key="Vcs.Push.Dialog.v2" timestamp="1597975060816">
+      <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
+    <state x="-1367" y="252" key="Vcs.Push.Dialog.v2/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1597975060816" />
     <state x="442" y="200" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1596805655155" />
     <state x="2473" y="256" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.4.1920.1040/757.1084.1371.577@1920.4.1920.1040" timestamp="1597238473255" />
     <state x="552" y="253" key="Vcs.Push.Dialog.v2/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1596605644575" />
@@ -430,8 +449,8 @@
     <state x="2078" y="-201" width="1737" height="857" key="com.android.tools.idea.avdmanager.AvdListDialog/0.0.1920.1040/1920.-294.1920.1040@1920.-294.1920.1040" timestamp="1597248934432" />
     <state x="2078" y="97" width="1737" height="857" key="com.android.tools.idea.avdmanager.AvdListDialog/0.0.1920.1040/1920.4.1920.1040/757.1084.1371.577@1920.4.1920.1040" timestamp="1597247965283" />
     <state x="158" y="93" width="1736" height="856" key="com.android.tools.idea.avdmanager.AvdListDialog/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1596630804152" />
-    <state x="2573" y="340" key="com.intellij.ide.util.TipDialog" timestamp="1597795002375">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state x="653" y="340" key="com.intellij.ide.util.TipDialog" timestamp="1597995245928">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="522" y="269" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1596898165667" />
     <state x="653" y="340" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/0.1080.1280.760@0.0.1920.1040" timestamp="1597593634715" />
@@ -439,23 +458,25 @@
     <state x="2573" y="46" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/1920.-294.1920.1040@1920.-294.1920.1040" timestamp="1597583056570" />
     <state x="2573" y="340" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/1920.0.1920.1040/0.1080.1280.760@1920.0.1920.1040" timestamp="1597795002375" />
     <state x="653" y="340" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/404.1080.1280.760@0.0.1920.1040" timestamp="1597503437054" />
-    <state x="653" y="340" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1597643785205" />
+    <state x="653" y="340" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1597995245928" />
     <state x="652" y="339" key="com.intellij.ide.util.TipDialog/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1596702705118" />
     <state x="357" y="31" width="1185" height="1018" maximized="true" key="dock-window-1" timestamp="1597232705767">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="357" y="31" width="1185" height="1018" maximized="true" key="dock-window-1/0.0.1920.1040/1920.4.1920.1040/757.1084.1371.577@1920.4.1920.1040" timestamp="1597232705767" />
-    <state x="249" y="262" key="git4idea.merge.GitPullDialog" timestamp="1597813586220">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="311" y="331" key="git4idea.merge.GitPullDialog" timestamp="1597998804534">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="249" y="262" key="git4idea.merge.GitPullDialog/0.0.1536.824@0.0.1536.824" timestamp="1597813586220" />
     <state x="2095" y="598" key="git4idea.merge.GitPullDialog/0.0.1920.1040/1920.0.1080.1880@1920.0.1080.1880" timestamp="1596177772521" />
     <state x="2231" y="331" key="git4idea.merge.GitPullDialog/0.0.1920.1040/1920.0.1920.1040/0.1080.1280.760@1920.0.1920.1040" timestamp="1597806705484" />
     <state x="2231" y="335" key="git4idea.merge.GitPullDialog/0.0.1920.1040/1920.4.1920.1040/757.1084.1371.577@1920.4.1920.1040" timestamp="1597237430310" />
+    <state x="311" y="331" key="git4idea.merge.GitPullDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1597998804534" />
     <state x="311" y="331" key="git4idea.merge.GitPullDialog/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1596605650614" />
-    <state x="532" y="235" key="run.anything.popup" timestamp="1597484009956">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="-1388" y="235" key="run.anything.popup" timestamp="1597975667804">
+      <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
+    <state x="-1388" y="235" key="run.anything.popup/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1597975667804" />
     <state x="2452" y="238" key="run.anything.popup/0.0.1920.1040/1920.3.1920.1040/465.1080.1152.608@1920.3.1920.1040" timestamp="1597312938322" />
     <state x="532" y="235" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1597484009956" />
     <state x="-1381" y="5" width="840" height="1034" key="search.everywhere.popup" timestamp="1597974979468">

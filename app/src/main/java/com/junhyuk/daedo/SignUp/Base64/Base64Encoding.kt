@@ -6,11 +6,12 @@ import java.io.ByteArrayOutputStream
 
 class Base64Encoding {
 
-    fun encoding(bitmap: Bitmap): String{
+    internal fun encoding(bitmap: Bitmap): String{
         val base64: String
+        val format: String
 
         val byteArrayOutputStream = ByteArrayOutputStream()
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream)
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 1000, byteArrayOutputStream)
         val byteArray = byteArrayOutputStream.toByteArray()
 
         base64 = Base64.encodeToString(byteArray, Base64.DEFAULT)

@@ -69,13 +69,15 @@ class SignUpActivity : AppCompatActivity() {
             password = editTextTextPassword.text.toString()
 
             //인텐트 변수 선언
-            var intent = Intent(this, SignUpNameActivity::class.java)
+            val intent = Intent(this, SignUpNameActivity::class.java)
 
             //이메일 비밀번호를 다음 엑티비티에다가 put
             intent.putExtra("userInfoEmail", email)
             intent.putExtra("userInfoPassword", password)
 
             startActivity(intent)
+
+            finish()
         }
 
     }
