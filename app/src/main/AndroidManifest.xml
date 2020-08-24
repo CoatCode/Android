@@ -14,9 +14,11 @@
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
         android:hardwareAccelerated="false"
+        android:largeHeap="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SignUp.Activity.SignUpNameActivity"
-            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".SignUp.Activity.SignUpNameActivity"
+            android:screenOrientation="portrait" />
         <activity android:name=".SignUp.Activity.SignUpActivity"
             android:screenOrientation="portrait"/>
         <activity android:name=".EmailLogin.Activity.EmailLoginActivity"

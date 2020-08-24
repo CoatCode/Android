@@ -2,90 +2,93 @@ package com.junhyuk.daedo.SignUp.Activity
 
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.database.Cursor
+import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.net.Uri
 import android.os.Bundle
+import android.provider.OpenableColumns
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.junhyuk.daedo.Application.DaedoApplication
-import com.junhyuk.daedo.Main.MainActivity
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.junhyuk.daedo.R
 import com.junhyuk.daedo.SignUp.Base64.Base64Encoding
-import com.junhyuk.daedo.SignUp.Server.SignUpBody
-import com.junhyuk.daedo.SignUp.Server.SignUpDialog
-import com.junhyuk.daedo.SignUp.Server.SignUpResponse
-import com.junhyuk.daedo.SignUp.Server.SignUpService
+import com.junhyuk.daedo.SignUp.RotateImage.RotateImage
 import com.junhyuk.daedo.SignUp.Sha256.Sha256
+import com.junhyuk.daedo.SignUp.WorkingRetrofit.SetupRetrofit
 import kotlinx.android.synthetic.main.activity_sign_up_name.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import java.io.InputStream
+
+/*
+* - 엑티비티: 회원가입 엑티비티(프로필 사진, 이름)
+* - 담당자: 양준혁
+* - 수정 날짜: 2020.08.24
+*/
 
 
 //이름을 입력하고 서버에 전송을 담당하는 엑티비티
 open class SignUpNameActivity : AppCompatActivity() {
 
+    //서버로 보낼 데이터 변수
     private var email: String = ""
     private var password: String = ""
     private var userName: String = ""
     private var base64: String = ""
-    private val base64Encoding = Base64Encoding()
+    
+    //서버 통신을 할때 필요한 클래스
+    private val base64Encoding = Base64Encoding() //Base64 인코딩
+    private val setupRetrofit = SetupRetrofit() //retrofit setup
+    private val rotateImageClass = RotateImage() //이미지 회전
+    private val sha256Class = Sha256() //sha256 인코딩
 
+    //onCreate
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up_name)
 
-        val intent: Intent = intent //getIntent
-
+        //intent 데이터
+        val intent: Intent = intent //이메일 비밀번호 인텐트 데이터
         email = intent.extras?.getString("userInfoEmail").toString() //이메일 저장
         password = intent.extras?.getString("userInfoPassword").toString() //password 저장
 
-        val sha256Class: Sha256 = Sha256()
-
+        //sha256 암호화
         val encodePassword: String = sha256Class.sha256(password) //password sha256 암호화
-
         password = encodePassword //password 저장
-
-        Log.d("base64Data", "sha256: $password")
 
         //갤러리에서 프로필 사진 가져오기
         user_image.setOnClickListener {
 
-            val imageIntent = Intent() //기기 기본 갤러리 접근
-
-            imageIntent.type = "image/*"
-            imageIntent.action = Intent.ACTION_GET_CONTENT
+            val imageIntent = Intent() //구글 갤러리 접근 intent 변수
 
             //구글 갤러리 접근
-            //intent.setType("image/*");
+            imageIntent.type = "image/*"
+            imageIntent.action = Intent.ACTION_GET_CONTENT
             startActivityForResult(imageIntent, 101)
 
         }
 
-        //sign_up 버튼을 누르면 모든 값을 서버로 전송
-        sign_up_button.setOnClickListener {
-            setupRetrofit()
-        }
-
-        //뒤로가기 버튼을 눌렀을 때
+        //뒤로 가기 버튼 눌렀을 때
         back_button_sign_up.setOnClickListener {
             //뒤로 돌아감
             onBackPressed()
         }
 
+        //sign_up 버튼을 누르면 모든 값을 서버로 전송
+        sign_up_button.setOnClickListener {
+            setupRetrofit.setupRetrofit(email, password, userName, base64, application, this)
+        }
+
         //이름이 null 인지 아닌지 판단
         input_name.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
-            }
-
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
                 userName = input_name.text.toString()
                 checkNameMsg()
             }
-
             override fun afterTextChanged(s: Editable) {
                 userName = input_name.text.toString()
                 checkNameMsg()
@@ -94,42 +97,9 @@ open class SignUpNameActivity : AppCompatActivity() {
 
     }
 
-    //네트워크 작업
-    private fun setupRetrofit() {
-
-        val signUpService =
-            (application as DaedoApplication).retrofit.create(SignUpService::class.java)
-
-        signUpService.requestSignUp(SignUpBody(email, password, userName, base64))
-            .enqueue(object : Callback<SignUpResponse> {
-                val signUpDialog = SignUpDialog()
-
-                override fun onFailure(call: Call<SignUpResponse>, t: Throwable) {
-                    signUpDialog.connectionFail(this@SignUpNameActivity)
-                }
-
-                override fun onResponse(call: Call<SignUpResponse>, response: Response<SignUpResponse>) {
-
-                    //통신 성공 응답값을 받아옴
-                    Log.d("data2", "data: ${response.code()}")
-
-                    val intent = Intent(this@SignUpNameActivity, MainActivity::class.java)
-
-                    signUpDialog.connectionSuccess(
-                        response.code(),
-                        response.message(),
-                        this@SignUpNameActivity,
-                        response.errorBody()?.string().toString() ,
-                        intent
-                    )
-
-                }
-            })
-    }
-
     //이름이 입력 될 때 마다 호출되는 함수(이름 형식 검사)
     private fun checkNameMsg() {
-        if (input_name.text.toString().isNotEmpty()) {
+        if (input_name.text.toString().isNotBlank()) {
             Thread {
                 runOnUiThread {
                     check_name_text.text = "올바른 이름입니다."
@@ -150,15 +120,70 @@ open class SignUpNameActivity : AppCompatActivity() {
         }
     }
 
+    //갤러리에서 넘어온 이미지 처리
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        //이미지 정보
+        val returnUri: Uri = data?.data!!
+
+        //이미지 커서
+        val returnCursor: Cursor? = contentResolver.query(returnUri, null, null, null, null)
+
+        //이미지 포멧
+        val nameIndex = returnCursor!!.getColumnIndex(OpenableColumns.DISPLAY_NAME)
+        returnCursor.moveToFirst()
+        val imageName = returnCursor.getString(nameIndex)
+        val imageData = imageName.split(".")
+        val imageNameFormat = imageData[(imageData.size - 1)]
+
+        //이미지 용량 사이즈
+        val sizeIndex = returnCursor.getColumnIndex(OpenableColumns.SIZE)
+        returnCursor.moveToFirst()
+        val imageSize = returnCursor.getInt(sizeIndex) / 1024000
+        returnCursor.close()
+
+        // 이미지 파일이 넘어 왔을 경우
+        if (requestCode == 101 && resultCode == RESULT_OK && imageSize < 10) {
+            try {
+                //이미지 파일 받아오기
+                val inputStream = contentResolver.openInputStream(data.data!!) //input 스트림
+                var bm: Bitmap = BitmapFactory.decodeStream(inputStream) //비트맵 변환
+                inputStream?.close()
+
+                bm = rotateImageClass.rotateImage(data.data!!, bm, contentResolver) //이미지 회전
+
+                //화면에 이미지 표시
+                Glide.with(this)
+                    .load(bm)
+                    .thumbnail(Glide.with(applicationContext).load(R.raw.loading))
+                    .override(1000)
+                    .transform(CenterCrop(), RoundedCorners(1000000000))
+                    .into(user_image)
+
+                base64 = "" //base64 초기화
+
+                //base64 인코딩
+                base64 = base64Encoding.encoding(imageNameFormat, bm, applicationContext)
+
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
+
+        //어떤 파일도 넘어오지 않았을 때
+        else if (requestCode == 101 && resultCode == RESULT_CANCELED) {
+            Toast.makeText(this, "취소", Toast.LENGTH_SHORT).show()
+        }
+        
+        //파일 크기가 10메가 이상일 때
+        else {
+            Toast.makeText(this, "파일 최대 크기는 10MB 입니다.", Toast.LENGTH_LONG).show()
+        }
+    }
+
     //권한 허용 확인
-    override fun onRequestPermissionsResult(
-
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
-
-    ) {
-
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         if (requestCode == 1) {
 
             val length = permissions.size
@@ -168,40 +193,8 @@ open class SignUpNameActivity : AppCompatActivity() {
                     Log.d("MainActivity", "권환 허용" + permissions[i])
                 }
             }
-
-        }
-
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        // 이미지 파일이 넘어 왔을 경우
-        if (requestCode == 101 && resultCode == RESULT_OK) {
-            try {
-                val inputStream: InputStream? = contentResolver.openInputStream(data?.data!!)
-
-                val bm = BitmapFactory.decodeStream(inputStream)
-
-                Log.d("data3", "data: ${data.data}")
-
-                inputStream?.close()
-
-                user_image.setImageBitmap(bm)
-
-                base64 = "data:image/jpeg;base64,${base64Encoding.encoding(bm)}"  //Base64 인코딩
-
-                Log.d("base64Data", "base64: $base64")
-
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
-        } 
-
-        //어떤 파일도 넘어오지 않았을 때
-        else if (requestCode == 101 && resultCode == RESULT_CANCELED) {
-            Toast.makeText(this, "취소", Toast.LENGTH_SHORT).show()
         }
     }
+
 }
 

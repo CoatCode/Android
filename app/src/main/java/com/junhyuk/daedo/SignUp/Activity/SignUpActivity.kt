@@ -5,11 +5,19 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
+import android.util.Patterns
 import androidx.appcompat.app.AppCompatActivity
 import com.junhyuk.daedo.Main.MainActivity
 import com.junhyuk.daedo.R
 import kotlinx.android.synthetic.main.activity_sign_up.*
-import java.util.regex.Pattern
+import java.util.regex.Matcher
+
+
+/*
+* - 엑티비티: 회원가입 엑티비티(이메일, 비밀번호)
+* - 담당자: 양준혁
+* - 수정 날짜: 2020.08.24
+*/
 
 //회원 아이디와 비밀번호를 입력받아 SignUpName 엑티비티로 intent 시키는 엑티비티
 class SignUpActivity : AppCompatActivity() {
@@ -83,15 +91,14 @@ class SignUpActivity : AppCompatActivity() {
     }
 
     //이메일 형식 체크
-    fun isEmail(email: String): Boolean {
-        var returnEmailMatch = false
-        val emailPattern = "^[_a-zA-Z0-9-.]+@[.a-zA-Z0-9-]+\\.[a-zA-Z]+$"
-        val pattern = Pattern.compile(emailPattern)
-        val matcher = pattern.matcher(email)
-        if (matcher.matches()) {
-            returnEmailMatch = true
+    private fun isEmail(email: String): Boolean {
+        var returnValue = false
+        val pattern = Patterns.EMAIL_ADDRESS
+        val m: Matcher = pattern.matcher(email)
+        if (m.matches()) {
+            returnValue = true
         }
-        return returnEmailMatch
+        return returnValue
     }
 
     private fun checkButton(checkEmail: Boolean, checkPassword: Boolean){
@@ -117,28 +124,28 @@ class SignUpActivity : AppCompatActivity() {
 
     private fun checkEmail(){
         if (isEmail(editTextTextEmailAddress.text.toString())) {
-            Thread(Runnable {
+            Thread {
                 runOnUiThread {
                     check_email_text.text = "올바른 이메일 형식입니다."
                     check_email_text.setTextColor(getColorStateList(R.color.colorBlue))
                     checkEmail = true
                     checkButton(checkEmail, checkPassword)
                 }
-            }).start()
+            }.start()
         } else {
-            Thread(Runnable {
+            Thread {
                 runOnUiThread {
                     check_email_text.text = "올바르지 않은 이메일 형식입니다."
                     check_email_text.setTextColor(getColorStateList(R.color.colorRed))
                     checkEmail = false
                     checkButton(checkEmail, checkPassword)
                 }
-            }).start()
+            }.start()
         }
     }
 
     private fun checkPassword(){
-        if (editTextTextPassword.text.toString().isNotEmpty()) {
+        if (editTextTextPassword.text.toString().isNotEmpty() && editTextTextPassword.text.toString().length >= 6) {
             Thread {
                 runOnUiThread {
                     check_password_text.text = "올바른 비밀번호 형식입니다."
