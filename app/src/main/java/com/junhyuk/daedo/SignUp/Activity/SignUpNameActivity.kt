@@ -19,7 +19,7 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.junhyuk.daedo.R
 import com.junhyuk.daedo.SignUp.Base64.Base64Encoding
 import com.junhyuk.daedo.SignUp.RotateImage.RotateImage
-import com.junhyuk.daedo.SignUp.Sha256.Sha256
+import com.junhyuk.daedo.SignUp.Sha512.Sha512
 import com.junhyuk.daedo.SignUp.WorkingRetrofit.SetupRetrofit
 import kotlinx.android.synthetic.main.activity_sign_up_name.*
 
@@ -43,7 +43,7 @@ open class SignUpNameActivity : AppCompatActivity() {
     private val base64Encoding = Base64Encoding() //Base64 인코딩
     private val setupRetrofit = SetupRetrofit() //retrofit setup
     private val rotateImageClass = RotateImage() //이미지 회전
-    private val sha256Class = Sha256() //sha256 인코딩
+    private val sha512Class = Sha512() //sha256 인코딩
 
     //onCreate
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,8 +56,10 @@ open class SignUpNameActivity : AppCompatActivity() {
         password = intent.extras?.getString("userInfoPassword").toString() //password 저장
 
         //sha256 암호화
-        val encodePassword: String = sha256Class.sha256(password) //password sha256 암호화
+        val encodePassword: String = sha512Class.sha512(password) //password sha512 암호화
         password = encodePassword //password 저장
+
+        Log.d("password", "Sha512: $encodePassword")
 
         //갤러리에서 프로필 사진 가져오기
         user_image.setOnClickListener {
@@ -126,8 +128,8 @@ open class SignUpNameActivity : AppCompatActivity() {
 
         val returnUri: Uri
         val returnCursor: Cursor?
-        var imageSize: Int = 0
-        var imageNameFormat: String = ""
+        var imageSize = 0
+        var imageNameFormat = ""
 
         //정상적인 응답이 왔을때
         if (requestCode == 101 && resultCode == RESULT_OK){
