@@ -84,10 +84,13 @@ class SignUpActivity : AppCompatActivity() {
             intent.putExtra("userInfoPassword", password)
 
             startActivity(intent)
-
-            finish()
         }
 
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
     }
 
     //이메일 형식 체크

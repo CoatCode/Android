@@ -124,30 +124,38 @@ open class SignUpNameActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        //이미지 정보
-        val returnUri: Uri = data?.data!!
+        val returnUri: Uri
+        val returnCursor: Cursor?
+        var imageSize: Int = 0
+        var imageNameFormat: String = ""
 
-        //이미지 커서
-        val returnCursor: Cursor? = contentResolver.query(returnUri, null, null, null, null)
+        //정상적인 응답이 왔을때
+        if (requestCode == 101 && resultCode == RESULT_OK){
+            //이미지 정보
+            returnUri = data?.data!!
 
-        //이미지 포멧
-        val nameIndex = returnCursor!!.getColumnIndex(OpenableColumns.DISPLAY_NAME)
-        returnCursor.moveToFirst()
-        val imageName = returnCursor.getString(nameIndex)
-        val imageData = imageName.split(".")
-        val imageNameFormat = imageData[(imageData.size - 1)]
+            //이미지 커서
+            returnCursor = contentResolver.query(returnUri, null, null, null, null)
 
-        //이미지 용량 사이즈
-        val sizeIndex = returnCursor.getColumnIndex(OpenableColumns.SIZE)
-        returnCursor.moveToFirst()
-        val imageSize = returnCursor.getInt(sizeIndex) / 1024000
-        returnCursor.close()
+            //이미지 포멧
+            val nameIndex = returnCursor!!.getColumnIndex(OpenableColumns.DISPLAY_NAME)
+            returnCursor.moveToFirst()
+            val imageName = returnCursor.getString(nameIndex)
+            val imageData = imageName.split(".")
+            imageNameFormat = imageData[(imageData.size - 1)]
+
+            //이미지 용량 사이즈
+            val sizeIndex = returnCursor.getColumnIndex(OpenableColumns.SIZE)
+            returnCursor.moveToFirst()
+            imageSize = returnCursor.getInt(sizeIndex) / 1024000
+            returnCursor.close()
+        }
 
         // 이미지 파일이 넘어 왔을 경우
         if (requestCode == 101 && resultCode == RESULT_OK && imageSize < 10) {
             try {
                 //이미지 파일 받아오기
-                val inputStream = contentResolver.openInputStream(data.data!!) //input 스트림
+                val inputStream = contentResolver.openInputStream(data?.data!!) //input 스트림
                 var bm: Bitmap = BitmapFactory.decodeStream(inputStream) //비트맵 변환
                 inputStream?.close()
 
