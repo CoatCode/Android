@@ -3,7 +3,7 @@ package com.junhyuk.daedo.SignUp.Sha512
 import java.math.BigInteger
 import java.security.MessageDigest
 
-class Sha512 {
+public class Sha512 {
 
     //비밀번호 sha256 암호화
     internal fun sha512(password: String): String {
