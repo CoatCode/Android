@@ -5,6 +5,7 @@ import android.content.pm.PackageManager
 import android.database.Cursor
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.Matrix
 import android.net.Uri
 import android.os.Bundle
 import android.provider.OpenableColumns
@@ -22,6 +23,8 @@ import com.junhyuk.daedo.SignUp.RotateImage.RotateImage
 import com.junhyuk.daedo.SignUp.Sha512.Sha512
 import com.junhyuk.daedo.SignUp.WorkingRetrofit.SetupRetrofit
 import kotlinx.android.synthetic.main.activity_sign_up_name.*
+import java.lang.Boolean
+
 
 /*
 * - 엑티비티: 회원가입 엑티비티(프로필 사진, 이름)
@@ -91,6 +94,7 @@ open class SignUpNameActivity : AppCompatActivity() {
                 userName = input_name.text.toString()
                 checkNameMsg()
             }
+
             override fun afterTextChanged(s: Editable) {
                 userName = input_name.text.toString()
                 checkNameMsg()
@@ -163,6 +167,9 @@ open class SignUpNameActivity : AppCompatActivity() {
 
                 bm = rotateImageClass.rotateImage(data.data!!, bm, contentResolver) //이미지 회전
 
+                //이미지 resize
+                bm = bitmapResizePrc(bm, 180, 180)
+
                 //화면에 이미지 표시
                 Glide.with(this)
                     .load(bm)
@@ -193,7 +200,11 @@ open class SignUpNameActivity : AppCompatActivity() {
     }
 
     //권한 허용 확인
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
         if (requestCode == 1) {
 
             val length = permissions.size
@@ -206,5 +217,35 @@ open class SignUpNameActivity : AppCompatActivity() {
         }
     }
 
+
+    //resize 이미지 crop
+    private fun bitmapResizePrc(Src: Bitmap, newHeight: Int, newWidth: Int): Bitmap {
+
+        var width = Src.width
+        var height = Src.height
+
+        // calculate the scale - in this case = 0.4f
+        val scaleWidth = newWidth.toFloat() / width
+        val scaleHeight = newHeight.toFloat() / height
+
+        // create matrix for the manipulation
+        val matrix = Matrix()
+        // resize the bit map
+        matrix.postScale(scaleWidth, scaleHeight)
+
+        // recreate the new Bitmap
+        val resizedBitmap = Bitmap.createBitmap(Src, 0, 0, width, height, matrix, true)
+
+        // check
+        width = resizedBitmap.width
+        height = resizedBitmap.height
+        Log.i(
+            "ImageResize", "Image Resize Result : " + Boolean.toString(
+                newHeight == height && newWidth == width
+            )
+        )
+
+        return resizedBitmap
+    }
 }
 
