@@ -14,7 +14,6 @@ import com.junhyuk.daedo.SignUp.Server.SignUpService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-
 class SetupRetrofit {
     //네트워크 작업
     internal fun setupRetrofit(
