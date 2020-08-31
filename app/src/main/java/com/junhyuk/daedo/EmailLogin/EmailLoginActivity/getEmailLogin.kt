@@ -1,4 +1,4 @@
-package com.junhyuk.daedo.EmailLogin.Activity
+package com.junhyuk.daedo.EmailLogin.EmailLoginActivity
 
 import android.app.Application
 import android.content.Context
@@ -49,6 +49,7 @@ class getEmailLogin {
                             //서버로부터 받은 정보들을 EmailLoginBody 변수에 담아준다
                             EmailLoginBody.instance = response.body()
                         val intent = Intent(context, MainActivity::class.java)
+                       // UserDataActivity(EmailLoginBody.instance.access_token)
                         //LoginDialog를 호출하여 로그인 성공 dialog를 뜨운다
                        loginDialog.connectionSuccess(
                             response.code(),

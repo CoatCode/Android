@@ -1,4 +1,4 @@
-package com.junhyuk.daedo.EmailLogin.Activity
+package com.junhyuk.daedo.EmailLogin.EmailLoginActivity
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,14 +7,17 @@ import com.junhyuk.daedo.EmailLogin.Oauth.Oauth
 import com.junhyuk.daedo.Main.MainActivity
 import com.junhyuk.daedo.R
 import kotlinx.android.synthetic.main.activity_email_login.*
-
-//retrofit2 라이브러리를 사용하여 이메일 액티비티 구성
+/*
+* - 엑티비티: 로그인 엑티비티(이메일, 비밀번호)
+* - 담당자: 한승재
+* - 수정 날짜: 2020.08.30
+*/
 class EmailLoginActivity : AppCompatActivity() {
 
-    var sha512class = com.junhyuk.daedo.SignUp.Sha512.Sha512()
+    private var sha512class = com.junhyuk.daedo.SignUp.Sha512.Sha512()
     //Oauth 호출을 위한 변수
     var api = Oauth.getInstance()
-    private val getEmailLogin = com.junhyuk.daedo.EmailLogin.Activity.getEmailLogin()
+    private val getEmailLogin = com.junhyuk.daedo.EmailLogin.EmailLoginActivity.getEmailLogin()
 
     //사용자의 이메일을 받을 변수
     private var Email : String = ""

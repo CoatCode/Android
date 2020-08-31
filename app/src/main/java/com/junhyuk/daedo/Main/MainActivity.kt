@@ -8,7 +8,7 @@ import android.text.TextUtils
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.junhyuk.daedo.EmailLogin.Activity.EmailLoginActivity
+import com.junhyuk.daedo.EmailLogin.EmailLoginActivity.EmailLoginActivity
 import com.junhyuk.daedo.R
 import com.junhyuk.daedo.SignUp.Activity.SignUpActivity
 import kotlinx.android.synthetic.main.activity_main.*

@@ -1,4 +1,4 @@
-package com.junhyuk.daedo.EmailLogin.Activity
+package com.junhyuk.daedo.EmailLogin.EmailLoginActivity
 
 import android.app.Activity
 import android.content.Context
