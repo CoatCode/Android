@@ -9,6 +9,7 @@ import cn.pedant.SweetAlert.SweetAlertDialog
 import com.junhyuk.daedo.Application.DaedoApplication
 import com.junhyuk.daedo.EmailLogin.Oauth.Oauth
 import com.junhyuk.daedo.EmailLogin.Server.EmailLoginBody
+import com.junhyuk.daedo.EmailLogin.UserDataActivity.UserDataActivity
 import com.junhyuk.daedo.Main.MainActivity
 import retrofit2.Call
 import retrofit2.Callback
@@ -26,7 +27,7 @@ class getEmailLogin {
     ){
         //Oauth 2.0
         val api = Oauth.getInstance()
-        val sweetAlertDialog = SweetAlertDialog(context, SweetAlertDialog.PROGRESS_TYPE)
+       val sweetAlertDialog = SweetAlertDialog(context, SweetAlertDialog.PROGRESS_TYPE)
         sweetAlertDialog.progressHelper.barColor = Color.parseColor("#0DE930")
         sweetAlertDialog
             .setTitleText("로딩 중")
@@ -44,32 +45,30 @@ class getEmailLogin {
                     response: Response<EmailLoginBody>
 
                 ) {
+                   val intent = Intent(context, MainActivity::class.java)
+                    loginDialog.connectionSuccess(
+                        response.code(),
+                        context,
+                        response.errorBody()?.string().toString(),
+                        intent,
+                        sweetAlertDialog
+                    )
+
                     //통신성공
                     if (response.code() == 200) {
+
                             //서버로부터 받은 정보들을 EmailLoginBody 변수에 담아준다
-                            EmailLoginBody.instance = response.body()
-                        val intent = Intent(context, MainActivity::class.java)
-                       // UserDataActivity(EmailLoginBody.instance.access_token)
+                        EmailLoginBody.instance = response.body()
+                        UserDataActivity()
+                        Log.d("toklen","token"+EmailLoginBody.instance)
                         //LoginDialog를 호출하여 로그인 성공 dialog를 뜨운다
-                       loginDialog.connectionSuccess(
-                            response.code(),
-                            context,
-                            response.errorBody()?.string().toString(),
-                            intent,
-                            sweetAlertDialog
-                       )
+
                     }
                     //통신 실패
                     else if (response.code() == 401) {
-                        val intent = Intent(context, EmailLoginActivity::class.java)
-                        //LoginDialog를 호출하여 로그인 실패 dialog를 띄운다
-                        loginDialog.connectionSuccess(
-                            response.code(),
-                            context,
-                            response.errorBody()?.string().toString(),
-                            intent,
-                            sweetAlertDialog
-                        )
+                        Log.d("tttt","ttttt"+response.errorBody())
+
+
 
                     }
 
