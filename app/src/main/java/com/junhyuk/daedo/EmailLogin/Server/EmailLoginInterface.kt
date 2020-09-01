@@ -22,6 +22,7 @@ interface EmailLoginInterface {
     @Headers
     @GET("/auth/user")
     fun GetUserInformation(
-        @Query("authorization") AccessToken: String
+    @Header("Authorization")
+        AccessToken: EmailLoginBody
     ): Call<JsonObject>
 }
