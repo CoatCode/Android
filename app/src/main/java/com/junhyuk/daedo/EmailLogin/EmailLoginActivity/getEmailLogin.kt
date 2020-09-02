@@ -45,7 +45,9 @@ class getEmailLogin {
                     response: Response<EmailLoginBody>
 
                 ) {
+                    //다음 화면으로 이동
                   val intent = Intent(context, MainActivity::class.java)
+                    //Dialog창 로그인 시도시 결과에 따라 다른 dialog가 뜬다
                    loginDialog.connectionSuccess(
                         response.code(),
                         context,

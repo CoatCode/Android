@@ -13,21 +13,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a779d004-bd28-4ee7-9e8a-f1cdca86a7c6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/EmailLogin/UserDatabase/UserDao.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/EmailLogin/UserDatabase/UserDataBase.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/EmailLogin/UserDatabase/UserTable.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/classAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/jarAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/EmailLogin/UserDatabase/User.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/EmailLogin/UserDatabase/User.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/EmailLogin/UserDatabase/UserInformation.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/EmailLogin/EmailLoginActivity/getEmailLogin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/EmailLogin/EmailLoginActivity/getEmailLogin.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/EmailLogin/Server/EmailLoginInterface.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/EmailLogin/Server/EmailLoginInterface.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/EmailLogin/UserDataActivity/UserDataActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/EmailLogin/UserDataActivity/UserDataActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/EmailLogin/UserDatabase/UserDao.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/EmailLogin/UserDatabase/UserDao.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/EmailLogin/UserDatabase/UserTable.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/EmailLogin/UserDatabase/UserTable.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,7 +28,7 @@
   <component name="CodeInsightWorkspaceSettings">
     <option name="optimizeImportsOnTheFly" value="true" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="Galaxy_S10_API_29_1" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="Galaxy_S10_Plus_API_29" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -462,11 +453,11 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="624" y="177" key="AndroidProcessChooserDialog/0.0.1536.824@0.0.1536.824" timestamp="1598870486856" />
-    <state x="426" y="0" key="CommitChangelistDialog2" timestamp="1598960519331">
+    <state x="426" y="0" key="CommitChangelistDialog2" timestamp="1599044349025">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="-1364" y="0" key="CommitChangelistDialog2/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1597975055183" />
-    <state x="426" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1598960519331" />
+    <state x="426" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1599044349025" />
     <state x="2476" y="-294" key="CommitChangelistDialog2/0.0.1920.1040/1920.-294.1920.1040@1920.-294.1920.1040" timestamp="1598616724427" />
     <state x="2402" y="15" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040/0.1080.1280.760@1920.0.1920.1040" timestamp="1597806866726" />
     <state x="2476" y="19" key="CommitChangelistDialog2/0.0.1920.1040/1920.4.1920.1040/757.1084.1371.577@1920.4.1920.1040" timestamp="1597238467280" />
@@ -557,11 +548,11 @@
     <state x="277" y="54" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1596898238703" />
     <state x="297" y="154" key="SettingsEditor/0.0.1920.1040/1920.-294.1920.1040@1920.-294.1920.1040" timestamp="1597378599662" />
     <state x="297" y="154" key="SettingsEditor/0.0.1920.1040/404.1080.1280.760@0.0.1920.1040" timestamp="1597489887441" />
-    <state x="442" y="200" key="Vcs.Push.Dialog.v2" timestamp="1598960523869">
+    <state x="442" y="200" key="Vcs.Push.Dialog.v2" timestamp="1599044354488">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="-1367" y="252" key="Vcs.Push.Dialog.v2/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1597975060816" />
-    <state x="442" y="200" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1598960523869" />
+    <state x="442" y="200" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1599044354488" />
     <state x="2473" y="-42" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.-294.1920.1040@1920.-294.1920.1040" timestamp="1598616730418" />
     <state x="2473" y="256" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.4.1920.1040/757.1084.1371.577@1920.4.1920.1040" timestamp="1597238473255" />
     <state x="553" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1597998837217" />
@@ -606,11 +597,11 @@
       <screen x="1920" y="-294" width="1920" height="1040" />
     </state>
     <state x="2507" y="-280" width="746" height="1011" key="find.popup/0.0.1920.1040/1920.-294.1920.1040@1920.-294.1920.1040" timestamp="1598615900215" />
-    <state x="249" y="262" key="git4idea.merge.GitPullDialog" timestamp="1599044325060">
+    <state x="249" y="262" key="git4idea.merge.GitPullDialog" timestamp="1599090474678">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="311" y="331" key="git4idea.merge.GitPullDialog/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1598235967187" />
-    <state x="249" y="262" key="git4idea.merge.GitPullDialog/0.0.1536.824@0.0.1536.824" timestamp="1599044325060" />
+    <state x="249" y="262" key="git4idea.merge.GitPullDialog/0.0.1536.824@0.0.1536.824" timestamp="1599090474678" />
     <state x="2231" y="37" key="git4idea.merge.GitPullDialog/0.0.1920.1040/1920.-294.1920.1040@1920.-294.1920.1040" timestamp="1598615560080" />
     <state x="2095" y="598" key="git4idea.merge.GitPullDialog/0.0.1920.1040/1920.0.1080.1880@1920.0.1080.1880" timestamp="1596177772521" />
     <state x="2231" y="331" key="git4idea.merge.GitPullDialog/0.0.1920.1040/1920.0.1920.1040/0.1080.1280.760@1920.0.1920.1040" timestamp="1597806705484" />

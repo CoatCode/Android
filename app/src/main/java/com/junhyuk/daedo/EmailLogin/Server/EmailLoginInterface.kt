@@ -19,6 +19,7 @@ interface EmailLoginInterface {
         @Body GetTokens : RefreshData
 
     ): Call<EmailLoginBody>
+    //User 정보 받아오기
     @Headers
     @GET("/auth/user")
     fun GetUserInformation(

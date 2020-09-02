@@ -8,7 +8,7 @@ import com.junhyuk.daedo.EmailLogin.Server.EmailLoginBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-
+//유저 정보를 받아오기 위해 서버와 통신하는 클래스
 class UserDataActivity {
   internal fun GetUserData(
       getApplication: Application
