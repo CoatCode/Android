@@ -2,13 +2,22 @@ package com.junhyuk.daedo.EmailLogin.UserDatabase
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.PrimaryKey
 
-@Entity(tableName = "User")
+@Entity(tableName = "UserInformation")
 
-class User(
-    @ColumnInfo(name = "email") var email: String,
-    @ColumnInfo(name = "username") var username: String,
-    @ColumnInfo(name = "profile") var profile: String?
-){
-    constructor(): this("","",null)
+class User{
+    @PrimaryKey
+    @ColumnInfo(name = "word")
+    private var mWord: String? = null
+
+    fun User(word: String) {
+        mWord = word
+    }
+
+    fun getUser(): String? {
+        return mWord
+    }
 }
+
+
