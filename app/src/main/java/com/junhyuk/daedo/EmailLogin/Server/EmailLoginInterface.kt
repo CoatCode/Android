@@ -3,7 +3,10 @@ package com.junhyuk.daedo.EmailLogin.Server
 import com.google.gson.JsonObject
 import com.junhyuk.daedo.EmailLogin.Oauth.RefreshData
 import retrofit2.Call
-import retrofit2.http.*
+import retrofit2.http.Body
+import retrofit2.http.GET
+import retrofit2.http.Header
+import retrofit2.http.POST
 
 interface EmailLoginInterface {
     //email로그인
@@ -20,10 +23,10 @@ interface EmailLoginInterface {
 
     ): Call<EmailLoginBody>
     //User 정보 받아오기
-    @Headers
-    @GET("/auth/user")
+
+    @GET("/user")
     fun GetUserInformation(
-    @Header("Authorization")
+    @Header("Authorization: Bearer")
         AccessToken: EmailLoginBody
     ): Call<JsonObject>
 }
