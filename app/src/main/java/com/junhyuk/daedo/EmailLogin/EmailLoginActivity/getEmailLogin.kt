@@ -63,7 +63,7 @@ class getEmailLogin {
                             //서버로부터 받은 정보들을 EmailLoginBody 변수에 담아준다
                         EmailLoginBody.instance = response.body()
                         Log.d("toklen","token"+EmailLoginBody.instance)
-                        getUser.GetUserData(getApplication)
+                        getUser.GetUserData(getApplication, context)
 
 
                     }
