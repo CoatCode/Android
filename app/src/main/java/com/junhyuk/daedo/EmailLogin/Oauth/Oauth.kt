@@ -35,7 +35,7 @@ class Oauth {
 
 
                     newRequest =
-                        it.request().newBuilder().addHeader("Authorization", accessToken)
+                        it.request().newBuilder().addHeader("Authorization",accessToken)
                             .build()
 
                     if (response?.code() == 401) {

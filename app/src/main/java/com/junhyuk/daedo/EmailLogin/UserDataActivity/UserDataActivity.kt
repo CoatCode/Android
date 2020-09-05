@@ -14,13 +14,14 @@ class UserDataActivity {
       getApplication: Application
   ) {
       val token : String = EmailLoginBody.instance!!.access_token
-    Log.d("token","token="+token)
-    (getApplication as DaedoApplication)
+        Log.d("token", "token=$token")
+        (getApplication as DaedoApplication)
         .requestService()
-        ?.GetUserInformation(EmailLoginBody(token))
+        ?.GetUserInformation("Bearer $token",null)
         ?.enqueue(object : Callback<JsonObject> {
             override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
                 Log.d("stoken","token="+EmailLoginBody.instance?.access_token)
+                Log.d("stoken","stoken$token")
             }
 
             override fun onFailure(call: Call<JsonObject>, t: Throwable) {

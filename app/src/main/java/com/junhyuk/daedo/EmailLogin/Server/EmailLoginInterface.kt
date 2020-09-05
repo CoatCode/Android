@@ -26,7 +26,7 @@ interface EmailLoginInterface {
 
     @GET("/user")
     fun GetUserInformation(
-    @Header("Authorization: Bearer")
-        AccessToken: EmailLoginBody
+        @Header("Authorization") type:String,
+        @Header("Bearer") token:String?
     ): Call<JsonObject>
 }

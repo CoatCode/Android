@@ -8,12 +8,14 @@ import androidx.room.Query
 //아직 미완성 Dao
 @Dao
 interface UserDao {
+    @Query("SELECT * FROM UserInformation")
+    fun getAllBook() : List<User>
+
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(User: User?)
 
-    @Query("DELETE FROM UserInformation")
-    fun deleteAll()
+    @Query("UPDATE userinformation set email = :email, Username = :Username, profile = :profile, WHERE idx = :idx")
+    fun update(idx : Int, name : String, author : String, kind : String, price : Int)
 
-    @Query("SELECT * from UserInformation ORDER BY word ASC")
-    open fun getAlphabetizedWords(): LiveData<MutableList<User?>?>?
 }

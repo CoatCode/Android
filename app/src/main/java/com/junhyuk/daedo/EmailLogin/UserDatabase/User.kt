@@ -6,18 +6,16 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "UserInformation")
 
-class User{
-    @PrimaryKey
-    @ColumnInfo(name = "word")
-    private var mWord: String? = null
+class User(@PrimaryKey val idx : Int,
+    @ColumnInfo(name = "mWord")
+    private var mWord: String? = null,
+           val email : String,
+           val Username : String,
+           val profile : String
 
-    fun User(word: String) {
-        mWord = word
-    }
 
-    fun getUser(): String? {
-        return mWord
-    }
-}
+)
+
+
 
 
