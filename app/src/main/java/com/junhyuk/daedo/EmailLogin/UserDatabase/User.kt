@@ -9,9 +9,9 @@ import androidx.room.PrimaryKey
 class User(@PrimaryKey val idx : Int,
     @ColumnInfo(name = "mWord")
     public var mWord: String? = null,
-           val email : String,
-           val Username : String,
-           val profile : String
+           val email : String?,
+           val Username : String?,
+           val profile : String?
 
 
 )

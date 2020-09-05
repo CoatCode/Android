@@ -1,7 +1,7 @@
 package com.junhyuk.daedo.EmailLogin.Server
 
-import com.google.gson.JsonObject
 import com.junhyuk.daedo.EmailLogin.Oauth.RefreshData
+import com.junhyuk.daedo.EmailLogin.UserDataActivity.UserInformation
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -28,5 +28,5 @@ interface EmailLoginInterface {
     fun GetUserInformation(
         @Header("Authorization") type:String,
         @Header("Bearer") token:String?
-    ): Call<JsonObject>
+    ): Call<UserInformation>
 }

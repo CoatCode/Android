@@ -3,7 +3,6 @@ package com.junhyuk.daedo.EmailLogin.UserDataActivity
 import android.app.Application
 import android.content.Context
 import android.util.Log
-import com.google.gson.JsonObject
 import com.junhyuk.daedo.Application.DaedoApplication
 import com.junhyuk.daedo.EmailLogin.Server.EmailLoginBody
 import com.junhyuk.daedo.EmailLogin.UserDatabase.User
@@ -22,9 +21,10 @@ class UserDataActivity {
         (getApplication as DaedoApplication)
         .requestService()
         ?.GetUserInformation("Bearer $token",null)
-        ?.enqueue(object : Callback<JsonObject> {
-            override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
+        ?.enqueue(object : Callback<UserInformation> {
+            override fun onResponse(call: Call<UserInformation>, response: Response<UserInformation>) {
                 if (response.code() == 200){
+                    UserInformation.instance=response.body()
                     val addBook = AddBook(context)
                     addBook.start()
 
@@ -33,7 +33,7 @@ class UserDataActivity {
                 Log.d("stoken","stoken$token")
             }
 
-            override fun onFailure(call: Call<JsonObject>, t: Throwable) {
+            override fun onFailure(call: Call<UserInformation>, t: Throwable) {
                 Log.d("ftoken","token="+EmailLoginBody.instance?.access_token)
             }
 
@@ -43,20 +43,17 @@ class UserDataActivity {
 }
 class AddBook(val context: Context) : Thread() {
     override fun run() {
-        val book = User(1, "공간이 만든 공간", "유현준", "교양 인문학", "")
+        val book = User(1, null, UserInformation.instance?.email, UserInformation.instance?.username, UserInformation.instance?.profile)
         UserDataBase
             .getDatabase(context)!!
             .USerDao()
             ?.insert(book)
-        
         val bookdb = UserDataBase
             .getDatabase(context)!!
             .USerDao()
             ?.getAllBook()
-
-
         if (bookdb != null) {
-            for(i in bookdb){ Log.d("bookList", "${i.idx} | ${i.email} ${i.Username} | ${i.profile}") }
+            for(i in bookdb){ Log.d("bookList", "${i.idx} | ${i.email}  | ${i.Username} | ${i.profile}") }
         }
 
 
