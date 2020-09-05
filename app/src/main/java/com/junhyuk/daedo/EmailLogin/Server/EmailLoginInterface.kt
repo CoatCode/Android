@@ -1,7 +1,7 @@
 package com.junhyuk.daedo.EmailLogin.Server
 
 import com.junhyuk.daedo.EmailLogin.Oauth.RefreshData
-import com.junhyuk.daedo.EmailLogin.UserDataActivity.UserInformation
+import com.junhyuk.daedo.EmailLogin.UserDataHandle.UserInformation
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -22,11 +22,10 @@ interface EmailLoginInterface {
         @Body GetTokens : RefreshData
 
     ): Call<EmailLoginBody>
-    //User 정보 받아오기
 
+    //User 정보 받아오기
     @GET("/user")
     fun GetUserInformation(
-        @Header("Authorization") type:String,
-        @Header("Bearer") token:String?
+        @Header("Authorization") type:String
     ): Call<UserInformation>
 }

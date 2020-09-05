@@ -9,7 +9,7 @@ import cn.pedant.SweetAlert.SweetAlertDialog
 import com.junhyuk.daedo.Application.DaedoApplication
 import com.junhyuk.daedo.EmailLogin.Oauth.Oauth
 import com.junhyuk.daedo.EmailLogin.Server.EmailLoginBody
-import com.junhyuk.daedo.EmailLogin.UserDataActivity.UserDataActivity
+import com.junhyuk.daedo.EmailLogin.UserDataHandle.UserDataActivity
 import com.junhyuk.daedo.Main.MainActivity
 import retrofit2.Call
 import retrofit2.Callback

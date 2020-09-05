@@ -18,7 +18,7 @@ class EmailLoginActivity : AppCompatActivity() {
     //Oauth 호출을 위한 변수
     var api = Oauth.getInstance()
     private val getEmailLogin = com.junhyuk.daedo.EmailLogin.EmailLoginActivity.getEmailLogin()
-    private val getdata = com.junhyuk.daedo.EmailLogin.UserDataActivity.UserDataActivity()
+    private val getdata = com.junhyuk.daedo.EmailLogin.UserDataHandle.UserDataActivity()
     //사용자의 이메일을 받을 변수
     private var Email : String = ""
     //사용자의 비밀번호를 받을 변수

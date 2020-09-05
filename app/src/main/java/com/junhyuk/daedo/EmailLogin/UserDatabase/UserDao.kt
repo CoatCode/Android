@@ -4,17 +4,14 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-//아직 미완성 Dao
+//Dao
 @Dao
 interface UserDao {
     @Query("SELECT * FROM UserInformation")
-    fun getAllBook() : List<User>
-
+    fun getAllUser() : List<UserTable>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(bookEntity : User)
-
-
+    fun insert(bookEntity : UserTable)
 
     @Query("UPDATE UserInformation set email = :email, Username = :Username, profile = :profile WHERE idx = :idx")
     fun update(idx : Int, email : String, Username : String, profile : String)
