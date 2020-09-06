@@ -1,13 +1,14 @@
 package com.junhyuk.daedo.EmailLogin.UserDataHandle
 
 import android.content.Context
+import android.util.Log
 import com.junhyuk.daedo.EmailLogin.UserDatabase.UserDataBase
 import com.junhyuk.daedo.EmailLogin.UserDatabase.UserTable
 
 class AddDatabase(val context: Context) : Thread() {
     override fun run() {
         //서버로 부터 받은 유저 데이터를 DB에 저장
-        val AddUser = UserTable(1,null, UserInformation.instance?.email, UserInformation.instance?.username, UserInformation.instance?.profile)
+        val AddUser = UserTable(2,null, UserInformation.instance?.email, UserInformation.instance?.username, UserInformation.instance?.profile)
         UserDataBase.getDatabase(context)!!
             .UserDao()
             ?.insert(AddUser)
@@ -15,5 +16,10 @@ class AddDatabase(val context: Context) : Thread() {
         val CallUserInfor = UserDataBase.getDatabase(context)!!
             .UserDao()
             ?.getAllUser()
+        if (CallUserInfor != null) {
+            for(i in CallUserInfor){ Log.d("bookList", "${i.idx} | ${i.doNotTouch} ${i.Username} | ${i.email} | ${i.profile}") }
+        }
+
+
     }
 }
