@@ -2,28 +2,34 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.junhyuk.daedo">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:name=".Application.DaedoApplication"
         android:allowBackup="false"
+        android:hardwareAccelerated="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
-        android:hardwareAccelerated="false"
         android:largeHeap="true"
-        android:theme="@style/AppTheme">
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".Feed.FeedActivity"
+            android:label="@string/title_activity_feed"></activity>
         <activity
             android:name=".SignUp.Activity.SignUpNameActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".SignUp.Activity.SignUpActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".EmailLogin.EmailLoginActivity.EmailLoginActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".Main.MainActivity"
+        <activity
+            android:name=".SignUp.Activity.SignUpActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".EmailLogin.EmailLoginActivity.EmailLoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Main.MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.junhyuk.daedo.EmailLogin.Oauth.Oauth
+import com.junhyuk.daedo.Feed.FeedActivity
 import com.junhyuk.daedo.Main.MainActivity
 import com.junhyuk.daedo.R
 import kotlinx.android.synthetic.main.activity_email_login.*
@@ -47,6 +48,8 @@ class EmailLoginActivity : AppCompatActivity() {
             //getEmailLogin 클래스로 사용자가 입력한 값 전달
             getEmailLogin.getEmailLogin(Email,PW,application,this)
             //getdata.GetUserData(application)
+
+            startActivity(Intent(this, FeedActivity::class.java))
 
         }
     }

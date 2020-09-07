@@ -10,9 +10,9 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class DaedoApplication : Application(){
-    private var LoginInteface: EmailLoginInterface? = null
+    private var loginInterface: EmailLoginInterface? = null
     lateinit var retrofit: Retrofit
-    var baseUrl : BaseUrl = BaseUrl()
+    private var baseUrl : BaseUrl = BaseUrl()
 
     override fun onCreate() {
         super.onCreate()
@@ -27,9 +27,9 @@ class DaedoApplication : Application(){
             .addConverterFactory(GsonConverterFactory.create())
              .client(client)
             .build()
-        LoginInteface = retrofit.create(EmailLoginInterface::class.java)
+        loginInterface = retrofit.create(EmailLoginInterface::class.java)
     }
     fun requestService(): EmailLoginInterface?{
-        return LoginInteface
+        return loginInterface
     }
 }

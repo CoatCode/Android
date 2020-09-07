@@ -41,12 +41,12 @@ open class SignUpNameActivity : AppCompatActivity() {
     private var password: String = ""
     private var userName: String = ""
     private var base64: String = ""
-    
+
     //서버 통신을 할때 필요한 클래스
     private val base64Encoding = Base64Encoding() //Base64 인코딩
     private val setupRetrofit = SetupRetrofit() //retrofit setup
     private val rotateImageClass = RotateImage() //이미지 회전
-    private val sha512Class = Sha512() //sha256 인코딩
+    private val sha512Class = Sha512() //sha512 인코딩
 
     //onCreate
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -192,7 +192,7 @@ open class SignUpNameActivity : AppCompatActivity() {
         else if (requestCode == 101 && resultCode == RESULT_CANCELED) {
             Toast.makeText(this, "취소", Toast.LENGTH_SHORT).show()
         }
-        
+
         //파일 크기가 10메가 이상일 때
         else {
             Toast.makeText(this, "파일 최대 크기는 10MB 입니다.", Toast.LENGTH_LONG).show()
@@ -248,4 +248,3 @@ open class SignUpNameActivity : AppCompatActivity() {
         return resizedBitmap
     }
 }
-
