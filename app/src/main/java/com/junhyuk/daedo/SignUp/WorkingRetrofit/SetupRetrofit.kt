@@ -6,7 +6,7 @@ import android.content.Intent
 import android.graphics.Color
 import cn.pedant.SweetAlert.SweetAlertDialog
 import com.junhyuk.daedo.Application.DaedoApplication
-import com.junhyuk.daedo.Main.MainActivity
+import com.junhyuk.daedo.Intro.Intro
 import com.junhyuk.daedo.SignUp.Activity.SignUpDialog
 import com.junhyuk.daedo.SignUp.Server.SignUpBody
 import com.junhyuk.daedo.SignUp.Server.SignUpResponse
@@ -50,7 +50,7 @@ class SetupRetrofit {
                     call: Call<SignUpResponse>,
                     response: Response<SignUpResponse>
                 ) {
-                    val intent = Intent(context, MainActivity::class.java)
+                    val intent = Intent(context, Intro::class.java)
 
                     signUpDialog.connectionSuccess(
                         response.code(),

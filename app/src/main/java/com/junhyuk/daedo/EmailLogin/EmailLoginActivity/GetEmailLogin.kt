@@ -16,7 +16,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-class getEmailLogin {
+class GetEmailLogin {
     //네트워크 작업
     internal fun getEmailLogin(
         email: String,
@@ -24,7 +24,7 @@ class getEmailLogin {
         getApplication: Application,
         context: Context
 
-    ){
+    ) {
         //Oauth 2.0
         val api = Oauth.getInstance()
         val getUser = UserDataActivity()
@@ -47,9 +47,9 @@ class getEmailLogin {
 
                 ) {
                     //다음 화면으로 이동
-                  val intent = Intent(context, MainActivity::class.java)
+                    val intent = Intent(context, MainActivity::class.java)
                     //Dialog창 로그인 시도시 결과에 따라 다른 dialog가 뜬다
-                   loginDialog.connectionSuccess(
+                    loginDialog.connectionSuccess(
                         response.code(),
                         context,
                         response.errorBody()?.string().toString(),
@@ -60,18 +60,15 @@ class getEmailLogin {
                     //통신성공
                     if (response.code() == 200) {
 
-                            //서버로부터 받은 정보들을 EmailLoginBody 변수에 담아준다
+                        //서버로부터 받은 정보들을 EmailLoginBody 변수에 담아준다
                         EmailLoginBody.instance = response.body()
-                        Log.d("toklen","token"+EmailLoginBody.instance)
+                        Log.d("toklen", "token" + EmailLoginBody.instance)
                         getUser.GetUserData(getApplication, context)
-
 
                     }
                     //통신 실패
                     else if (response.code() == 401) {
-                        Log.d("tttt","ttttt"+response.errorBody())
-
-
+                        Log.d("tttt", "ttttt" + response.errorBody())
 
                     }
 
@@ -79,7 +76,7 @@ class getEmailLogin {
 
                 //서버와 연결 실패
                 override fun onFailure(call: Call<EmailLoginBody>, t: Throwable) {
-                Log.d("s","s")
+                    Log.d("s", "s")
                     //LoginDialog를 호출하여 서버와의 연결 실패를 dialog로 띄운다
                     loginDialog.connectionFail(context, sweetAlertDialog)
                 }
@@ -87,8 +84,6 @@ class getEmailLogin {
 
             })
     }
-
-
 
 
 }

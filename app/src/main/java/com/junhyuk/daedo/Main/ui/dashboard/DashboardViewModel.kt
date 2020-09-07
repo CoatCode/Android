@@ -1,4 +1,4 @@
-package com.junhyuk.daedo.Feed.ui.dashboard
+package com.junhyuk.daedo.Main.ui.dashboard
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

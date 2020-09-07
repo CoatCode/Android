@@ -1,5 +1,5 @@
 package com.junhyuk.daedo.WorkingNetwork
 
 data class BaseUrl(
-    val BaseURL: String = "https://coatcode.pythonanywhere.com"
+    val BaseURL: String = "http://10.80.161.202:8080"
 )

@@ -1,4 +1,4 @@
-package com.junhyuk.daedo.Feed.ui.home
+package com.junhyuk.daedo.Main.ui.home
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
