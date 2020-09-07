@@ -1,7 +1,10 @@
 package com.junhyuk.daedo.EmailLogin.EmailLoginActivity
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import cn.pedant.SweetAlert.SweetAlertDialog
 
 class LoginDialog {
@@ -21,6 +24,11 @@ class LoginDialog {
                 dialog.setCancelable(false)
 
                 dialog.setTitleText("로그인 성공")
+                    .setConfirmClickListener {
+                        ContextCompat.startActivity(context, intent, null)
+                        (context as Activity).finish()
+                        ActivityCompat.finishAffinity(context)
+                    }
                     .show()
 
             }

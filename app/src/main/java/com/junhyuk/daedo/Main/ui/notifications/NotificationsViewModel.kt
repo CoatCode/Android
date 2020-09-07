@@ -1,4 +1,4 @@
-package com.junhyuk.daedo.Feed.ui.notifications
+package com.junhyuk.daedo.Main.ui.notifications
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

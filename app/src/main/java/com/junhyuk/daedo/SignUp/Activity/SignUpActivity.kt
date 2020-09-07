@@ -7,7 +7,7 @@ import android.text.TextWatcher
 import android.util.Log
 import android.util.Patterns
 import androidx.appcompat.app.AppCompatActivity
-import com.junhyuk.daedo.Main.MainActivity
+import com.junhyuk.daedo.Intro.Intro
 import com.junhyuk.daedo.R
 import kotlinx.android.synthetic.main.activity_sign_up.*
 import java.util.regex.Matcher
@@ -34,10 +34,14 @@ class SignUpActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
 
+        //엑션바 숨기기
+        val actionBar = supportActionBar
+        actionBar?.hide()
+
         //x버튼 을 눌렀을 시
         x_button_sign_up.setOnClickListener {
             //메인으로 돌아감
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, Intro::class.java))
             finish()
         }
 

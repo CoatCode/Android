@@ -53,6 +53,10 @@ open class SignUpNameActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up_name)
 
+        //엑션바 숨기기
+        val actionBar = supportActionBar
+        actionBar?.hide()
+
         //intent 데이터
         val intent: Intent = intent //이메일 비밀번호 인텐트 데이터
         email = intent.extras?.getString("userInfoEmail").toString() //이메일 저장
