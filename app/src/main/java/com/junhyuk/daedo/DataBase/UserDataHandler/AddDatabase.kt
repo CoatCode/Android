@@ -1,9 +1,9 @@
-package com.junhyuk.daedo.EmailLogin.UserDataHandle
+package com.junhyuk.daedo.DataBase.UserDataHandler
 
 import android.content.Context
 import android.util.Log
-import com.junhyuk.daedo.EmailLogin.UserDatabase.UserDataBase
-import com.junhyuk.daedo.EmailLogin.UserDatabase.UserTable
+import com.junhyuk.daedo.DataBase.UserDatabase.UserDataBase
+import com.junhyuk.daedo.DataBase.UserDatabase.UserTable
 
 class AddDatabase(val context: Context) : Thread() {
     override fun run() {

@@ -1,4 +1,4 @@
-package com.junhyuk.daedo.EmailLogin.UserDataHandle
+package com.junhyuk.daedo.DataBase.UserDataHandler
 
 import android.app.Application
 import android.content.Context

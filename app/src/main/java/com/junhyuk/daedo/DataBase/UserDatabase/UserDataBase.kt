@@ -1,4 +1,4 @@
-package com.junhyuk.daedo.EmailLogin.UserDatabase
+package com.junhyuk.daedo.DataBase.UserDatabase
 
 import android.content.Context
 import androidx.room.Database

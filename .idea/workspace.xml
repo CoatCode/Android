@@ -13,8 +13,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a779d004-bd28-4ee7-9e8a-f1cdca86a7c6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/Intro/Intro.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_intro.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" afterDir="false" />
@@ -26,32 +24,23 @@
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/md5-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_facebook_stetho_stetho_1_5_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_facebook_stetho_stetho_1_5_0_aar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/app.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/EmailLogin/EmailLoginActivity/EmailLoginActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/EmailLogin/EmailLoginActivity/EmailLoginActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/EmailLogin/EmailLoginActivity/LoginDialog.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/EmailLogin/EmailLoginActivity/LoginDialog.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/EmailLogin/EmailLoginActivity/getEmailLogin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/EmailLogin/EmailLoginActivity/GetEmailLogin.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/Feed/FeedActivity.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/Feed/ui/dashboard/DashboardFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/Main/ui/dashboard/DashboardFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/Feed/ui/dashboard/DashboardViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/Main/ui/dashboard/DashboardViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/Feed/ui/home/HomeFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/Main/ui/home/HomeFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/Feed/ui/home/HomeViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/Main/ui/home/HomeViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/Feed/ui/notifications/NotificationsFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/Main/ui/notifications/NotificationsFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/Feed/ui/notifications/NotificationsViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/Main/ui/notifications/NotificationsViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/Main/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/Main/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/SignUp/Activity/SignUpActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/SignUp/Activity/SignUpActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/SignUp/Activity/SignUpNameActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/SignUp/Activity/SignUpNameActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/SignUp/WorkingRetrofit/SetupRetrofit.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/SignUp/WorkingRetrofit/SetupRetrofit.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/WorkingNetwork/BaseUrl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/WorkingNetwork/BaseUrl.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_feed.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_dashboard.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_dashboard.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_notifications.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_notifications.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/navigation/mobile_navigation.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/navigation/mobile_navigation.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/EmailLogin/EmailLoginActivity/GetEmailLogin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/EmailLogin/EmailLoginActivity/GetEmailLogin.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/EmailLogin/Server/EmailLoginInterface.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/EmailLogin/Server/EmailLoginInterface.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/EmailLogin/UserDataHandle/AddDatabase.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/DataBase/UserDataHandler/AddDatabase.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/EmailLogin/UserDataHandle/UserDataActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/DataBase/UserDataHandler/UserDataActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/EmailLogin/UserDataHandle/UserInformation.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/DataBase/UserDataHandler/UserInformation.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/EmailLogin/UserDatabase/UserDao.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/DataBase/UserDatabase/UserDao.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/EmailLogin/UserDatabase/UserDataBase.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/DataBase/UserDatabase/UserDataBase.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/EmailLogin/UserDatabase/UserTable.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/junhyuk/daedo/DataBase/UserDatabase/UserTable.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +50,7 @@
   <component name="CodeInsightWorkspaceSettings">
     <option name="optimizeImportsOnTheFly" value="true" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="10.80.161.80:5555" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="Galaxy_S10_Plus_API_29" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -182,8 +171,31 @@
       <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
       <option name="FORCE_STOP_RUNNING_APP" value="true" />
       <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
       <option name="DEBUGGER_TYPE" value="Java" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Hybrid>
       <Java />
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Native>
       <Profilers>
         <option name="ADVANCED_PROFILING_ENABLED" value="false" />
         <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
@@ -209,8 +221,31 @@
       <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
       <option name="FORCE_STOP_RUNNING_APP" value="true" />
       <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
       <option name="DEBUGGER_TYPE" value="Java" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Hybrid>
       <Java />
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Native>
       <Profilers>
         <option name="ADVANCED_PROFILING_ENABLED" value="false" />
         <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
@@ -429,6 +464,10 @@
     <state x="358" y="182" key="#PSD/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1598232794947" />
     <state x="286" y="144" key="#PSD/0.0.1536.824@0.0.1536.824" timestamp="1596898092265" />
     <state x="779" y="188" key="#PSD/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1599323544755" />
+    <state x="491" y="123" key="#app" timestamp="1599469591943">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="491" y="123" key="#app/0.0.1536.824@0.0.1536.824" timestamp="1599469591943" />
     <state x="690" y="268" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog" timestamp="1599326595071">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -518,12 +557,12 @@
     <state x="2726" y="-31" key="FileChooserDialogImpl/0.0.1920.1040/1920.-294.1920.1040@1920.-294.1920.1040" timestamp="1597404805982" />
     <state x="2726" y="263" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1599437179818" />
     <state x="806" y="262" key="FileChooserDialogImpl/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1596630852610" />
-    <state width="1877" height="118" key="GridCell.Tab.0.bottom" timestamp="1599328831254">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1491" height="493" key="GridCell.Tab.0.bottom" timestamp="1599470040824">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1863" height="224" key="GridCell.Tab.0.bottom/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1597974860437" />
     <state width="1863" height="206" key="GridCell.Tab.0.bottom/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1598232885646" />
-    <state width="1491" height="338" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1598951224239" />
+    <state width="1491" height="493" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1599470040824" />
     <state width="1863" height="267" key="GridCell.Tab.0.bottom/0.0.1920.1040/0.1080.1280.760@0.0.1920.1040" timestamp="1597597713975" />
     <state width="1863" height="180" key="GridCell.Tab.0.bottom/0.0.1920.1040/0.1080.1280.760@0.1080.1280.760" timestamp="1597750625724" />
     <state width="1863" height="200" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.-294.1920.1040@1920.-294.1920.1040" timestamp="1598615568690" />
@@ -531,12 +570,12 @@
     <state width="1863" height="267" key="GridCell.Tab.0.bottom/0.0.1920.1040/404.1080.1280.760@0.0.1920.1040" timestamp="1597506693374" />
     <state width="1863" height="197" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1598684358970" />
     <state width="1877" height="118" key="GridCell.Tab.0.bottom/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1599328831254" />
-    <state width="1877" height="118" key="GridCell.Tab.0.center" timestamp="1599328831254">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1491" height="493" key="GridCell.Tab.0.center" timestamp="1599470040824">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1863" height="224" key="GridCell.Tab.0.center/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1597974860436" />
     <state width="1863" height="206" key="GridCell.Tab.0.center/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1598232885646" />
-    <state width="1491" height="338" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1598951224238" />
+    <state width="1491" height="493" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1599470040824" />
     <state width="1863" height="267" key="GridCell.Tab.0.center/0.0.1920.1040/0.1080.1280.760@0.0.1920.1040" timestamp="1597597713975" />
     <state width="1863" height="180" key="GridCell.Tab.0.center/0.0.1920.1040/0.1080.1280.760@0.1080.1280.760" timestamp="1597750625724" />
     <state width="1863" height="200" key="GridCell.Tab.0.center/0.0.1920.1040/1920.-294.1920.1040@1920.-294.1920.1040" timestamp="1598615568689" />
@@ -544,12 +583,12 @@
     <state width="1863" height="267" key="GridCell.Tab.0.center/0.0.1920.1040/404.1080.1280.760@0.0.1920.1040" timestamp="1597506693374" />
     <state width="1863" height="197" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1598684358970" />
     <state width="1877" height="118" key="GridCell.Tab.0.center/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1599328831254" />
-    <state width="1877" height="118" key="GridCell.Tab.0.left" timestamp="1599328831254">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1491" height="493" key="GridCell.Tab.0.left" timestamp="1599470040824">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1863" height="224" key="GridCell.Tab.0.left/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1597974860436" />
     <state width="1863" height="206" key="GridCell.Tab.0.left/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1598232885646" />
-    <state width="1491" height="338" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1598951224238" />
+    <state width="1491" height="493" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1599470040824" />
     <state width="1863" height="267" key="GridCell.Tab.0.left/0.0.1920.1040/0.1080.1280.760@0.0.1920.1040" timestamp="1597597713974" />
     <state width="1863" height="180" key="GridCell.Tab.0.left/0.0.1920.1040/0.1080.1280.760@0.1080.1280.760" timestamp="1597750625723" />
     <state width="1863" height="200" key="GridCell.Tab.0.left/0.0.1920.1040/1920.-294.1920.1040@1920.-294.1920.1040" timestamp="1598615568689" />
@@ -557,12 +596,12 @@
     <state width="1863" height="267" key="GridCell.Tab.0.left/0.0.1920.1040/404.1080.1280.760@0.0.1920.1040" timestamp="1597506693373" />
     <state width="1863" height="197" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1598684358969" />
     <state width="1877" height="118" key="GridCell.Tab.0.left/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1599328831254" />
-    <state width="1877" height="118" key="GridCell.Tab.0.right" timestamp="1599328831254">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1491" height="493" key="GridCell.Tab.0.right" timestamp="1599470040824">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1863" height="224" key="GridCell.Tab.0.right/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1597974860437" />
     <state width="1863" height="206" key="GridCell.Tab.0.right/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1598232885646" />
-    <state width="1491" height="338" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1598951224238" />
+    <state width="1491" height="493" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1599470040824" />
     <state width="1863" height="267" key="GridCell.Tab.0.right/0.0.1920.1040/0.1080.1280.760@0.0.1920.1040" timestamp="1597597713975" />
     <state width="1863" height="180" key="GridCell.Tab.0.right/0.0.1920.1040/0.1080.1280.760@0.1080.1280.760" timestamp="1597750625724" />
     <state width="1863" height="200" key="GridCell.Tab.0.right/0.0.1920.1040/1920.-294.1920.1040@1920.-294.1920.1040" timestamp="1598615568690" />
@@ -596,11 +635,11 @@
     <state x="277" y="54" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1596898238703" />
     <state x="297" y="154" key="SettingsEditor/0.0.1920.1040/1920.-294.1920.1040@1920.-294.1920.1040" timestamp="1597378599662" />
     <state x="297" y="154" key="SettingsEditor/0.0.1920.1040/404.1080.1280.760@0.0.1920.1040" timestamp="1597489887441" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1599328943067">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="442" y="200" key="Vcs.Push.Dialog.v2" timestamp="1599479024140">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="-1367" y="252" key="Vcs.Push.Dialog.v2/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1597975060816" />
-    <state x="442" y="200" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1599134151448" />
+    <state x="442" y="200" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1599479024140" />
     <state x="2473" y="-42" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.-294.1920.1040@1920.-294.1920.1040" timestamp="1598616730418" />
     <state x="2473" y="256" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.4.1920.1040/757.1084.1371.577@1920.4.1920.1040" timestamp="1597238473255" />
     <state x="553" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1597998837217" />
@@ -612,10 +651,10 @@
     <state x="2631" y="-54" key="chooseDestDirectoryDialog/0.0.1920.1040/1920.-294.1920.1040@1920.-294.1920.1040" timestamp="1597337820989" />
     <state x="711" y="240" key="chooseDestDirectoryDialog/0.0.1920.1040/404.1080.1280.760@0.0.1920.1040" timestamp="1597504913933" />
     <state x="711" y="240" key="chooseDestDirectoryDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1598098005298" />
-    <state x="158" y="93" width="1737" height="857" key="com.android.tools.idea.avdmanager.AvdListDialog" timestamp="1597293101659">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="126" y="74" width="1389" height="679" key="com.android.tools.idea.avdmanager.AvdListDialog" timestamp="1599470410532">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="126" y="74" width="1389" height="679" key="com.android.tools.idea.avdmanager.AvdListDialog/0.0.1536.824@0.0.1536.824" timestamp="1596788446243" />
+    <state x="126" y="74" width="1389" height="679" key="com.android.tools.idea.avdmanager.AvdListDialog/0.0.1536.824@0.0.1536.824" timestamp="1599470410532" />
     <state x="158" y="93" width="1737" height="857" key="com.android.tools.idea.avdmanager.AvdListDialog/0.0.1920.1040/1920.-294.1920.1040@0.0.1920.1040" timestamp="1597293101659" />
     <state x="2078" y="-201" width="1737" height="857" key="com.android.tools.idea.avdmanager.AvdListDialog/0.0.1920.1040/1920.-294.1920.1040@1920.-294.1920.1040" timestamp="1597248934432" />
     <state x="2078" y="97" width="1737" height="857" key="com.android.tools.idea.avdmanager.AvdListDialog/0.0.1920.1040/1920.4.1920.1040/757.1084.1371.577@1920.4.1920.1040" timestamp="1597247965283" />
@@ -649,11 +688,11 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2581" y="165" key="git4idea.branch.GitSmartOperationDialog/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1599438637760" />
-    <state x="2231" y="331" width="642" height="402" key="git4idea.merge.GitPullDialog" timestamp="1599441763955">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state x="249" y="262" width="642" height="402" key="git4idea.merge.GitPullDialog" timestamp="1599479027714">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="311" y="331" key="git4idea.merge.GitPullDialog/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1598235967187" />
-    <state x="249" y="262" key="git4idea.merge.GitPullDialog/0.0.1536.824@0.0.1536.824" timestamp="1599134129117" />
+    <state x="249" y="262" key="git4idea.merge.GitPullDialog/0.0.1536.824@0.0.1536.824" timestamp="1599479027714" />
     <state x="2231" y="37" key="git4idea.merge.GitPullDialog/0.0.1920.1040/1920.-294.1920.1040@1920.-294.1920.1040" timestamp="1598615560080" />
     <state x="2095" y="598" key="git4idea.merge.GitPullDialog/0.0.1920.1040/1920.0.1080.1880@1920.0.1080.1880" timestamp="1596177772521" />
     <state x="2231" y="331" key="git4idea.merge.GitPullDialog/0.0.1920.1040/1920.0.1920.1040/0.1080.1280.760@1920.0.1920.1040" timestamp="1597806705484" />

@@ -1,4 +1,4 @@
-package com.junhyuk.daedo.EmailLogin.UserDataHandle
+package com.junhyuk.daedo.DataBase.UserDataHandler
 
 data class UserInformation (var email: String = "",var username : String = "", var profile : String = ""){
     companion object{
