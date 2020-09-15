@@ -1,10 +1,10 @@
-package com.junhyuk.daedo.Main.ui.dashboard
+package com.junhyuk.daedo.Main.ui.shop
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class DashboardViewModel : ViewModel() {
+class ShopViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
         value = "This is dashboard Fragment"
