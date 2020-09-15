@@ -1,7 +1,7 @@
 package com.junhyuk.daedo.EmailLogin.Server
 
+import com.junhyuk.daedo.DataBase.UserDataHandler.UserInformation
 import com.junhyuk.daedo.EmailLogin.Oauth.RefreshData
-import com.junhyuk.daedo.EmailLogin.UserDataHandle.UserInformation
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
