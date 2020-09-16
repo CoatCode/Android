@@ -16,7 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Main.ui.post.PostActivity"></activity>
+        <activity android:name=".Main.ui.post.Activity.PostActivity"></activity>
         <activity
             android:name=".Main.MainActivity"
             android:label="@string/title_activity_feed" />
