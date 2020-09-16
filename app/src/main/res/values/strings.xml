@@ -15,4 +15,7 @@
     <string name="none">none</string>
     <string name="add">게시물</string>
     <string name="posting">게시글 작성</string>
+    <string name="todo">TODO</string>
+    <string name="postActionBarTitle">상품정보 입력</string>
+    <string name="postInfo">상품정보 입력</string>
 </resources>

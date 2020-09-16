@@ -10,5 +10,6 @@
     <color name="colorRed">#ff0000</color>
     <color name="colorBlue">#482EF2</color>
     <color name="colorBlack">#000000</color>
-
+    <color name="PostBackground">#f2f2f2</color>
+    <color name="ImgListBackground">#fcfcfc</color>
 </resources>
