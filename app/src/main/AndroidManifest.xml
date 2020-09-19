@@ -7,7 +7,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
-        android:name=".Application.DaedoApplication"
+        android:name=".application.DaedoApplication"
         android:allowBackup="false"
         android:hardwareAccelerated="false"
         android:icon="@mipmap/ic_launcher"
@@ -16,21 +16,22 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Main.ui.post.Activity.PostActivity"></activity>
+        <activity android:name=".main.bottomItem.post.activity.PostActivity"
+            android:windowSoftInputMode="adjustResize"/>
         <activity
-            android:name=".Main.MainActivity"
+            android:name=".main.activity.MainActivity"
             android:label="@string/title_activity_feed" />
         <activity
-            android:name=".SignUp.Activity.SignUpNameActivity"
+            android:name=".signUp.activity.SignUpNameActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".SignUp.Activity.SignUpActivity"
+            android:name=".signUp.activity.SignUpActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".EmailLogin.EmailLoginActivity.EmailLoginActivity"
+            android:name=".emailLogin.emailLoginActivity.EmailLoginActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Intro.Intro"
+            android:name=".intro.Intro"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
