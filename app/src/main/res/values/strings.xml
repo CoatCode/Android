@@ -18,4 +18,6 @@
     <string name="todo">TODO</string>
     <string name="postActionBarTitle">상품정보 입력</string>
     <string name="postInfo">상품정보 입력</string>
+    <string name="postHint">게시글을 작성해주세요</string>
+    <string name="postHashHint">해시태그를 입력해주세요</string>
 </resources>
