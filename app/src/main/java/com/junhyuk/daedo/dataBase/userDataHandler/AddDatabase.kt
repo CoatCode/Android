@@ -10,11 +10,11 @@ class AddDatabase(val context: Context) : Thread() {
         //서버로 부터 받은 유저 데이터를 DB에 저장
         val addUser = UserTable(2,null, UserInformation.instance?.email, UserInformation.instance?.username, UserInformation.instance?.profile)
         UserDataBase.getDatabase(context)!!
-            .UserDao()
+            .userDao()
             ?.insert(addUser)
         //DB에 저장된 유저 정보를 불러오는 코드
         val callUserInfor = UserDataBase.getDatabase(context)!!
-            .UserDao()
+            .userDao()
             ?.getAllUser()
         if (callUserInfor != null) {
             for(i in callUserInfor){ Log.d("bookList", "${i.idx} | ${i.doNotTouch} ${i.Username} | ${i.email} | ${i.profile}") }

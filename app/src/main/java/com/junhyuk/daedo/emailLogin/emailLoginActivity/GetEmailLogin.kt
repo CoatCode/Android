@@ -28,6 +28,7 @@ class GetEmailLogin {
         //Oauth 2.0
         val api = Oauth.getInstance()
         val getUser = UserDataActivity()
+        //dialog 변수
         val sweetAlertDialog = SweetAlertDialog(context, SweetAlertDialog.PROGRESS_TYPE)
         sweetAlertDialog.progressHelper.barColor = Color.parseColor("#0DE930")
         sweetAlertDialog
@@ -48,7 +49,7 @@ class GetEmailLogin {
                 ) {
                     //다음 화면으로 이동
                     val intent = Intent(context, MainActivity::class.java)
-                    //Dialog창 로그인 시도시 결과에 따라 다른 dialog가 뜬다
+                    //로그인 시도시 결과에 따라 다른 dialog 가 뜬다
                     loginDialog.connectionSuccess(
                         response.code(),
                         context,
@@ -63,7 +64,7 @@ class GetEmailLogin {
                         //서버로부터 받은 정보들을 EmailLoginBody 변수에 담아준다
                         EmailLoginBody.instance = response.body()
                         Log.d("toklen", "token" + EmailLoginBody.instance)
-                        getUser.GetUserData(getApplication, context)
+                        getUser.getUserData(getApplication, context)
 
                     }
                     //통신 실패
