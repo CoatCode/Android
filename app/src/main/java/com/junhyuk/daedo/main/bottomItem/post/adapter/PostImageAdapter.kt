@@ -28,7 +28,7 @@ class PostImageAdapter(private var postArrayList: ArrayList<Uri>, private val co
         Glide.with(context)
             .load(postArrayList[position])
             .thumbnail(Glide.with(context).load(R.raw.loading))
-            .transform(CenterCrop(), RoundedCorners(10))
+            .transform(CenterCrop(), RoundedCorners(25))
             .into(holder.imageViewList)
 
     }

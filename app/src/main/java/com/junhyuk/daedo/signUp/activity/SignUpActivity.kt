@@ -108,7 +108,7 @@ class SignUpActivity : AppCompatActivity() {
         return returnValue
     }
 
-    private fun checkButton(checkEmail: Boolean, checkPassword: Boolean){
+    private fun checkButton(checkEmail: Boolean, checkPassword: Boolean) {
 
         this.checkEmail = checkEmail
         this.checkPassword = checkPassword
@@ -116,12 +116,12 @@ class SignUpActivity : AppCompatActivity() {
         Log.d("data1", "data: $checkEmail")
         Log.d("data1", "data: $checkPassword")
 
-        if(checkEmail && checkPassword){
+        if (checkEmail && checkPassword) {
 
             next_button.setBackgroundResource(R.drawable.login_button)
             next_button.isEnabled = true
 
-        }else{
+        } else {
 
             next_button.setBackgroundResource(R.drawable.login_button_false)
             next_button.isEnabled = false
@@ -129,47 +129,33 @@ class SignUpActivity : AppCompatActivity() {
         }
     }
 
-    private fun checkEmail(){
+    private fun checkEmail() {
         if (isEmail(editTextTextEmailAddress.text.toString())) {
-            Thread {
-                runOnUiThread {
-                    check_email_text.text = "올바른 이메일 형식입니다."
-                    check_email_text.setTextColor(getColorStateList(R.color.colorBlue))
-                    checkEmail = true
-                    checkButton(checkEmail, checkPassword)
-                }
-            }.start()
+            check_email_text.text = "올바른 이메일 형식입니다."
+            check_email_text.setTextColor(getColorStateList(R.color.colorBlue))
+            checkEmail = true
+            checkButton(checkEmail, checkPassword)
         } else {
-            Thread {
-                runOnUiThread {
-                    check_email_text.text = "올바르지 않은 이메일 형식입니다."
-                    check_email_text.setTextColor(getColorStateList(R.color.colorRed))
-                    checkEmail = false
-                    checkButton(checkEmail, checkPassword)
-                }
-            }.start()
+            check_email_text.text = "올바르지 않은 이메일 형식입니다."
+            check_email_text.setTextColor(getColorStateList(R.color.colorRed))
+            checkEmail = false
+            checkButton(checkEmail, checkPassword)
         }
     }
 
-    private fun checkPassword(){
-        if (editTextTextPassword.text.toString().isNotEmpty() && editTextTextPassword.text.toString().length >= 6) {
-            Thread {
-                runOnUiThread {
-                    check_password_text.text = "올바른 비밀번호 형식입니다."
-                    check_password_text.setTextColor(getColorStateList(R.color.colorBlue))
-                    checkPassword = true
-                    checkButton(checkEmail, checkPassword)
-                }
-            }.start()
+    private fun checkPassword() {
+        if (editTextTextPassword.text.toString()
+                .isNotEmpty() && editTextTextPassword.text.toString().length >= 6
+        ) {
+            check_password_text.text = "올바른 비밀번호 형식입니다."
+            check_password_text.setTextColor(getColorStateList(R.color.colorBlue))
+            checkPassword = true
+            checkButton(checkEmail, checkPassword)
         } else {
-            Thread{
-                runOnUiThread {
-                    check_password_text.text = "올바르지 않은 비밀번호 형식입니다."
-                    check_password_text.setTextColor(getColorStateList(R.color.colorRed))
-                    checkPassword = false
-                    checkButton(checkEmail, checkPassword)
-                }
-            }.start()
+            check_password_text.text = "올바르지 않은 비밀번호 형식입니다."
+            check_password_text.setTextColor(getColorStateList(R.color.colorRed))
+            checkPassword = false
+            checkButton(checkEmail, checkPassword)
         }
     }
 }
