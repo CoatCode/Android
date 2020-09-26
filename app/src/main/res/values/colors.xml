@@ -12,4 +12,5 @@
     <color name="colorBlack">#000000</color>
     <color name="PostBackground">#f2f2f2</color>
     <color name="ImgListBackground">#fcfcfc</color>
+    <color name="cardviewStroke">#dfdfdf</color>
 </resources>

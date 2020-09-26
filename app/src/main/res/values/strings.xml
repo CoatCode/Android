@@ -17,7 +17,10 @@
     <string name="posting">게시글 작성</string>
     <string name="todo">TODO</string>
     <string name="postActionBarTitle">상품정보 입력</string>
-    <string name="postInfo">상품정보 입력</string>
-    <string name="postHint">게시글을 작성해주세요</string>
-    <string name="postHashHint">해시태그를 입력해주세요</string>
+    <string name="postInfo">게시글 작성</string>
+    <string name="postHint">게시물 제목</string>
+    <string name="postContent">게시글 내용</string>
+    <string name="postHashHint">#해시태그</string>
+    <string name="Upload">업로드</string>
+    <string name="Image">이미지</string>
 </resources>

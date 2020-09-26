@@ -3,9 +3,11 @@ package com.junhyuk.daedo.main.bottomItem.post.activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.junhyuk.daedo.R
 import com.junhyuk.daedo.main.bottomItem.post.adapter.PostImageAdapter
 import kotlinx.android.synthetic.main.activity_post.*
@@ -21,11 +23,19 @@ class PostActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_post)
-        window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
 
         //엑션바 숨기기
         val actionBar = supportActionBar
         actionBar?.hide()
+
+
+        //화면에 이미지 표시
+        Glide.with(application)
+            .load(R.drawable.add)
+            .thumbnail(Glide.with(application).load(R.raw.loading))
+            .override(100,100)
+            .transform(CenterCrop(), RoundedCorners(20))
+            .into(addImage)
 
         addImageButton.setOnClickListener {
             val imageIntent = Intent() //구글 갤러리 접근 intent 변수
@@ -41,29 +51,8 @@ class PostActivity : AppCompatActivity() {
 
         }
 
-//        inputHashtag.addTextChangedListener(object : TextWatcher{
-//            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-//
-//            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-////                checkHashTag(inputHashtag.toString())
-////                //inputHashtag.isEnabled = hashTagList.size < 5
-////                Log.d("hashTag", "tag: ${hashTagList.toArray()}")
-//            }
-//
-//            override fun afterTextChanged(p0: Editable?) {}
-//
-//        })
-
         postImageAdapter = PostImageAdapter(imageList, applicationContext)
         recyclerView.adapter = postImageAdapter
-    }
-
-    fun checkHashTag(hashTag: String){
-
-        val hashTagArray: ArrayList<String> = hashTag.split("#") as ArrayList<String>
-
-        hashTagList = hashTagArray
-
     }
 
     //갤러리에서 넘어온 이미지 처리
