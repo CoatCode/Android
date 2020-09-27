@@ -110,23 +110,15 @@ open class SignUpNameActivity : AppCompatActivity() {
     //이름이 입력 될 때 마다 호출되는 함수(이름 형식 검사)
     private fun checkNameMsg() {
         if (input_name.text.toString().isNotBlank()) {
-            Thread {
-                runOnUiThread {
-                    check_name_text.text = "올바른 이름입니다."
-                    check_name_text.setTextColor(getColorStateList(R.color.colorBlue))
-                    sign_up_button.setBackgroundResource(R.drawable.login_button)
-                    sign_up_button.isEnabled = true
-                }
-            }.start()
+            check_name_text.text = "올바른 이름입니다."
+            check_name_text.setTextColor(getColorStateList(R.color.colorBlue))
+            sign_up_button.setBackgroundResource(R.drawable.login_button)
+            sign_up_button.isEnabled = true
         } else {
-            Thread {
-                runOnUiThread {
-                    check_name_text.text = "올바르지 않은 이름입니다."
-                    check_name_text.setTextColor(getColorStateList(R.color.colorRed))
-                    sign_up_button.setBackgroundResource(R.drawable.login_button_false)
-                    sign_up_button.isEnabled = false
-                }
-            }.start()
+            check_name_text.text = "올바르지 않은 이름입니다."
+            check_name_text.setTextColor(getColorStateList(R.color.colorRed))
+            sign_up_button.setBackgroundResource(R.drawable.login_button_false)
+            sign_up_button.isEnabled = false
         }
     }
 
