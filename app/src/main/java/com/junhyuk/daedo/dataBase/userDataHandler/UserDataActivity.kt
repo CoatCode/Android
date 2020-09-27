@@ -9,7 +9,7 @@ import retrofit2.Callback
 import retrofit2.Response
 //유저 정보를 받아오기 위해 서버와 통신하는 클래스
 class UserDataActivity {
-  internal fun GetUserData(
+  internal fun getUserData(
       getApplication: Application,
       context: Context
   ) {
