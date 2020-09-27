@@ -3,6 +3,10 @@ package com.junhyuk.daedo.main.bottomItem.post.activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
+import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
@@ -33,26 +37,83 @@ class PostActivity : AppCompatActivity() {
         Glide.with(application)
             .load(R.drawable.add)
             .thumbnail(Glide.with(application).load(R.raw.loading))
-            .override(100,100)
+            .override(100, 100)
             .transform(CenterCrop(), RoundedCorners(20))
             .into(addImage)
 
         addImageButton.setOnClickListener {
             val imageIntent = Intent() //구글 갤러리 접근 intent 변수
 
-            if (imageList.size < 5){
+            if (imageList.size < 5) {
                 //구글 갤러리 접근
                 imageIntent.type = "image/*"
                 imageIntent.action = Intent.ACTION_GET_CONTENT
                 startActivityForResult(imageIntent, 101)
-            }else{
+            } else {
                 Toast.makeText(this, "사진은 5개까지 올릴 수 있습니다.", Toast.LENGTH_LONG).show()
             }
 
         }
 
+        uploadButton.setOnClickListener {
+
+        }
+
+        xButton.setOnClickListener {
+            finish()
+        }
+
+        inputHashtag.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                setHashTag(inputHashtag.text.toString())
+            }
+
+            override fun afterTextChanged(p0: Editable?) {}
+
+        })
+
+        editHashtag.setOnClickListener {
+            inputHashtag.isEnabled = true
+            editHashtag.visibility = View.INVISIBLE
+            editHashtag.isEnabled = false
+        }
+
+        uploadButton.setOnClickListener {
+            if (postTitle.text.isEmpty() || postContent.text.isEmpty()){
+                Toast.makeText(this, "제목이나 내용을 적어주세요", Toast.LENGTH_LONG).show()
+            }
+        }
+
         postImageAdapter = PostImageAdapter(imageList, applicationContext)
         recyclerView.adapter = postImageAdapter
+    }
+
+    //해시태그
+    private fun setHashTag(hashTag: String) {
+        val hashList: ArrayList<String> = hashTag.split("#") as ArrayList<String>
+        hashList.removeAt(0)
+
+        if (hashList.size > 5){
+            Toast.makeText(this@PostActivity, "해시태그는 5개까지 추가 할 수 있습니다", Toast.LENGTH_LONG)
+                .show()
+            inputHashtag.isEnabled = false
+
+            val hashTagText: StringBuilder = java.lang.StringBuilder()
+
+            for (i in 0 until hashTagList.size){
+                hashTagText.append("#${hashList[i]}")
+                inputHashtag.setText(hashTagText)
+                editHashtag.visibility = View.VISIBLE
+                editHashtag.isEnabled = true
+            }
+        } else{
+            hashTagList.clear()
+            hashTagList = hashList
+            editHashtag.isEnabled = false
+        }
+        Log.d("HashTag", "hashTag: $hashTagList")
     }
 
     //갤러리에서 넘어온 이미지 처리
@@ -62,7 +123,6 @@ class PostActivity : AppCompatActivity() {
         // 이미지 파일이 넘어 왔을 경우
         if (requestCode == 101 && resultCode == RESULT_OK) {
             try {
-
                 imageList.add(data?.data!!)
                 postImageAdapter.notifyDataSetChanged()
 

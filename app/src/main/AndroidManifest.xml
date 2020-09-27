@@ -17,7 +17,7 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity android:name=".main.bottomItem.post.activity.PostActivity"
-            android:windowSoftInputMode="adjustResize"/>
+            android:windowSoftInputMode="adjustNothing"/>
         <activity
             android:name=".main.activity.MainActivity"
             android:label="@string/title_activity_feed" />
