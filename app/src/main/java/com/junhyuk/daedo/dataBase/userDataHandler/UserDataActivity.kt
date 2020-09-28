@@ -13,10 +13,12 @@ class UserDataActivity {
       getApplication: Application,
       context: Context
   ) {
+      //token 변수에 로그인시 발급받은 access_token 을 담는다
       val token : String = EmailLoginBody.instance!!.access_token
         (getApplication as DaedoApplication)
         .requestService()
-        ?.GetUserInformation("Bearer $token")
+        //토큰 타입 지정해주고 Header 에 값을 보낸다
+        ?.getUserInformation("Bearer $token")
         ?.enqueue(object : Callback<UserInformation> {
             override fun onResponse(call: Call<UserInformation>, response: Response<UserInformation>) {
                 //서버로 받은 코드가 200일시 AddDatabase 클래스 호출

@@ -8,16 +8,16 @@ import com.junhyuk.daedo.dataBase.userDatabase.UserTable
 class AddDatabase(val context: Context) : Thread() {
     override fun run() {
         //서버로 부터 받은 유저 데이터를 DB에 저장
-        val AddUser = UserTable(2,null, UserInformation.instance?.email, UserInformation.instance?.username, UserInformation.instance?.profile)
+        val addUser = UserTable(2,null, UserInformation.instance?.email, UserInformation.instance?.username, UserInformation.instance?.profile)
         UserDataBase.getDatabase(context)!!
-            .UserDao()
-            ?.insert(AddUser)
+            .userDao()
+            ?.insert(addUser)
         //DB에 저장된 유저 정보를 불러오는 코드
-        val CallUserInfor = UserDataBase.getDatabase(context)!!
-            .UserDao()
+        val callUserInfor = UserDataBase.getDatabase(context)!!
+            .userDao()
             ?.getAllUser()
-        if (CallUserInfor != null) {
-            for(i in CallUserInfor){ Log.d("bookList", "${i.idx} | ${i.doNotTouch} ${i.Username} | ${i.email} | ${i.profile}") }
+        if (callUserInfor != null) {
+            for(i in callUserInfor){ Log.d("bookList", "${i.idx} | ${i.doNotTouch} ${i.Username} | ${i.email} | ${i.profile}") }
         }
 
 
