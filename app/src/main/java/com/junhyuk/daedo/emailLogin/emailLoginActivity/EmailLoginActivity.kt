@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.junhyuk.daedo.emailLogin.oauth.Oauth
 import com.junhyuk.daedo.intro.Intro
 import com.junhyuk.daedo.R
+import com.junhyuk.daedo.workingNetwork.sha512.Sha512
 import kotlinx.android.synthetic.main.activity_email_login.*
 
 /*
@@ -15,7 +16,7 @@ import kotlinx.android.synthetic.main.activity_email_login.*
 */
 class EmailLoginActivity : AppCompatActivity() {
 
-    private var sha512class = com.junhyuk.daedo.signUp.sha512.Sha512()
+    private var sha512class = Sha512()
 
     //Oauth 호출을 위한 변수
     var api = Oauth.getInstance()
