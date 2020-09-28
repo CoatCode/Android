@@ -3,10 +3,8 @@ package com.junhyuk.daedo.emailLogin.emailLoginActivity
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.junhyuk.daedo.emailLogin.oauth.Oauth
-import com.junhyuk.daedo.intro.Intro
 import com.junhyuk.daedo.R
-import com.junhyuk.daedo.workingNetwork.sha512.Sha512
+import com.junhyuk.daedo.intro.Intro
 import kotlinx.android.synthetic.main.activity_email_login.*
 
 /*
@@ -16,10 +14,8 @@ import kotlinx.android.synthetic.main.activity_email_login.*
 */
 class EmailLoginActivity : AppCompatActivity() {
 
-    private var sha512class = Sha512()
+    private var sha512class = com.junhyuk.daedo.signUp.sha512.Sha512()
 
-    //Oauth 호출을 위한 변수
-    var api = Oauth.getInstance()
     private val getEmailLogin = com.junhyuk.daedo.emailLogin.emailLoginActivity.GetEmailLogin()
     
     //사용자의 이메일을 받을 변수
@@ -54,7 +50,7 @@ class EmailLoginActivity : AppCompatActivity() {
             password = sha512
             //getEmailLogin 클래스로 사용자가 입력한 값 전달
             getEmailLogin.getEmailLogin(email, password, application, this)
-            //getdata.GetUserData(application)
+
 
         }
     }

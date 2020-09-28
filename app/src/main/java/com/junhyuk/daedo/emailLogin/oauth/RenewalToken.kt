@@ -20,7 +20,7 @@ class RenewalToken(var refresh_token: String?) : AppCompatActivity(){
 
         (application as DaedoApplication)
             .requestService()
-            ?.GetRefreshToken(RefreshData(refresh_token))
+            ?.getRefreshToken(RefreshData(refresh_token))
             ?.enqueue(object : Callback<EmailLoginBody> {
                 override fun onResponse(
                     call: Call<EmailLoginBody>,
