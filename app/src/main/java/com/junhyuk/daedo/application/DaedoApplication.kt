@@ -4,7 +4,7 @@ import android.app.Application
 import com.facebook.stetho.Stetho
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.junhyuk.daedo.emailLogin.server.EmailLoginInterface
-import com.junhyuk.daedo.workingNetwork.BaseUrl
+import com.junhyuk.daedo.workingNetwork.baseUrl.BaseUrl
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

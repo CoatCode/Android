@@ -14,15 +14,23 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.junhyuk.daedo.R
 import com.junhyuk.daedo.main.bottomItem.post.adapter.PostImageAdapter
+import com.junhyuk.daedo.main.bottomItem.post.workingRetrofit.SetupRetrofit
 import kotlinx.android.synthetic.main.activity_post.*
 
 class PostActivity : AppCompatActivity() {
 
+    //recyclerview
     private lateinit var postImageAdapter: PostImageAdapter
+    private val imagePathList = ArrayList<Uri>()
 
-    private val imageList = ArrayList<Uri>()
-
+    //서버 통신에 필요한 요소
+    private var postTitleStr: String = ""
+    private var postContentStr: String = ""
+    private val imageList = ArrayList<String>()
     private var hashTagList = ArrayList<String>()
+
+    //서버 통신(retrofit)
+    private val setupRetrofit = SetupRetrofit()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +39,6 @@ class PostActivity : AppCompatActivity() {
         //엑션바 숨기기
         val actionBar = supportActionBar
         actionBar?.hide()
-
 
         //화면에 이미지 표시
         Glide.with(application)
@@ -56,7 +63,21 @@ class PostActivity : AppCompatActivity() {
         }
 
         uploadButton.setOnClickListener {
+            if (postTitle.text.isEmpty() || postContent.text.isEmpty() || imageList.size == 0) {
+                Toast.makeText(this, "제목이나 내용, 사진등을 다시 확인해 주세요.", Toast.LENGTH_LONG).show()
+            } else {
+                postTitleStr = postTitle.text.toString()
+                postContentStr = postContent.text.toString()
 
+                setupRetrofit.setUpRetrofit(
+                    application,
+                    applicationContext,
+                    imageList,
+                    postTitleStr,
+                    postContentStr,
+                    hashTagList
+                )
+            }
         }
 
         xButton.setOnClickListener {
@@ -67,7 +88,11 @@ class PostActivity : AppCompatActivity() {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                setHashTag(inputHashtag.text.toString())
+                if(inputHashtag.text.contains("#")){
+                    setHashTag(inputHashtag.text.toString())
+                }else{
+                    Toast.makeText(this@PostActivity, "해시태그는 #이 포함되어 있어야 합니다.", Toast.LENGTH_LONG).show()
+                }
             }
 
             override fun afterTextChanged(p0: Editable?) {}
@@ -80,13 +105,7 @@ class PostActivity : AppCompatActivity() {
             editHashtag.isEnabled = false
         }
 
-        uploadButton.setOnClickListener {
-            if (postTitle.text.isEmpty() || postContent.text.isEmpty()){
-                Toast.makeText(this, "제목이나 내용을 적어주세요", Toast.LENGTH_LONG).show()
-            }
-        }
-
-        postImageAdapter = PostImageAdapter(imageList, applicationContext)
+        postImageAdapter = PostImageAdapter(imagePathList, applicationContext)
         recyclerView.adapter = postImageAdapter
     }
 
@@ -95,20 +114,20 @@ class PostActivity : AppCompatActivity() {
         val hashList: ArrayList<String> = hashTag.split("#") as ArrayList<String>
         hashList.removeAt(0)
 
-        if (hashList.size > 5){
+        if (hashList.size > 5) {
             Toast.makeText(this@PostActivity, "해시태그는 5개까지 추가 할 수 있습니다", Toast.LENGTH_LONG)
                 .show()
             inputHashtag.isEnabled = false
 
             val hashTagText: StringBuilder = java.lang.StringBuilder()
 
-            for (i in 0 until hashTagList.size){
+            for (i in 0 until hashTagList.size) {
                 hashTagText.append("#${hashList[i]}")
                 inputHashtag.setText(hashTagText)
                 editHashtag.visibility = View.VISIBLE
                 editHashtag.isEnabled = true
             }
-        } else{
+        } else {
             hashTagList.clear()
             hashTagList = hashList
             editHashtag.isEnabled = false
@@ -123,7 +142,8 @@ class PostActivity : AppCompatActivity() {
         // 이미지 파일이 넘어 왔을 경우
         if (requestCode == 101 && resultCode == RESULT_OK) {
             try {
-                imageList.add(data?.data!!)
+                imageList.add(data?.data.toString())
+                imagePathList.add(data?.data!!)
                 postImageAdapter.notifyDataSetChanged()
 
             } catch (e: Exception) {

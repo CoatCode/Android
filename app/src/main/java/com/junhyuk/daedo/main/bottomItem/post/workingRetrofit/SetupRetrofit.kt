@@ -2,30 +2,83 @@ package com.junhyuk.daedo.main.bottomItem.post.workingRetrofit
 
 import android.app.Application
 import android.content.Context
-import android.net.Uri
+import android.content.Intent
+import cn.pedant.SweetAlert.SweetAlertDialog
 import com.junhyuk.daedo.application.DaedoApplication
 import com.junhyuk.daedo.emailLogin.server.EmailLoginBody
+import com.junhyuk.daedo.main.activity.MainActivity
+import com.junhyuk.daedo.main.bottomItem.post.server.PostBody
+import com.junhyuk.daedo.main.bottomItem.post.server.PostDialog
+import com.junhyuk.daedo.main.bottomItem.post.server.PostResponse
 import com.junhyuk.daedo.main.bottomItem.post.server.PostService
+import okhttp3.MediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import java.io.File
 
 class SetupRetrofit {
     //네트워크 작업
     internal fun setUpRetrofit(
         getApplication: Application,
         context: Context,
-        imageList: ArrayList<Uri>,
-        postContent: String,
+        imageList: ArrayList<String>,
         postTitle: String,
+        postContent: String,
         hashTag: ArrayList<String>
-    ){
-        val postService =
-            (getApplication as DaedoApplication)
-                .retrofit
-                .create(PostService::class.java)
+    ) {
 
-        val token : String = EmailLoginBody.instance!!.access_token
-//
-//        //retrofit
-//        postService
-//            .requestPost("Bearer $token", )
+        //로딩 다이얼로그
+        val sweetAlertDialog = SweetAlertDialog(context, SweetAlertDialog.PROGRESS_TYPE)
+        //sweetAlertDialog.progressHelper.barColor = Color.parseColor("#0DE930")
+        //sweetAlertDialog
+       //     .setTitleText("로딩 중")
+         //   .setCancelable(false)
+        //sweetAlertDialog.show()
+
+        val postService =
+            (getApplication as DaedoApplication).retrofit.create(PostService::class.java)
+
+        val token: String? = EmailLoginBody.instance?.access_token
+
+        val images = ArrayList<MultipartBody.Part>()
+
+        for (i in 0 until imageList.size) {
+            val file = File(imageList[i])
+            val requestBody = RequestBody.create(MediaType.parse("image/*"), file)
+
+            images.add(MultipartBody.Part.createFormData("itemPhoto", file.name, requestBody))
+        }
+
+        //retrofit
+        postService.requestPost("Bearer $token", images, PostBody(postTitle, postContent, hashTag))
+            .enqueue(object : Callback<PostResponse> {
+                val postDialog = PostDialog()
+
+                //통신 실패
+                override fun onFailure(call: Call<PostResponse>, t: Throwable) {
+                    postDialog.connectionFail(context, sweetAlertDialog)
+                }
+
+                //통신 성공
+                override fun onResponse(
+                    call: Call<PostResponse>,
+                    response: Response<PostResponse>
+                ) {
+                    val intent = Intent(context, MainActivity::class.java)
+
+                    postDialog.connectionSuccess(
+                        response.code(),
+                        response.message(),
+                        context,
+                        response.body().toString(),
+                        intent,
+                        sweetAlertDialog
+                    )
+                }
+            })
+
     }
 }

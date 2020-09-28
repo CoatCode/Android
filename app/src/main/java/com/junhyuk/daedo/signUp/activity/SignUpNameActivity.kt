@@ -20,7 +20,7 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.junhyuk.daedo.R
 import com.junhyuk.daedo.signUp.base64.Base64Encoding
 import com.junhyuk.daedo.signUp.rotateImage.RotateImage
-import com.junhyuk.daedo.signUp.sha512.Sha512
+import com.junhyuk.daedo.workingNetwork.sha512.Sha512
 import com.junhyuk.daedo.signUp.workingRetrofit.SetupRetrofit
 import kotlinx.android.synthetic.main.activity_sign_up_name.*
 import java.lang.Boolean

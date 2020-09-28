@@ -3,7 +3,7 @@ package com.junhyuk.daedo.emailLogin.oauth
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.junhyuk.daedo.emailLogin.server.EmailLoginBody
 import com.junhyuk.daedo.emailLogin.server.EmailLoginInterface
-import com.junhyuk.daedo.workingNetwork.BaseUrl
+import com.junhyuk.daedo.workingNetwork.baseUrl.BaseUrl
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Request
