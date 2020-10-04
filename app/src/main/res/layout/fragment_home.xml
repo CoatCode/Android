@@ -6,18 +6,31 @@
     android:layout_height="match_parent"
     tools:context=".main.bottomItem.home.HomeFragment">
 
-    <TextView
-        android:id="@+id/text_home"
+    <EditText
+        android:id="@+id/edit_comment"
         android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="437dp"
+        android:layout_marginBottom="248dp"
+        android:hint="댓글"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/write_comment"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
+        android:layout_marginStart="151dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="154dp"
+        android:layout_marginBottom="150dp"
+        android:text="댓글 작성"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        app:layout_constraintTop_toBottomOf="@+id/edit_comment" />
 </androidx.constraintlayout.widget.ConstraintLayout>
