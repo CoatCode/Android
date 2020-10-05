@@ -2,7 +2,6 @@ package com.junhyuk.daedo.emailLogin.emailLoginActivity
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.junhyuk.daedo.R
 import com.junhyuk.daedo.intro.Intro
@@ -51,8 +50,6 @@ class EmailLoginActivity : AppCompatActivity() {
             password = sha512
             //getEmailLogin 클래스로 사용자가 입력한 값 전달
             getEmailLogin.getEmailLogin(email, password, application, this)
-            Log.d("password","password:$password")
-
 
         }
     }

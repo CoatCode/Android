@@ -1,4 +1,4 @@
-package com.junhyuk.daedo.feed.comment
+package com.junhyuk.daedo.feed.commentServer
 
 import com.junhyuk.daedo.emailLogin.server.EmailLoginBody
 

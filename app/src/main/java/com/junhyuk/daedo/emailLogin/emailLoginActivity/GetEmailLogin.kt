@@ -64,7 +64,6 @@ class GetEmailLogin {
 
                         //서버로부터 받은 정보들을 EmailLoginBody 변수에 담아준다
                         EmailLoginBody.instance = response.body()
-                        Log.d("LoginResponseData", "LoginResponseData = " + EmailLoginBody.instance)
                         getUser.getUserData(getApplication, context)
 
                     }
