@@ -3,6 +3,8 @@ package com.junhyuk.daedo.main.bottomItem.post.workingRetrofit
 import android.app.Application
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
+import android.util.Log
 import cn.pedant.SweetAlert.SweetAlertDialog
 import com.junhyuk.daedo.application.DaedoApplication
 import com.junhyuk.daedo.emailLogin.server.EmailLoginBody
@@ -24,41 +26,41 @@ class SetupRetrofit {
     internal fun setUpRetrofit(
         getApplication: Application,
         context: Context,
-        imageList: ArrayList<String>,
+        images: String,
         postTitle: String,
         postContent: String,
-        hashTag: ArrayList<String>
+        hashTag: String
     ) {
 
         //로딩 다이얼로그
         val sweetAlertDialog = SweetAlertDialog(context, SweetAlertDialog.PROGRESS_TYPE)
-        //sweetAlertDialog.progressHelper.barColor = Color.parseColor("#0DE930")
-        //sweetAlertDialog
-       //     .setTitleText("로딩 중")
-         //   .setCancelable(false)
-        //sweetAlertDialog.show()
+        sweetAlertDialog.progressHelper.barColor = Color.parseColor("#0DE930")
+        sweetAlertDialog
+            .setTitleText("로딩 중")
+            .setCancelable(false)
+        sweetAlertDialog.show()
 
         val postService =
             (getApplication as DaedoApplication).retrofit.create(PostService::class.java)
 
         val token: String? = EmailLoginBody.instance?.access_token
 
-        val images = ArrayList<MultipartBody.Part>()
+        val file = File(images)
 
-        for (i in 0 until imageList.size) {
-            val file = File(imageList[i])
-            val requestBody = RequestBody.create(MediaType.parse("image/*"), file)
+        //서버에 보낼 데이터
+        val imageRequestBody = RequestBody.create(MediaType.parse("image/*"), file)
+        val image = MultipartBody.Part.createFormData("image", images, imageRequestBody)
 
-            images.add(MultipartBody.Part.createFormData("itemPhoto", file.name, requestBody))
-        }
+        Log.d("image", "image: $image")
 
         //retrofit
-        postService.requestPost("Bearer $token", images, PostBody(postTitle, postContent, hashTag))
+        postService.requestPost("Bearer $token", PostBody(image, postTitle, postContent, hashTag))
             .enqueue(object : Callback<PostResponse> {
                 val postDialog = PostDialog()
 
                 //통신 실패
                 override fun onFailure(call: Call<PostResponse>, t: Throwable) {
+                    Log.d("response", "call: ${call.execute().code()}")
                     postDialog.connectionFail(context, sweetAlertDialog)
                 }
 

@@ -50,8 +50,7 @@ class PostDialog {
                     .show()
             }
 
-            else -> {
-            }
+            else -> {}
         }
     }
 

@@ -27,7 +27,9 @@ class PostActivity : AppCompatActivity() {
     private var postTitleStr: String = ""
     private var postContentStr: String = ""
     private val imageList = ArrayList<String>()
-    private var hashTagList = ArrayList<String>()
+    private var image: String = ""
+    private var hashTag: String = ""
+    private var hashTagSize = ArrayList<String>()
 
     //서버 통신(retrofit)
     private val setupRetrofit = SetupRetrofit()
@@ -57,25 +59,25 @@ class PostActivity : AppCompatActivity() {
                 imageIntent.action = Intent.ACTION_GET_CONTENT
                 startActivityForResult(imageIntent, 101)
             } else {
-                Toast.makeText(this, "사진은 5개까지 올릴 수 있습니다.", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "사진은 5개까지 올릴 수 있습니다.", Toast.LENGTH_SHORT).show()
             }
 
         }
 
         uploadButton.setOnClickListener {
             if (postTitle.text.isEmpty() || postContent.text.isEmpty() || imageList.size == 0) {
-                Toast.makeText(this, "제목이나 내용, 사진등을 다시 확인해 주세요.", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "제목이나 내용, 사진등을 다시 확인해 주세요.", Toast.LENGTH_SHORT).show()
             } else {
                 postTitleStr = postTitle.text.toString()
                 postContentStr = postContent.text.toString()
 
                 setupRetrofit.setUpRetrofit(
                     application,
-                    applicationContext,
-                    imageList,
+                    this,
+                    image,
                     postTitleStr,
                     postContentStr,
-                    hashTagList
+                    hashTag
                 )
             }
         }
@@ -89,9 +91,10 @@ class PostActivity : AppCompatActivity() {
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 if(inputHashtag.text.contains("#")){
+                    hashTag = inputHashtag.text.toString()
                     setHashTag(inputHashtag.text.toString())
                 }else{
-                    Toast.makeText(this@PostActivity, "해시태그는 #이 포함되어 있어야 합니다.", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@PostActivity, "해시태그는 #이 포함되어 있어야 합니다.", Toast.LENGTH_SHORT).show()
                 }
             }
 
@@ -115,24 +118,23 @@ class PostActivity : AppCompatActivity() {
         hashList.removeAt(0)
 
         if (hashList.size > 5) {
-            Toast.makeText(this@PostActivity, "해시태그는 5개까지 추가 할 수 있습니다", Toast.LENGTH_LONG)
-                .show()
+            Toast.makeText(this@PostActivity, "해시태그는 5개까지 추가 할 수 있습니다", Toast.LENGTH_SHORT).show()
             inputHashtag.isEnabled = false
 
             val hashTagText: StringBuilder = java.lang.StringBuilder()
 
-            for (i in 0 until hashTagList.size) {
+            for (i in 0 until hashTagSize.size) {
                 hashTagText.append("#${hashList[i]}")
                 inputHashtag.setText(hashTagText)
                 editHashtag.visibility = View.VISIBLE
                 editHashtag.isEnabled = true
             }
         } else {
-            hashTagList.clear()
-            hashTagList = hashList
+            hashTagSize.clear()
+            hashTagSize = hashList
             editHashtag.isEnabled = false
         }
-        Log.d("HashTag", "hashTag: $hashTagList")
+        Log.d("HashTag", "hashTag: $hashTagSize")
     }
 
     //갤러리에서 넘어온 이미지 처리
@@ -143,6 +145,7 @@ class PostActivity : AppCompatActivity() {
         if (requestCode == 101 && resultCode == RESULT_OK) {
             try {
                 imageList.add(data?.data.toString())
+                image = data?.data.toString()
                 imagePathList.add(data?.data!!)
                 postImageAdapter.notifyDataSetChanged()
 
