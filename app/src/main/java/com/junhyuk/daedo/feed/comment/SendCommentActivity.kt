@@ -3,18 +3,17 @@ package com.junhyuk.daedo.feed.comment
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.fragment_home.*
 
 /*
 * - 엑티비티: 댓글 엑티비티(댓글 작성)
 * - 담당자: 한승재
 * - 수정 날짜: 2020.10.05
 */
-class SendCommentActivity : AppCompatActivity() {
+class SendCommentActivity(private val test_comment : String = "") : AppCompatActivity(){
 
-    private var comment: String = ""
     private val sendComment = SendComment()
     override fun onCreate(savedInstanceState: Bundle?) {
+        Log.d("send","send$test_comment")
         super.onCreate(savedInstanceState)
 
         //엑션바 숨기기
@@ -22,12 +21,14 @@ class SendCommentActivity : AppCompatActivity() {
         actionBar?.hide()
 
 
-            Log.d("button_test","button_test")
-            comment = this.edit_comment.text.toString()
-            sendComment.sendComment(comment,application, this)
-            Log.d("password","password:$comment")
+
+
+            sendComment.sendComment(test_comment,application, this)
+            Log.d("password","password:$test_comment")
 
     }
+
+
 }
 
 

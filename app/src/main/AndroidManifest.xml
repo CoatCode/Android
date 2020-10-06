@@ -33,6 +33,7 @@
         <activity
             android:name=".feed.comment.SendCommentActivity"
             android:screenOrientation="portrait"/>
+
         <activity
             android:name=".intro.Intro"
             android:screenOrientation="portrait">

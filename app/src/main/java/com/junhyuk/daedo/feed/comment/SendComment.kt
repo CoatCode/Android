@@ -23,7 +23,6 @@ class SendComment {
         comment: String,
         getApplication: Application,
         context: Context
-
     ) {
         Log.d("rrr","rrr")
         //유저 정보를 담는 activity
@@ -74,8 +73,6 @@ class SendComment {
                     //LoginDialog 를 호출하여 서버와의 연결 실패를 dialog 로 띄운다
                     loginDialog.connectionFail(context, sweetAlertDialog)
                 }
-
-
             })
     }
 
