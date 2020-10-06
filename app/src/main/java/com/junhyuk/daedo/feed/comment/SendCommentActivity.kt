@@ -15,16 +15,11 @@ class SendCommentActivity(private val test_comment : String = "") : AppCompatAct
     override fun onCreate(savedInstanceState: Bundle?) {
         Log.d("send","send$test_comment")
         super.onCreate(savedInstanceState)
-
-        //엑션바 숨기기
+        //액션바 숨기기
         val actionBar = supportActionBar
         actionBar?.hide()
-
-
-
-
-            sendComment.sendComment(test_comment,application, this)
-            Log.d("password","password:$test_comment")
+        sendComment.sendComment(test_comment,application, this)
+        Log.d("password","password:$test_comment")
 
     }
 

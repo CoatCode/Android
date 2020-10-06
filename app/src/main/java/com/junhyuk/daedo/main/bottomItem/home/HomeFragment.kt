@@ -13,7 +13,7 @@ import com.junhyuk.daedo.feed.comment.SendCommentActivity
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
 
-class HomeFragment(comment: String) : Fragment() {
+class HomeFragment() : Fragment() {
 
     private lateinit var homeViewModel: HomeViewModel
     private var comment: String = ""
@@ -28,8 +28,8 @@ class HomeFragment(comment: String) : Fragment() {
         homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_home, container, false)
 
-        root.write_comment.setOnClickListener {
-            comment? = this.edit_comment.text.toString()
+        root.write_comment?.setOnClickListener {
+            comment = this.edit_comment.text.toString()
             Log.d("test","test$comment")
             val a = SendCommentActivity(comment)
             a.startActivity(Intent())
