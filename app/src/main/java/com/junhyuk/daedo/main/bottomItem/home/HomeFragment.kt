@@ -35,7 +35,7 @@ class HomeFragment() : Fragment() {
         root.write_comment?.setOnClickListener {
             comment = this.edit_comment.text.toString()
             Log.d("test","test$comment")
-            sendComment?.sendComment(comment, context!!.application,activity as FragmentActivity)
+            sendComment?.sendComment(comment, context!!.application)
 
         }
 

@@ -1,10 +1,10 @@
 package com.junhyuk.daedo.feed.comment
 
 import android.app.Application
-import android.content.Context
 import android.util.Log
 import com.junhyuk.daedo.application.DaedoApplication
 import com.junhyuk.daedo.dataBase.userDataHandler.UserDataActivity
+import com.junhyuk.daedo.emailLogin.server.EmailLoginBody
 import com.junhyuk.daedo.feed.commentServer.Comment
 import com.junhyuk.daedo.feed.commentServer.CommentBody
 import retrofit2.Call
@@ -16,17 +16,16 @@ class SendComment {
     //네트워크 작업
     internal fun sendComment(
         comment: String,
-        getApplication: Application,
-        context: Context
+        getApplication: Application
     ) {
         //유저 정보를 담는 activity
         val getUser = UserDataActivity()
-       // val token : String = EmailLoginBody.instance!!.access_token
+        val token : String = EmailLoginBody.instance!!.access_token
         //dialog 변수
 
         val sendCommentService =
             (getApplication as DaedoApplication).retrofit.create(Comment::class.java)
-                .sendComment(CommentBody(comment,"Bearer ${CommentBody.instance?.token}"))
+                .sendComment("Bearer $token",CommentBody(comment))
                 .enqueue(object : Callback<CommentBody> {
                 override fun onResponse(
                     call: Call<CommentBody>,
