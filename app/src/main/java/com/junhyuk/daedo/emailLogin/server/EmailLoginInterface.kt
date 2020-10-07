@@ -13,9 +13,8 @@ interface EmailLoginInterface {
     @POST("/auth/login")
     fun sendLoginInformation(
         @Body LoginInformation : EmailLoginBody
-
-
     ): Call<EmailLoginBody>
+
     //access 토큰 재요청
     @POST("/auth/renewalToken")
     fun getRefreshToken(

@@ -18,7 +18,7 @@ class SendCommentActivity(private val test_comment : String = "") : AppCompatAct
         //액션바 숨기기
         val actionBar = supportActionBar
         actionBar?.hide()
-        sendComment.sendComment(test_comment,application, this)
+       // sendComment.sendComment(test_comment,application, this)
         Log.d("password","password:$test_comment")
 
     }
