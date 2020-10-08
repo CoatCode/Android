@@ -26,7 +26,6 @@ class SendWriteComment {
                 override fun onResponse(
                     call: Call<WriteCommentBody>,
                     response: Response<WriteCommentBody>
-
                 ) {
 
 

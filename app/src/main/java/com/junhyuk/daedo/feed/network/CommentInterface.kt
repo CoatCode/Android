@@ -1,8 +1,10 @@
 package com.junhyuk.daedo.feed.network
 
+import com.junhyuk.daedo.feed.getCommentList.GetCommentBody
 import com.junhyuk.daedo.feed.writeComment.WriteCommentBody
 import retrofit2.Call
 import retrofit2.http.Body
+import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.POST
 //댓글 interface
@@ -16,6 +18,10 @@ interface CommentInterface{
         @Body sendComment: WriteCommentBody
 
     ): Call<WriteCommentBody>
+    @GET("/feed/post/:post_id/comments")
+    fun getComment(
+        @Header("Authorization") type: String
+    ): Call<GetCommentBody>
 
 
 }
