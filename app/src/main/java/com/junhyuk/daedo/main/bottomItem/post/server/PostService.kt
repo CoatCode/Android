@@ -1,19 +1,19 @@
 package com.junhyuk.daedo.main.bottomItem.post.server
 
-import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Call
-import retrofit2.http.*
+import retrofit2.http.Body
+import retrofit2.http.Header
+import retrofit2.http.POST
 
 
 interface PostService {
 
     //업로드 부분
-    @Multipart
-    @POST("/feed/post/post")
+    @POST("/feed/post")
     fun requestPost(
         @Header("Authorization") type: String,
-        @Part imageFile: ArrayList<MultipartBody.Part>,
-        @Body postBody: PostBody
+        @Body postBody: RequestBody
     ): Call<PostResponse>
 
 }
