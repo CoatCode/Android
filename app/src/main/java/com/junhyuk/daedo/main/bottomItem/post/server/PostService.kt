@@ -1,5 +1,6 @@
 package com.junhyuk.daedo.main.bottomItem.post.server
 
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.Header
@@ -12,7 +13,7 @@ interface PostService {
     @POST("/feed/post")
     fun requestPost(
         @Header("Authorization") type: String,
-        @Body postBody: PostBody
+        @Body postBody: RequestBody
     ): Call<PostResponse>
 
 }

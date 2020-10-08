@@ -50,7 +50,19 @@ class PostDialog {
                     .show()
             }
 
-            else -> {}
+            else -> {
+                sweetAlertDialog.dismiss()
+                val dialog = SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
+
+                dialog.setCancelable(false)
+
+                dialog.setTitleText("서버 통신에 실패하였습니다.")
+                    .setConfirmClickListener {
+                        dialog.dismiss()
+                    }
+                    .setContentText("서버 관리자에게 문의하세요")
+                    .show()
+            }
         }
     }
 
