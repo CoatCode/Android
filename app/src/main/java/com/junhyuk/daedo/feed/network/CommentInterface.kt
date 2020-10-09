@@ -10,7 +10,7 @@ import retrofit2.http.POST
 //댓글 interface
 interface CommentInterface{
     //댓글 작성
-    @POST("/feed/post/1/comment_recycler_view_item")
+    @POST("/feed/post/1/comment")
     fun sendComment(
         //Header 로 토큰 전송
         @Header("Authorization") type:String,
@@ -19,7 +19,7 @@ interface CommentInterface{
 
     ): Call<WriteCommentBody>
 
-    @GET("/feed/post/:post_id/comments")
+    @GET("/feed/post/1/comments")
     fun getComment(
         @Header("Authorization") type: String
     ): Call<GetCommentBody>
