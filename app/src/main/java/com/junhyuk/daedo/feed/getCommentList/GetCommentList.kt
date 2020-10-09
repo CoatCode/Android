@@ -7,15 +7,18 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.junhyuk.daedo.application.DaedoApplication
 import com.junhyuk.daedo.feed.network.CommentInterface
+import kotlinx.android.synthetic.main.fragment_home.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class GetCommentList : AppCompatActivity(){
-    val token : String = com.junhyuk.daedo.emailLogin.server.EmailLoginBody.instance!!.access_token
+    private val token : String = com.junhyuk.daedo.emailLogin.server.EmailLoginBody.instance!!.access_token
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
         super.onCreate(savedInstanceState, persistentState)
-        request()
+        write_comment.setOnClickListener {
+            request()
+        }
     }
     private fun request() {
 

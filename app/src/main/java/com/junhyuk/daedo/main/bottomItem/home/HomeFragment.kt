@@ -15,6 +15,7 @@ import kotlinx.android.synthetic.main.fragment_home.view.*
 
 class HomeFragment() : Fragment() {
 
+
     private lateinit var homeViewModel: HomeViewModel
     private var comment: String = ""
 
@@ -36,6 +37,7 @@ class HomeFragment() : Fragment() {
             comment = this.edit_comment.text.toString()
             Log.d("test","test$comment")
             sendComment.sendComment(comment, context!!.application)
+
 
         }
 
