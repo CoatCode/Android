@@ -4,7 +4,6 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.junhyuk.daedo.R
@@ -30,19 +29,14 @@ class PersonAdapter(private val context: Context,private val PersonList : ArrayL
 
     inner class Holder(itemView: View?) : RecyclerView.ViewHolder(itemView!!) {
         //recyclerview 에 올릴 프로토스 사진
-        private val hisPhoto = itemView?.findViewById<ImageView>(R.id.his_face)
+
         //recyclerview 에 올릴 프로토스 이름
         private val hisName = itemView?.findViewById<TextView>(R.id.his_name)
         //recyclerview 에 올릴 프로토스 나이
         private val hisAge = itemView?.findViewById<TextView>(R.id.his_age)
 
         fun bind (Person: CommentData, context: Context) {
-            if (Person.photo != "") {
-                val resourceId = context.resources.getIdentifier(Person.photo, "drawable", context.packageName)
-                hisPhoto?.setImageResource(resourceId)
-            } else {
-                hisPhoto?.setImageResource(R.mipmap.ic_launcher)
-            }
+
             hisName?.text = Person.name
             hisAge?.text = Person.comment
         }

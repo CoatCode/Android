@@ -1,5 +1,16 @@
 package com.junhyuk.daedo.feed.postDetail
 
+import android.os.Bundle
+import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.FragmentActivity
+import androidx.lifecycle.ViewModelProvider
+import com.junhyuk.daedo.R
+import com.junhyuk.daedo.feed.writeComment.SendWriteComment
+import com.junhyuk.daedo.main.bottomItem.home.HomeViewModel
+
 /*
 class DetailFragment : Fragment(){
     private var personList = arrayListOf<GetCommentArray>(

@@ -6,28 +6,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/his_face"
-        android:layout_width="54dp"
-        android:layout_height="54dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginBottom="4dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/ic_launcher" />
-
     <TextView
         android:id="@+id/his_name"
-        android:text="버즈"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:text="버즈"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/his_face"
-        app:layout_constraintTop_toTopOf="@+id/his_face" />
+        tools:layout_editor_absoluteX="78dp"
+        tools:layout_editor_absoluteY="366dp" />
 
     <TextView
         android:id="@+id/his_age"
@@ -35,7 +22,7 @@
         android:layout_height="18dp"
         android:text="김경호"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/his_face"
-        app:layout_constraintStart_toStartOf="@+id/his_name" />
+        app:layout_constraintStart_toStartOf="@+id/his_name"
+        tools:layout_editor_absoluteY="402dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
