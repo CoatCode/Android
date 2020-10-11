@@ -18,7 +18,7 @@ class SendWriteComment {
     ) {
         //로그인 할 때 받아놓은 access token
         val token : String = EmailLoginBody.instance!!.access_token
-        //DaedoApplacation 호출
+        //DaedoApplication 호출
             (getApplication as DaedoApplication).retrofit.create(CommentInterface::class.java)
                 //작성한 댓글과 token 서버로 전송
                 .sendComment("Bearer $token", WriteCommentBody(comment))
@@ -27,8 +27,6 @@ class SendWriteComment {
                     call: Call<WriteCommentBody>,
                     response: Response<WriteCommentBody>
                 ) {
-
-
                     //통신성공
                     if (response.code() == 201) {
                         Log.d("success","success"+response.body())
