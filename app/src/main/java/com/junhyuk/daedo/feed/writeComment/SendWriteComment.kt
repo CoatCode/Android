@@ -29,13 +29,12 @@ class SendWriteComment {
                 ) {
                     //통신성공
                     if (response.code() == 201) {
-                        Log.d("success","success"+response.body())
+
                     }
                     //통신 실패
                     else if (response.code() == 400) {
                         Log.d("error","error:"+response.errorBody())
                     }
-
                 }
                 //서버와 연결 실패
                 override fun onFailure(call: Call<WriteCommentBody>, t: Throwable) {

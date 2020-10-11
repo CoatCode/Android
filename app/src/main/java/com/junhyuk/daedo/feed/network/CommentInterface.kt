@@ -1,7 +1,6 @@
 package com.junhyuk.daedo.feed.network
 
-import com.google.gson.annotations.SerializedName
-import com.junhyuk.daedo.feed.getCommentList.GetCommentBody
+import com.junhyuk.daedo.feed.getCommentList.Owner
 import com.junhyuk.daedo.feed.writeComment.WriteCommentBody
 import retrofit2.Call
 import retrofit2.http.Body
@@ -22,10 +21,9 @@ interface CommentInterface{
     ): Call<WriteCommentBody>
 
     @GET("/feed/post/1/comments")
-    @SerializedName("username")
     fun getComment(
         @Header("Authorization") type: String
-    ): Call<GetCommentBody>
+    ): Call<ArrayList<Owner>>
 
 
 }
