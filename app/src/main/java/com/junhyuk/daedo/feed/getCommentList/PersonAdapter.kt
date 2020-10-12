@@ -36,7 +36,6 @@ class PersonAdapter(private val context: Context,private val PersonList : ArrayL
         private val hisAge = itemView?.findViewById<TextView>(R.id.his_age)
 
         fun bind (Person: CommentData, context: Context) {
-
             hisName?.text = Person.name
             hisAge?.text = Person.comment
         }

@@ -11,6 +11,7 @@ import com.junhyuk.daedo.feed.getCommentList.CommentData
 import com.junhyuk.daedo.feed.getCommentList.PersonAdapter
 import kotlinx.android.synthetic.main.fragment_home.view.*
 
+
 class HomeFragment : Fragment() {
 //    var photo : String? = Owner.instance!!.profile
 //    var name : String? = Owner.instance!!.username
@@ -31,9 +32,9 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        val view = inflater.inflate(R.layout.comment_recycler_view_item, container, false)
+        val view = inflater.inflate(R.layout.fragment_home, container, false)
         val lm = LinearLayoutManager(context)
-        view.comment_recycler_view.adapter = PersonAdapter(context!!, personList)
+        view.comment_recycler_view.adapter = PersonAdapter(requireContext(), personList)
         view.comment_recycler_view.setHasFixedSize(true)
         view.comment_recycler_view.layoutManager = lm
 
