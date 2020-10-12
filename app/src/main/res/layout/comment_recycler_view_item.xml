@@ -7,31 +7,45 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/his_name"
+        android:id="@+id/his_name2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="78dp"
-        android:layout_marginTop="366dp"
-        android:layout_marginEnd="276dp"
-        android:layout_marginBottom="6dp"
-        android:text="버즈"
+        android:layout_marginStart="16dp"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/his_age"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/his_face"
+        app:layout_constraintTop_toTopOf="@+id/his_face"
+        tools:text="Breed" />
 
     <TextView
-        android:id="@+id/his_age"
-        android:layout_width="50dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="265dp"
-        android:layout_marginBottom="365dp"
-        android:text="김경호"
-        android:textSize="16sp"
+        android:id="@+id/his_face"
+        android:layout_width="54dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/his_name" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/ic_launcher"
+        android:text="안녕"/>
+
+    <TextView
+        android:id="@+id/his_age2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/his_face"
+        app:layout_constraintStart_toEndOf="@+id/his_face"
+        tools:text="Age" />
+
+    <ImageButton
+        android:layout_width="24dp"
+        android:layout_height="21dp"
+        android:layout_marginStart="84dp"
+        android:background="@drawable/glyphs_nav_toolbar_more"
+        app:layout_constraintStart_toEndOf="@+id/his_face"
+        app:layout_constraintTop_toTopOf="@+id/his_face" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -18,10 +18,15 @@ class HomeFragment : Fragment() {
 ////    var email : String? = Owner.instance!!.email
     private var personList = arrayListOf<CommentData>(
 //        //recyclerview 에 담길 값
-        CommentData("강민석", "애플"),
-        CommentData("강민석", "애플"),
-        CommentData("강민석", "애플"),
-        CommentData("강민석", "애플")
+        CommentData("강민석", "애플망해라"),
+        CommentData("강민석", "애플웩"),
+        CommentData("강민석", "애플구려"),
+        CommentData("강민석", "애플별로야"),
+        CommentData("봉화왕자", "봉화에도 애플스토어를!"),
+        CommentData("강민석", "애플 비싸"),
+        CommentData("강민석", "삼성좋아"),
+        CommentData("강민석", "아이폰 구려"),
+        CommentData("강민석", "갤럭시 s20살래")
     )
 
   //  private var comment: String = ""

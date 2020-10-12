@@ -31,9 +31,9 @@ class PersonAdapter(private val context: Context,private val PersonList : ArrayL
         //recyclerview 에 올릴 프로토스 사진
 
         //recyclerview 에 올릴 프로토스 이름
-        private val hisName = itemView?.findViewById<TextView>(R.id.his_name)
+        private val hisName = itemView?.findViewById<TextView>(R.id.his_name2)
         //recyclerview 에 올릴 프로토스 나이
-        private val hisAge = itemView?.findViewById<TextView>(R.id.his_age)
+        private val hisAge = itemView?.findViewById<TextView>(R.id.his_age2)
 
         fun bind (Person: CommentData, context: Context) {
             hisName?.text = Person.name
