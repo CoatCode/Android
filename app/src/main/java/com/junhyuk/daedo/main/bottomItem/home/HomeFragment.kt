@@ -18,10 +18,10 @@ import kotlinx.android.synthetic.main.fragment_home.view.*
 
 
 class HomeFragment : Fragment() {
-    var sibal : String = "asd"
+    var sb : String = "asd"
     private var personList = arrayListOf<CommentData>(
         //recyclerview 에 담길 값
-        CommentData(sibal, "애플망해라"),
+        CommentData(sb, "애플망해라"),
         CommentData("강민석", "애플웩"),
         CommentData("강민석", "애플구려"),
         CommentData("강민석", "애플별로야"),
