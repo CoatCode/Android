@@ -3,7 +3,6 @@ package com.junhyuk.daedo.feed.network
 import com.junhyuk.daedo.feed.getCommentList.SchoolData
 import com.junhyuk.daedo.feed.writeComment.WriteCommentBody
 import retrofit2.Call
-import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Header
@@ -24,7 +23,7 @@ interface CommentInterface{
     @GET("/feed/post/13/comments")
     fun getComment(
         @Header("Authorization") type: String
-    ): Call<Response<SchoolData>>
+    ): Call<ArrayList<SchoolData>>
 
 
 }

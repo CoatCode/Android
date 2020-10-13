@@ -17,10 +17,10 @@ class GetCommentList {
 
         (getApplication as DaedoApplication).retrofit.create(CommentInterface::class.java)
             .getComment("Bearer $token")
-            .enqueue(object : Callback<Response<SchoolData>> {
+            .enqueue(object : Callback<ArrayList<SchoolData>> {
                 override fun onResponse(
-                    call: Call<Response<SchoolData>>,
-                    response: Response<Response<SchoolData>>
+                    call: Call<ArrayList<SchoolData>>,
+                    response: Response<ArrayList<SchoolData>>
                 ) {
                     if (response.code() == 200){
                         Log.d("200","200"+response.body())
@@ -30,7 +30,7 @@ class GetCommentList {
                     }
                 }
 
-                override fun onFailure(call: Call<Response<SchoolData>>, t: Throwable) {
+                override fun onFailure(call: Call<ArrayList<SchoolData>>, t: Throwable) {
                     Log.d("fa","fa")
                 }
 
