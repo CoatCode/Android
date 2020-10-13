@@ -56,8 +56,6 @@ class HomeFragment : Fragment() {
             sendComment.sendComment(comment, ct!!.application)
             getComment.getCommentList(ct.application)
             }
-
-
             return view
         }
 
