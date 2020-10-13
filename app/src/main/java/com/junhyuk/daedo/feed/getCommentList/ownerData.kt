@@ -7,13 +7,11 @@ var username : String = "",
 var profile : String = "",
 var followers : String = "",
 var following : String = ""
-)
-data class Data(
-    var comment_id : String = "",
-    var owner : List<ownerData>,
-    var content : String = "",
-    var created_at : String = ""
-)
+){
+    companion object{
+        var instance : ownerData? = null
+    }
+}
 
 //"comment_id": 0,
 //"owner": {
