@@ -28,7 +28,7 @@ class SignUpActivity : AppCompatActivity() {
 
     //이메일과 비밀번호를 다음 엑티비티로 전송할 때 정보를 저장하는 변수
     var email: String = ""
-    var password: String = ""
+    private var password: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
