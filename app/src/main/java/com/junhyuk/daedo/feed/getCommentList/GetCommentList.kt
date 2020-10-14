@@ -9,9 +9,13 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class GetCommentList {
+    private var personList = arrayListOf<SchoolData>(
+    )
+
     internal fun getCommentList(
         getApplication: Application
     ) {
+
         val token: String =
             com.junhyuk.daedo.emailLogin.server.EmailLoginBody.instance!!.access_token
 
@@ -23,17 +27,17 @@ class GetCommentList {
                     response: Response<ArrayList<SchoolData>>
                 ) {
                     if (response.code() == 200){
-                        Log.d("200","200"+response.body())
+                        personList = response.body()!!
+                        Log.d("200","200${personList}")
+
                     }
                     if (response.code() == 401){
                         Log.d("401","401"+response.errorBody())
                     }
                 }
-
                 override fun onFailure(call: Call<ArrayList<SchoolData>>, t: Throwable) {
                     Log.d("fa","fa")
                 }
-
             })
     }
 }
