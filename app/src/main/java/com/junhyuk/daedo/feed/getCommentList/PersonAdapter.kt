@@ -38,12 +38,18 @@ class PersonAdapter(private val context: Context, private val personList : Array
         //recyclerview 에 올릴 프로토스 나이
         private val hisAge = itemView.findViewById<TextView>(R.id.his_age2)
 
+        private val hisTime = itemView.findViewById<TextView>(R.id.write_time)
+
         fun bind (Person: SchoolData) {
+            val time = GetTime()
             Glide.with(context)
                 .load(Person.owner?.profile)
                 .into(hisphoto)
             hisName?.text = Person.owner?.username
             hisAge?.text = Person.content
+            time.getTime(Person.created_at)
+            //hisTime?.text = GetTime.
+            //hisTime?.text = Person.created_at
         }
     }
 

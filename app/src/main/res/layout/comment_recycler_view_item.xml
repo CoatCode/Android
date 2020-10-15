@@ -42,6 +42,7 @@
         tools:text="Age" />
 
     <ImageButton
+        android:id="@+id/imageButton"
         android:layout_width="24dp"
         android:layout_height="21dp"
         android:layout_marginStart="236dp"
@@ -49,5 +50,16 @@
         android:background="@drawable/glyphs_nav_toolbar_more"
         app:layout_constraintStart_toEndOf="@+id/his_face"
         app:layout_constraintTop_toTopOf="@+id/his_face" />
+
+    <TextView
+        android:id="@+id/write_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="88dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/his_face"
+        app:layout_constraintStart_toEndOf="@+id/his_face"
+        app:layout_constraintTop_toTopOf="@+id/his_face"
+        app:layout_constraintVertical_bias="0.171" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
