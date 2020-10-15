@@ -28,4 +28,5 @@ interface EmailLoginInterface {
         //header 로 토큰 전송
         @Header("Authorization") type:String
     ): Call<UserInformation>
+
 }
