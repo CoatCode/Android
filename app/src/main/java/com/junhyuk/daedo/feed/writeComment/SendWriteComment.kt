@@ -29,7 +29,7 @@ class SendWriteComment {
                 ) {
                     //통신성공
                     if (response.code() == 201) {
-
+                        Log.d("sendComment","sendComment")
                     }
                     //통신 실패
                     else if (response.code() == 400) {

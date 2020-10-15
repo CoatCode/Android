@@ -27,7 +27,7 @@ class DaedoApplication : Application(){
             .addConverterFactory(GsonConverterFactory.create())
              .client(client)
             .build()
-        loginInterface = retrofit.create(EmailLoginInterface::class.java)
+       // loginInterface = retrofit.create(EmailLoginInterface::class.java)
     }
     fun requestService(): EmailLoginInterface?{
         return loginInterface
