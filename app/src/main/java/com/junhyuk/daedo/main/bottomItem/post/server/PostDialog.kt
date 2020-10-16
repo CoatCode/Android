@@ -6,6 +6,7 @@ import android.content.Intent
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat.startActivity
 import cn.pedant.SweetAlert.SweetAlertDialog
+import retrofit2.Response
 
 class PostDialog {
 
@@ -13,7 +14,7 @@ class PostDialog {
         responseCode: Int,
         responseMsg: String,
         context: Context,
-        responseBody: String,
+        responseBody: Response<PostResponse>,
         intent: Intent,
         sweetAlertDialog: SweetAlertDialog
     ) {
@@ -31,6 +32,7 @@ class PostDialog {
                         startActivity(context, intent, null)
                         (context as Activity).finish()
                         ActivityCompat.finishAffinity(context)
+                        dialog.dismiss()
                     }
                     .show()
 
@@ -46,7 +48,7 @@ class PostDialog {
                     .setConfirmClickListener {
                         dialog.dismiss()
                     }
-                    .setContentText(responseBody)
+                    .setContentText(responseBody.errorBody()?.string())
                     .show()
             }
 

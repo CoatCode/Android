@@ -5,7 +5,6 @@ import android.content.pm.PackageManager
 import android.database.Cursor
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.graphics.Matrix
 import android.net.Uri
 import android.os.Bundle
 import android.provider.OpenableColumns
@@ -20,10 +19,9 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.junhyuk.daedo.R
 import com.junhyuk.daedo.signUp.base64.Base64Encoding
 import com.junhyuk.daedo.signUp.rotateImage.RotateImage
-import com.junhyuk.daedo.workingNetwork.sha512.Sha512
 import com.junhyuk.daedo.signUp.workingRetrofit.SetupRetrofit
+import com.junhyuk.daedo.workingNetwork.sha512.Sha512
 import kotlinx.android.synthetic.main.activity_sign_up_name.*
-import java.lang.Boolean
 
 
 /*
@@ -163,9 +161,6 @@ open class SignUpNameActivity : AppCompatActivity() {
 
                 bm = rotateImageClass.rotateImage(data.data!!, bm, contentResolver) //이미지 회전
 
-                //이미지 resize
-                bm = bitmapResizePrc(bm, 180, 180)
-
                 //화면에 이미지 표시
                 Glide.with(this)
                     .load(bm)
@@ -211,36 +206,5 @@ open class SignUpNameActivity : AppCompatActivity() {
                 }
             }
         }
-    }
-
-
-    //resize 이미지 crop
-    private fun bitmapResizePrc(Src: Bitmap, newHeight: Int, newWidth: Int): Bitmap {
-
-        var width = Src.width
-        var height = Src.height
-
-        // calculate the scale - in this case = 0.4f
-        val scaleWidth = newWidth.toFloat() / width
-        val scaleHeight = newHeight.toFloat() / height
-
-        // create matrix for the manipulation
-        val matrix = Matrix()
-        // resize the bit map
-        matrix.postScale(scaleWidth, scaleHeight)
-
-        // recreate the new Bitmap
-        val resizedBitmap = Bitmap.createBitmap(Src, 0, 0, width, height, matrix, true)
-
-        // check
-        width = resizedBitmap.width
-        height = resizedBitmap.height
-        Log.i(
-            "ImageResize", "Image Resize Result : " + Boolean.toString(
-                newHeight == height && newWidth == width
-            )
-        )
-
-        return resizedBitmap
     }
 }
