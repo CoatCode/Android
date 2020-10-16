@@ -1,6 +1,7 @@
 package com.junhyuk.daedo.feed.getCommentList
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.junhyuk.daedo.R
+import java.time.ZonedDateTime
 
 //recyclerview adapter
 class PersonAdapter(private val context: Context, private val personList : ArrayList<SchoolData>) : RecyclerView.Adapter<PersonAdapter.Holder>(){
@@ -41,16 +43,31 @@ class PersonAdapter(private val context: Context, private val personList : Array
         private val hisTime = itemView.findViewById<TextView>(R.id.write_time)
 
         fun bind (Person: SchoolData) {
-            val time = GetTime()
+            val GetTime = time()
+            val year = ZonedDateTime.parse(Person.created_at).year.toLong()
+            val month = ZonedDateTime.parse(Person.created_at).monthValue.toLong()
+            val day = ZonedDateTime.parse(Person.created_at).dayOfMonth.toLong()
+            val hour = ZonedDateTime.parse(Person.created_at).hour.toLong()
+            val minute = ZonedDateTime.parse(Person.created_at).minute.toLong()
+            val second = ZonedDateTime.parse(Person.created_at).second.toLong()
+            val time = year + month + day + hour + minute + second
+            Log.d("time","time:$time")
+            Log.d("year","year : $year")
+            Log.d("month","month : $month")
+            Log.d("day","day : $day")
+            Log.d("hour","hour : $hour")
+            Log.d("minute","minute : $minute")
+            Log.d("second","second : $second")
+            Log.d("jsonTime","jsonTime : ${Person.created_at}")
             Glide.with(context)
                 .load(Person.owner?.profile)
                 .into(hisphoto)
             hisName?.text = Person.owner?.username
             hisAge?.text = Person.content
-            time.getTime(Person.created_at)
-            //hisTime?.text = GetTime.
-            //hisTime?.text = Person.created_at
+            Log.d("ct","ct: ${time.toLong()}")
+            hisTime?.text =  GetTime.formatTimeString(year,month,day,hour,minute,second)
+
+
         }
     }
-
 }
