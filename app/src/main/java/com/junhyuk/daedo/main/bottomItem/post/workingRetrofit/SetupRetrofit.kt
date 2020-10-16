@@ -15,13 +15,11 @@ import com.junhyuk.daedo.main.bottomItem.post.server.PostService
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.io.File
 
 
 class SetupRetrofit {
@@ -29,11 +27,11 @@ class SetupRetrofit {
     internal fun setUpRetrofit(
         getApplication: Application,
         context: Context,
-        images: ArrayList<String>,
-        imageName: String,
         postTitle: String,
         postContent: String,
-        hashTag: String
+        hashTag: String,
+        requestBody: ArrayList<RequestBody>,
+        fileName: ArrayList<String>
     ) {
 
         //로딩 다이얼로그
@@ -52,68 +50,32 @@ class SetupRetrofit {
         //서버에 보낼 데이터
         val builder = MultipartBody.Builder().setType(MultipartBody.FORM)
 
-        /*val titleBody: RequestBody
-        val contentBody: RequestBody
-        val tagBody: RequestBody
-        val filePart: MultipartBody.Part
-        var requestBody: RequestBody
-        val mapRequestBody = LinkedHashMap<String, RequestBody>()
-        val imageBody: List<MultipartBody.Part> = ArrayList()*/
+        builder.addFormDataPart("title", postTitle)
+        builder.addFormDataPart("content", postContent)
+        builder.addFormDataPart("tag", hashTag)
 
-        if (hashTag == "") {
-
-            builder.addFormDataPart("title", postTitle)
-            builder.addFormDataPart("text", postContent)
-
-            //titleBody = RequestBody.create(MediaType.parse("text/plain"), postTitle)
-            //contentBody = RequestBody.create(MediaType.parse("text/plain"), postContent)
-
-
-            images.forEach {
-                val file = File(it)
-
-                Log.d("image", "data: ${file.name}")
-                Log.d("image", "file: ${file.exists()}")
-                Log.d("image", "name: $imageName")
-
-                builder.addFormDataPart("image", file.name, RequestBody.create(MediaType.parse("multipart/form-data"), file))
-            }
-
-
-
-        } else {
-
-            builder.addFormDataPart("title", postTitle)
-            builder.addFormDataPart("text", postContent)
-            builder.addFormDataPart("tag", hashTag)
-
-            //titleBody = RequestBody.create(MediaType.parse("text/plain"), postTitle)
-            //contentBody = RequestBody.create(MediaType.parse("text/plain"), postContent)
-            //tagBody = RequestBody.create(MediaType.parse("text/plain"), hashTag)
-
-            images.forEach {
-                val file = File(it)
-
-                Log.d("image", "data: ${file.name}")
-                Log.d("image", "file: ${file.exists()}")
-                Log.d("image", "name: $imageName")
-
-                builder.addFormDataPart("image", file.name, RequestBody.create(MediaType.parse("multipart/form-data"), file))
-            }
-
+        var index = 1
+        requestBody.forEach {
+            Log.d("indexData", "name: ${fileName[index-1]}")
+            Log.d("indexData", "name: ${it.contentType()}")
+            Log.d("indexData", "file: ${it.contentType()}")
+            builder.addFormDataPart("image$index", fileName[index-1], it)
+            Log.d("indexData", "name: image$index")
+            index++
         }
 
-        val requestBody: RequestBody = builder.build()
+        val postBody: RequestBody = builder.build()
 
         CoroutineScope(Dispatchers.IO).launch {
             //retrofit
-            postService.requestPost("Bearer $token", requestBody)
+            postService.requestPost("Bearer $token", postBody)
                 .enqueue(object : Callback<PostResponse> {
                     val postDialog = PostDialog()
 
                     //통신 실패
                     override fun onFailure(call: Call<PostResponse>, t: Throwable) {
                         postDialog.connectionFail(context, sweetAlertDialog)
+                        Log.d("throw", "data: ${t.printStackTrace()}")
                     }
 
                     //통신 성공
@@ -129,7 +91,7 @@ class SetupRetrofit {
                             response.code(),
                             response.message(),
                             context,
-                            response.body().toString(),
+                            response,
                             intent,
                             sweetAlertDialog
                         )

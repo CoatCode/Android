@@ -6,7 +6,7 @@ import retrofit2.http.POST
 
 interface SignUpService {
 
-    @POST("/auth/signUp")
+    @POST("/auth/sign-up")
     fun requestSignUp(
         //INPUT 정의
         @Body signUpBody: SignUpBody
