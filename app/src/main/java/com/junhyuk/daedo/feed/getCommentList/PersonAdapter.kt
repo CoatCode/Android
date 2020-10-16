@@ -44,12 +44,12 @@ class PersonAdapter(private val context: Context, private val personList : Array
 
         fun bind (Person: SchoolData) {
             val GetTime = time()
-            val year = ZonedDateTime.parse(Person.created_at).year.toLong()
-            val month = ZonedDateTime.parse(Person.created_at).monthValue.toLong()
-            val day = ZonedDateTime.parse(Person.created_at).dayOfMonth.toLong()
-            val hour = ZonedDateTime.parse(Person.created_at).hour.toLong()
-            val minute = ZonedDateTime.parse(Person.created_at).minute.toLong()
-            val second = ZonedDateTime.parse(Person.created_at).second.toLong()
+            val year = ZonedDateTime.parse(Person.created_at).year
+            val month = ZonedDateTime.parse(Person.created_at).monthValue
+            val day = ZonedDateTime.parse(Person.created_at).dayOfMonth
+            val hour = ZonedDateTime.parse(Person.created_at).hour
+            val minute = ZonedDateTime.parse(Person.created_at).minute
+            val second = ZonedDateTime.parse(Person.created_at).second
             val time = year + month + day + hour + minute + second
             Log.d("time","time:$time")
             Log.d("year","year : $year")
