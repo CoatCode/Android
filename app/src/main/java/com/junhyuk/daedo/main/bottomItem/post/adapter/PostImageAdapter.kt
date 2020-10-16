@@ -1,7 +1,7 @@
 package com.junhyuk.daedo.main.bottomItem.post.adapter
 
 import android.content.Context
-import android.net.Uri
+import android.graphics.Bitmap
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,7 +13,7 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.junhyuk.daedo.R
 import kotlinx.android.synthetic.main.cardview_post_image.view.*
 
-class PostImageAdapter(private var postArrayList: ArrayList<Uri>, private val context: Context) :
+class PostImageAdapter(private var postArrayList: ArrayList<Bitmap>, private val context: Context) :
     RecyclerView.Adapter<PostImageAdapter.Holder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
