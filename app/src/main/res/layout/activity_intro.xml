@@ -4,8 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/xmain"
     tools:context=".intro.Intro">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/intro_background"
+        android:scaleType="centerCrop"
+        android:contentDescription="@string/backgroundimage" />
 
     <TextView
         android:id="@+id/title"
@@ -14,9 +20,9 @@
         android:layout_marginTop="74.3dp"
         android:layout_marginBottom="159.3dp"
         android:fontFamily="@font/title_font"
-        android:text="coatcode"
+        android:text="@string/coatcode"
         android:textColor="#ffffff"
-        android:textSize="53dp"
+        android:textSize="58sp"
         android:shadowColor="#19222222"
         android:shadowDx="6"
         android:shadowDy="6"
@@ -44,7 +50,7 @@
             android:layout_height="50dp"
             android:layout_marginBottom="12dp"
             android:background="@drawable/login_button"
-            android:text="소셜 로그인"
+            android:text="@string/socialLogin"
             android:textColor="#fcfcfc" />
 
         <Button
@@ -53,7 +59,7 @@
             android:layout_height="50dp"
             android:layout_marginBottom="12dp"
             android:background="@drawable/login_button"
-            android:text="이메일 로그인"
+            android:text="@string/emailLogin"
             android:textColor="#fcfcfc" />
 
         <Button
@@ -61,7 +67,7 @@
             android:layout_width="250dp"
             android:layout_height="50dp"
             android:background="@drawable/login_button"
-            android:text="이메일 회원가입"
+            android:text="@string/emailSignUp"
             android:textColor="#fcfcfc" />
 
     </LinearLayout>
