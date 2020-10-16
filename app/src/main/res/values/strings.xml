@@ -23,4 +23,9 @@
     <string name="postHashHint">#해시태그</string>
     <string name="Upload">업로드</string>
     <string name="Image">이미지</string>
+    <string name="coatcode">coatcode</string>
+    <string name="socialLogin">소셜 로그인</string>
+    <string name="emailLogin">이메일 로그인</string>
+    <string name="emailSignUp">이메일 회원가입</string>
+    <string name="backgroundimage">backGroundImage</string>
 </resources>
