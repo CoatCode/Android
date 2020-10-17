@@ -34,7 +34,7 @@ class PersonAdapter(private val context: Context, private val personList : Array
 
     inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         //recyclerview 에 올릴 프로토스 사진
-        private val hisphoto = itemView.findViewById<ImageView>(R.id.his_face)
+        private val hisPhoto = itemView.findViewById<ImageView>(R.id.his_face)
         //recyclerview 에 올릴 프로토스 이름
         private val hisName = itemView.findViewById<TextView>(R.id.his_name2)
         //recyclerview 에 올릴 프로토스 나이
@@ -61,7 +61,7 @@ class PersonAdapter(private val context: Context, private val personList : Array
             Log.d("jsonTime","jsonTime : ${Person.created_at}")
             Glide.with(context)
                 .load(Person.owner?.profile)
-                .into(hisphoto)
+                .into(hisPhoto)
             hisName?.text = Person.owner?.username
             hisAge?.text = Person.content
             Log.d("ct","ct: ${time.toLong()}")

@@ -1,15 +1,8 @@
 package com.junhyuk.daedo.feed.getCommentList
 
-import android.util.Log
 import java.util.*
 
 class time {
-    internal fun getTime(
-        time: Long
-    ) {
-
-
-    }
 
     fun formatTimeString(
         YEAR: Int, MONTH: Int, DAY: Int, HOUR: Int, MIN: Int, SEC: Int
@@ -21,11 +14,6 @@ class time {
         val hour = cal[Calendar.HOUR_OF_DAY]
         val min = cal[Calendar.MINUTE]
         val sec = cal[Calendar.SECOND]
-        Log.d("lsec", "lsec : $sec")
-        Log.d("lmin", "lmin : $min")
-        Log.d("lhour", "lhour : $hour")
-        Log.d("lday", "lday : $day")
-        Log.d("lmonth", "lmonth : $month")
         var msg: String? = null
         if (year != YEAR) {
             val result = year - YEAR
@@ -68,6 +56,9 @@ class time {
                 val result = min - MIN
                 result.toString() + "분 전"
             }
+        } else {
+            val result = sec - SEC
+            msg = result.toString()
         }
         return msg
     }
