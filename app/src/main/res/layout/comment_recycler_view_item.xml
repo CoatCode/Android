@@ -3,23 +3,26 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/constraintLayout"
+    >
 
     <TextView
-        android:id="@+id/his_name2"
+        android:id="@+id/user_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="4dp"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/his_face"
-        app:layout_constraintTop_toTopOf="@+id/his_face"
-        tools:text="Breed" />
+        app:layout_constraintBottom_toBottomOf="@+id/user_profile"
+        app:layout_constraintStart_toEndOf="@+id/user_profile"
+        app:layout_constraintTop_toTopOf="@+id/user_profile"
+        app:layout_constraintVertical_bias="0.0"
+        tools:text="" />
 
     <ImageView
-        android:id="@+id/his_face"
+        android:id="@+id/user_profile"
         android:layout_width="54dp"
         android:layout_height="54dp"
         android:layout_marginStart="8dp"
@@ -28,38 +31,45 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/ic_launcher"
-        />
+        app:srcCompat="@mipmap/ic_launcher" />
 
     <TextView
-        android:id="@+id/his_age2"
+        android:id="@+id/comment_content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="84dp"
+        android:maxEms="14"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/his_face"
-        app:layout_constraintStart_toEndOf="@+id/his_face"
-        tools:text="Age" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/comment_time"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/user_name"
+        app:layout_constraintTop_toBottomOf="@+id/user_name"
+        app:layout_constraintVertical_bias="0.005"
+        android:text="@string/content"
+        />
 
     <ImageButton
         android:id="@+id/imageButton"
         android:layout_width="24dp"
         android:layout_height="21dp"
-        android:layout_marginStart="236dp"
+        android:layout_marginStart="288dp"
         android:layout_marginTop="4dp"
         android:background="@drawable/glyphs_nav_toolbar_more"
-        app:layout_constraintStart_toEndOf="@+id/his_face"
-        app:layout_constraintTop_toTopOf="@+id/his_face" />
+        app:layout_constraintStart_toEndOf="@+id/user_profile"
+        app:layout_constraintTop_toTopOf="@+id/user_profile" />
 
     <TextView
-        android:id="@+id/write_time"
+        android:id="@+id/comment_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="88dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="@+id/his_face"
-        app:layout_constraintStart_toEndOf="@+id/his_face"
-        app:layout_constraintTop_toTopOf="@+id/his_face"
-        app:layout_constraintVertical_bias="0.171" />
+        android:layout_marginStart="8dp"
+        android:text="@string/commentTime"
+        app:layout_constraintBottom_toBottomOf="@+id/user_name"
+        app:layout_constraintStart_toEndOf="@+id/user_name"
+        app:layout_constraintTop_toTopOf="@+id/user_name"
+        app:layout_constraintVertical_bias="1.0" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

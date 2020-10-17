@@ -23,4 +23,6 @@
     <string name="postHashHint">#해시태그</string>
     <string name="Upload">업로드</string>
     <string name="Image">이미지</string>
+    <string name="commentTime">댓글시간</string>
+    <string name="content">댓글내용</string>
 </resources>

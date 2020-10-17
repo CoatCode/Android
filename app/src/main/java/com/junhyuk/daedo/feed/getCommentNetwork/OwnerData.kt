@@ -1,6 +1,6 @@
-package com.junhyuk.daedo.feed.getCommentList
+package com.junhyuk.daedo.feed.getCommentNetwork
 
-data class ownerData(
+data class OwnerData(
 var id : String = "",
 var email : String = "",
 var username : String = "",
@@ -9,7 +9,7 @@ var followers : String = "",
 var following : String = ""
 ){
     companion object{
-        var instance : ownerData? = null
+        var instance : OwnerData? = null
     }
 }
 

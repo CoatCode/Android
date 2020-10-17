@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.junhyuk.daedo.R
 import com.junhyuk.daedo.feed.getCommentList.GetCommentList
 import com.junhyuk.daedo.feed.getCommentList.PersonAdapter
-import com.junhyuk.daedo.feed.getCommentList.SchoolData
+import com.junhyuk.daedo.feed.getCommentNetwork.CommentData
 import com.junhyuk.daedo.feed.writeComment.SendWriteComment
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
@@ -23,7 +23,7 @@ class HomeFragment : Fragment() {
     private companion object
 
     var personList =
-        arrayListOf<SchoolData>()
+        arrayListOf<CommentData>()
     private var comment: String = ""
     private lateinit var mAdapter: PersonAdapter
 

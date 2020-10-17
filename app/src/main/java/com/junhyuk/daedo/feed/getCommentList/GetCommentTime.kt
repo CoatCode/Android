@@ -2,7 +2,7 @@ package com.junhyuk.daedo.feed.getCommentList
 
 import java.util.*
 
-class time {
+class GetCommentTime {
 
     fun formatTimeString(
         YEAR: Int, MONTH: Int, DAY: Int, HOUR: Int, MIN: Int, SEC: Int

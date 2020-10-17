@@ -4,30 +4,31 @@ import android.app.Application
 import android.content.Context
 import android.util.Log
 import com.junhyuk.daedo.application.DaedoApplication
+import com.junhyuk.daedo.feed.getCommentNetwork.CommentData
 import com.junhyuk.daedo.feed.network.CommentInterface
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class GetCommentList {
-    private var personListTmp = arrayListOf<SchoolData>(
+    private var personListTmp = arrayListOf<CommentData>(
     )
 
     internal fun getCommentList(
         getApplication: Application,
         context: Context,
         cAdapter: PersonAdapter,
-        personList : ArrayList<SchoolData>
+        personList : ArrayList<CommentData>
     ) {
 
         val token: String =
             com.junhyuk.daedo.emailLogin.server.EmailLoginBody.instance!!.access_token
         (getApplication as DaedoApplication).retrofit.create(CommentInterface::class.java)
             .getComment("Bearer $token")
-            .enqueue(object : Callback<ArrayList<SchoolData>> {
+            .enqueue(object : Callback<ArrayList<CommentData>> {
                 override fun onResponse(
-                    call: Call<ArrayList<SchoolData>>,
-                    response: Response<ArrayList<SchoolData>>
+                    call: Call<ArrayList<CommentData>>,
+                    response: Response<ArrayList<CommentData>>
                 ) {
                     if (response.code() == 200) {
                         personListTmp = response.body()!!
@@ -40,7 +41,7 @@ class GetCommentList {
                     }
                 }
 
-                override fun onFailure(call: Call<ArrayList<SchoolData>>, t: Throwable) {
+                override fun onFailure(call: Call<ArrayList<CommentData>>, t: Throwable) {
                     Log.d("fa", "fa")
                 }
             })
