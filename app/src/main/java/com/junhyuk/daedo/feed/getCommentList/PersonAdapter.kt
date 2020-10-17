@@ -21,7 +21,7 @@ class PersonAdapter(private val context: Context, private val personList : Array
     var index = 1
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
-        val view = LayoutInflater.from(context).inflate(R.layout.comment_recycler_view_item, parent, false)
+        val view = LayoutInflater.from(context).inflate(R.layout.linearlayout_item, parent, false)
         return Holder(view)
     }
 
@@ -39,11 +39,11 @@ class PersonAdapter(private val context: Context, private val personList : Array
 
     inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         //recyclerview 에 올릴 프로토스 사진
-        private val userProfile = itemView.findViewById<ImageView>(R.id.user_profile)
+        private val userProfile = itemView.findViewById<ImageView>(R.id.linear_imageView)
         //댓글 작성자
-        private val userName = itemView.findViewById<TextView>(R.id.user_name)
+        private val userName = itemView.findViewById<TextView>(R.id.linear_content)
         //댓글 내용
-        private val commentContent = itemView.findViewById<TextView>(R.id.comment_content)
+        private val commentContent = itemView.findViewById<TextView>(R.id.linear_username)
         //댓글 작성 시간
         private val commentTime = itemView.findViewById<TextView>(R.id.comment_time)
 
@@ -82,7 +82,7 @@ class PersonAdapter(private val context: Context, private val personList : Array
             }*/
             userName?.text = stringBuffer
             Log.d("ct","ct: ${time.toLong()}")
-            commentTime?.text =  getTime.formatTimeString(year,month,day,hour,minute,second)
+           // commentTime?.text =  getTime.formatTimeString(year,month,day,hour,minute,second)
             Log.d("height","data: $stringBuffer")
             Log.d("height","line: $index")
 
