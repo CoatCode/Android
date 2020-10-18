@@ -17,7 +17,7 @@ class GetCommentList {
     internal fun getCommentList(
         getApplication: Application,
         context: Context,
-        cAdapter: PersonAdapter,
+        cAdapter: CommentRecyclerviewAdapter,
         personList : ArrayList<CommentData>
     ) {
 

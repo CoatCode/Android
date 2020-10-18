@@ -8,6 +8,25 @@
     android:gravity="bottom"
     android:layout_gravity="bottom">
 
+    <LinearLayout
+        android:layout_width="389dp"
+        android:layout_height="520dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/comment_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="475dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="56dp"
+            android:layout_marginEnd="1dp"
+            android:layout_marginBottom="75dp" />
+    </LinearLayout>
+
     <EditText
         android:id="@+id/edit_comment"
         android:layout_width="250dp"
@@ -41,20 +60,4 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <androidx.recyclerview.widget.RecyclerView
-
-        android:id="@+id/comment_recycler_view"
-        android:layout_width="match_parent"
-        android:layout_height="475dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginBottom="75dp"
-        app:layout_constraintBottom_toTopOf="@+id/edit_comment"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 </androidx.constraintlayout.widget.ConstraintLayout>

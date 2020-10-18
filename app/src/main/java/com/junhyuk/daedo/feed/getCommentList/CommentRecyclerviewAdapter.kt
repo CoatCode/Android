@@ -16,12 +16,12 @@ import com.junhyuk.daedo.feed.getCommentNetwork.CommentData
 import java.time.ZonedDateTime
 
 //recyclerview adapter
-class PersonAdapter(private val context: Context, private val personList : ArrayList<CommentData>) : RecyclerView.Adapter<PersonAdapter.Holder>(){
+class CommentRecyclerviewAdapter(private val context: Context, private val personList : ArrayList<CommentData>,val itemClick: () -> Unit) : RecyclerView.Adapter<CommentRecyclerviewAdapter.Holder>(){
 
     var index = 1
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
-        val view = LayoutInflater.from(context).inflate(R.layout.linearlayout_item, parent, false)
+        val view = LayoutInflater.from(context).inflate(R.layout.comment_recycler_view_item, parent, false)
         return Holder(view)
     }
 
@@ -33,28 +33,32 @@ class PersonAdapter(private val context: Context, private val personList : Array
         holder.bind(personList[position])
         //recyclerview item 간격 조정 코드
         val layoutParams = holder.itemView.layoutParams
-        layoutParams.height = index * 300
+        layoutParams.height = layoutParams.height
         holder.itemView.requestLayout()
+
+
     }
 
     inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         //recyclerview 에 올릴 프로토스 사진
-        private val userProfile = itemView.findViewById<ImageView>(R.id.linear_imageView)
+        private val userProfile = itemView.findViewById<ImageView>(R.id.user_profile)
         //댓글 작성자
-        private val userName = itemView.findViewById<TextView>(R.id.linear_content)
+        private val userName = itemView.findViewById<TextView>(R.id.user_name)
         //댓글 내용
-        private val commentContent = itemView.findViewById<TextView>(R.id.linear_username)
+        private val commentContent = itemView.findViewById<TextView>(R.id.comment_content)
         //댓글 작성 시간
         private val commentTime = itemView.findViewById<TextView>(R.id.comment_time)
 
-        fun bind (Person: CommentData) {
+        private val button = itemView.findViewById<ImageView>(R.id.comment_option)
+
+        fun bind (Comment: CommentData) {
             val getTime = GetCommentTime()
-            val year = ZonedDateTime.parse(Person.created_at).year
-            val month = ZonedDateTime.parse(Person.created_at).monthValue
-            val day = ZonedDateTime.parse(Person.created_at).dayOfMonth
-            val hour = ZonedDateTime.parse(Person.created_at).hour
-            val minute = ZonedDateTime.parse(Person.created_at).minute
-            val second = ZonedDateTime.parse(Person.created_at).second
+            val year = ZonedDateTime.parse(Comment.created_at).year
+            val month = ZonedDateTime.parse(Comment.created_at).monthValue
+            val day = ZonedDateTime.parse(Comment.created_at).dayOfMonth
+            val hour = ZonedDateTime.parse(Comment.created_at).hour
+            val minute = ZonedDateTime.parse(Comment.created_at).minute
+            val second = ZonedDateTime.parse(Comment.created_at).second
             val time = year + month + day + hour + minute + second
             Log.d("time","time:$time")
             Log.d("year","year : $year")
@@ -63,29 +67,19 @@ class PersonAdapter(private val context: Context, private val personList : Array
             Log.d("hour","hour : $hour")
             Log.d("minute","minute : $minute")
             Log.d("second","second : $second")
-            Log.d("jsonTime","jsonTime : ${Person.created_at}")
-            Log.d("content","content : ")
+            Log.d("jsonTime","jsonTime : ${Comment.created_at}")
+            Log.d("content","content : ${Comment.content}")
             Glide.with(context)
-                .load(Person.owner?.profile)
+                .load(Comment.owner?.profile)
                 .transform(CenterCrop(), RoundedCorners(1000000000))
                 .into(userProfile)
-            commentContent?.text = Person.owner?.username
-
-            val stringBuffer = StringBuffer()
-            stringBuffer.append(Person.content)
-
-           /* for(i in 1..Person.content.length){
-                if(i % 14 == 0){
-                    stringBuffer.insert(i, "\n")
-                    index++
-                }
-            }*/
-            userName?.text = stringBuffer
-            Log.d("ct","ct: ${time.toLong()}")
-           // commentTime?.text =  getTime.formatTimeString(year,month,day,hour,minute,second)
-            Log.d("height","data: $stringBuffer")
-            Log.d("height","line: $index")
-
+            commentContent?.text = Comment.content
+            userName?.text = Comment.owner?.username
+            commentTime?.text =  getTime.formatTimeString(year,month,day,hour,minute,second)
+            button.setOnClickListener{
+                itemClick()
+                Log.d("test","test")
+            }
         }
     }
 }
