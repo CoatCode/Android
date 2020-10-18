@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -16,7 +17,7 @@ import com.junhyuk.daedo.feed.getCommentNetwork.CommentData
 import java.time.ZonedDateTime
 
 //recyclerview adapter
-class CommentRecyclerviewAdapter(private val context: Context, private val personList : ArrayList<CommentData>,val itemClick: () -> Unit) : RecyclerView.Adapter<CommentRecyclerviewAdapter.Holder>(){
+class CommentRecyclerviewAdapter(private val context: Context, private val personList : ArrayList<CommentData>,val itemClick: (CommentData) -> Unit) : RecyclerView.Adapter<CommentRecyclerviewAdapter.Holder>(){
 
     var index = 1
 
@@ -49,7 +50,7 @@ class CommentRecyclerviewAdapter(private val context: Context, private val perso
         //댓글 작성 시간
         private val commentTime = itemView.findViewById<TextView>(R.id.comment_time)
 
-        private val button = itemView.findViewById<ImageView>(R.id.comment_option)
+        private val button = itemView.findViewById<ImageButton>(R.id.comment_option)
 
         fun bind (Comment: CommentData) {
             val getTime = GetCommentTime()
@@ -77,7 +78,7 @@ class CommentRecyclerviewAdapter(private val context: Context, private val perso
             userName?.text = Comment.owner?.username
             commentTime?.text =  getTime.formatTimeString(year,month,day,hour,minute,second)
             button.setOnClickListener{
-                itemClick()
+                itemClick(Comment)
                 Log.d("test","test")
             }
         }
