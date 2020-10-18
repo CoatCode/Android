@@ -28,4 +28,14 @@
     <string name="emailLogin">이메일 로그인</string>
     <string name="emailSignUp">이메일 회원가입</string>
     <string name="backgroundimage">backGroundImage</string>
+    <string name="search">Search</string>
+    <string name="hot">인기</string>
+    <string name="all">전체</string>
+    <string name="follow">팔로우</string>
+    <string name="Hot">인기</string>
+    <string name="designer_kang">Designer_Kang</string>
+    <string name="_1_day_ago">1 day ago</string>
+    <string name="feedimage">FeedImage</string>
+    <string name="this_design_good">This Design Good</string>
+    <string name="_1_3k">1.3k</string>
 </resources>

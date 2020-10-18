@@ -1,4 +1,4 @@
-package com.junhyuk.daedo.main.bottomItem.home
+package com.junhyuk.daedo.main.bottomItem.home.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.junhyuk.daedo.R
 
-class HomeFragment : Fragment() {
+class FeedFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -15,7 +15,7 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        val view = inflater.inflate(R.layout.fragment_home, container, false)
+        val view = inflater.inflate(R.layout.fragment_feed, container, false)
 
 
 

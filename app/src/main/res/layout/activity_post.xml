@@ -22,7 +22,7 @@
             android:id="@+id/xButton"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:layout_gravity="left"
+            android:layout_gravity="start"
             android:background="@android:color/transparent"
             android:contentDescription="@string/todo"
             android:src="@drawable/ic_x_button" />

@@ -9,6 +9,7 @@
         <item name="android:statusBarColor">#ffffff</item>
         <!--Status Bar 글자색깔-->
         <item name="android:windowLightStatusBar">true</item>
+
     </style>
 
     <style name="MyActionBar" parent="@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse">
@@ -18,7 +19,6 @@
     <style name="MyActionBarTitle" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
         <item name="android:textColor">@color/colorBlack</item>
     </style>
-
 
 
 </resources>
