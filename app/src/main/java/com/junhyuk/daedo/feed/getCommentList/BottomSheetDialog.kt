@@ -1,4 +1,4 @@
-package com.junhyuk.daedo.feed.getCommentList
+ package com.junhyuk.daedo.feed.getCommentList
 
 import android.os.Bundle
 import android.util.Log
@@ -30,6 +30,7 @@ class BottomSheetDialog : BottomSheetDialogFragment() {
             Log.d("correct","correct")
         }
         view.comment_delete.setOnClickListener {
+            Log.d("delete","delete")
         }
     }
 }
