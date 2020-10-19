@@ -3,10 +3,7 @@ package com.junhyuk.daedo.feed.network
 import com.junhyuk.daedo.feed.getCommentNetwork.CommentData
 import com.junhyuk.daedo.feed.writeCommentNetwork.WriteCommentBody
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.Header
-import retrofit2.http.POST
+import retrofit2.http.*
 
 //댓글 interface
 interface CommentInterface{
@@ -24,4 +21,10 @@ interface CommentInterface{
     fun getComment(
         @Header("Authorization") type: String
     ): Call<ArrayList<CommentData>>
+    @DELETE("/feed/post/12/comment/{comment-id}")
+    fun deleteComment(
+        //@Path("post-id") post : String,
+        @Path("comment-id") comment : String,
+        @Header("Authorization") type:String
+    )
 }

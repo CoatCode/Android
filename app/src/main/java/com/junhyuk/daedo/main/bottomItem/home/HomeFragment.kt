@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.junhyuk.daedo.R
+import com.junhyuk.daedo.feed.BottomSheetDialog
 import com.junhyuk.daedo.feed.getCommentList.CommentRecyclerviewAdapter
 import com.junhyuk.daedo.feed.getCommentList.GetCommentList
 import com.junhyuk.daedo.feed.getCommentList.ItemSize
@@ -35,7 +36,7 @@ class HomeFragment : Fragment() {
     ): View? {
         mAdapter = CommentRecyclerviewAdapter(requireContext(), personList) {
             //bottomSheetDialog 호출 recyclerview 안 버튼 클릭시 bottomSheetDialog 가 호출 된다.
-            val bottomSheet = com.junhyuk.daedo.feed.getCommentList.BottomSheetDialog()
+            val bottomSheet = BottomSheetDialog()
             bottomSheet.show(childFragmentManager,bottomSheet.tag)
         }
        // mAdapter = CommentRecyclerviewAdapter(requireContext(), personList)

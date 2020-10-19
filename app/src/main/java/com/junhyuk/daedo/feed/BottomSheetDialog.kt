@@ -1,5 +1,6 @@
- package com.junhyuk.daedo.feed.getCommentList
+ package com.junhyuk.daedo.feed
 
+import android.app.Application
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -7,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.junhyuk.daedo.R
+import com.junhyuk.daedo.feed.deleteComment.DeleteComment
 import kotlinx.android.synthetic.main.bottom_sheet_layout.view.*
 
 /*
@@ -31,6 +33,7 @@ class BottomSheetDialog : BottomSheetDialogFragment() {
         }
         view.comment_delete.setOnClickListener {
             Log.d("delete","delete")
+            DeleteComment(application)
         }
     }
 }
