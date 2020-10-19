@@ -1,6 +1,5 @@
  package com.junhyuk.daedo.feed
 
-import android.app.Application
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -17,6 +16,8 @@ import kotlinx.android.synthetic.main.bottom_sheet_layout.view.*
 *
 */
 class BottomSheetDialog : BottomSheetDialogFragment() {
+    private val deleteComment = DeleteComment()
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -27,13 +28,16 @@ class BottomSheetDialog : BottomSheetDialogFragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        val activityBox =  activity
         super.onViewCreated(view, savedInstanceState)
+        Log.d("mustNotBeNull","MustNotBeNull : ${activityBox}")
         view.comment_correct.setOnClickListener {
             Log.d("correct","correct")
         }
         view.comment_delete.setOnClickListener {
-            Log.d("delete","delete")
-            DeleteComment(application)
+            Log.d("delete","delete:$activityBox")
+                deleteComment.deleteComment(activityBox!!.application)
+
         }
     }
 }

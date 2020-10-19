@@ -39,12 +39,13 @@ class HomeFragment : Fragment() {
             val bottomSheet = BottomSheetDialog()
             bottomSheet.show(childFragmentManager,bottomSheet.tag)
         }
-       // mAdapter = CommentRecyclerviewAdapter(requireContext(), personList)
+
         val view = inflater.inflate(R.layout.fragment_home, container, false)
         view.comment_recycler_view?.adapter = mAdapter
         view.comment_recycler_view.setHasFixedSize(true)
 
         val activityBox = activity
+        Log.d("activityBox","activityBox${activityBox!!.application}")
 
         val lm = LinearLayoutManager(context)
         view.comment_recycler_view.layoutManager = lm
