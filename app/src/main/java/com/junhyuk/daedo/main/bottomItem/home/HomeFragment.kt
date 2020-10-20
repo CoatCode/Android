@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.junhyuk.daedo.R
-import com.junhyuk.daedo.feed.BottomSheetDialog
 import com.junhyuk.daedo.feed.getCommentList.CommentRecyclerviewAdapter
 import com.junhyuk.daedo.feed.getCommentList.GetCommentList
 import com.junhyuk.daedo.feed.getCommentList.ItemSize
@@ -37,8 +36,8 @@ class HomeFragment : Fragment() {
         val activityBox = activity
         mAdapter = CommentRecyclerviewAdapter(requireContext(), personList) {
             //bottomSheetDialog 호출 recyclerview 안 버튼 클릭시 bottomSheetDialog 가 호출 된다.
-            val bottomSheet = BottomSheetDialog()
-            bottomSheet.show(childFragmentManager,bottomSheet.tag)
+             // val bottomSheet = BottomSheetDialog()
+             // bottomSheet.show(childFragmentManager,bottomSheet.tag)
         }
 
         val view = inflater.inflate(R.layout.fragment_home, container, false)
@@ -47,8 +46,7 @@ class HomeFragment : Fragment() {
 
         val lm = LinearLayoutManager(context)
         view.comment_recycler_view.layoutManager = lm
-        view.comment_recycler_view.addItemDecoration(ItemSize(100));
-
+        view.comment_recycler_view.addItemDecoration(ItemSize(100))
         //댓글 작성 버튼 누를 시 SendComment 클래스 호출하고 입력받은 댓글을 넘겨준다
         view.write_comment?.setOnClickListener {
             Log.d("HomeFragment", "HomeFragment")

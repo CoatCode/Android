@@ -8,15 +8,17 @@ import android.view.ViewGroup
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.junhyuk.daedo.R
 import com.junhyuk.daedo.feed.deleteComment.DeleteComment
+import com.junhyuk.daedo.feed.getCommentNetwork.CommentData
 import kotlinx.android.synthetic.main.bottom_sheet_layout.view.*
 
-/*
-* 하단 슬라이드뷰 fragment
-*
-*
-*/
-class BottomSheetDialog: BottomSheetDialogFragment() {
-    private val deleteComment = DeleteComment()
+ /*
+ * 하단 슬라이드뷰 fragment
+ *
+ *
+ */
+class BottomSheetDialog(Comment : CommentData) : BottomSheetDialogFragment() {
+     private val deleteComment = DeleteComment()
+     private val example = Comment.comment_id
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -29,15 +31,13 @@ class BottomSheetDialog: BottomSheetDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val activityBox = requireActivity()
-        Log.e("essas", (activityBox==null).toString())
         //댓글 수정 버튼
         view.comment_correct.setOnClickListener {
 
         }
         //댓글 삭제 버튼
         view.comment_delete.setOnClickListener {
-                Log.e("assas","assas : $activityBox")
-                deleteComment.deleteComment(activityBox!!.application)
+               deleteComment.deleteComment(activityBox.application, example)
         }
     }
 }
