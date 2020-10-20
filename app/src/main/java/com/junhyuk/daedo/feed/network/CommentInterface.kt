@@ -2,9 +2,7 @@ package com.junhyuk.daedo.feed.network
 
 import com.junhyuk.daedo.feed.getCommentNetwork.CommentData
 import com.junhyuk.daedo.feed.writeCommentNetwork.WriteCommentBody
-import org.json.JSONObject
 import retrofit2.Call
-import retrofit2.Callback
 import retrofit2.http.*
 
 //댓글 interface
@@ -24,10 +22,10 @@ interface CommentInterface{
         @Header("Authorization") type: String
     ): Call<ArrayList<CommentData>>
     //작성한 댓글을 삭제 한다
-    @DELETE("/feed/post/12/comment/{comment-id}")
+    @DELETE("/feed/post/7/comment/{comment-id}")
     fun deleteComment(
         //@Path("post-id") post : String,
         @Path("comment-id") comment : String,
         @Header("Authorization") type:String
-    ): Callback<JSONObject>
+    ): Call<Void>
 }

@@ -23,10 +23,10 @@ class DeleteComment {
         //val example = cId.comment_id
 
         (getApplication as DaedoApplication).retrofit.create(CommentInterface::class.java)
-        //    .deleteComment("Bearer $token", commentId)
-            (object : Callback<Void> {
+            .deleteComment(commentId,"Bearer $token")
+            .enqueue(object : Callback<Void> {
                 override fun onResponse(call: Call<Void>, response: Response<Void>) {
-                    Log.d("delete", "delete")
+                    Log.d("delete", "delete : ${response.code()}")
             }
 
                 override fun onFailure(call: Call<Void>, t: Throwable) {
