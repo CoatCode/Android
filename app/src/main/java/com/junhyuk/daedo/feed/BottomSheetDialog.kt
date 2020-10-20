@@ -15,9 +15,8 @@ import kotlinx.android.synthetic.main.bottom_sheet_layout.view.*
 *
 *
 */
-class BottomSheetDialog : BottomSheetDialogFragment() {
+class BottomSheetDialog: BottomSheetDialogFragment() {
     private val deleteComment = DeleteComment()
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -28,16 +27,17 @@ class BottomSheetDialog : BottomSheetDialogFragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val activityBox =  activity
         super.onViewCreated(view, savedInstanceState)
-        Log.d("mustNotBeNull","MustNotBeNull : ${activityBox}")
+        val activityBox = requireActivity()
+        Log.e("essas", (activityBox==null).toString())
+        //댓글 수정 버튼
         view.comment_correct.setOnClickListener {
-            Log.d("correct","correct")
-        }
-        view.comment_delete.setOnClickListener {
-            Log.d("delete","delete:$activityBox")
-                deleteComment.deleteComment(activityBox!!.application)
 
+        }
+        //댓글 삭제 버튼
+        view.comment_delete.setOnClickListener {
+                Log.e("assas","assas : $activityBox")
+                deleteComment.deleteComment(activityBox!!.application)
         }
     }
 }

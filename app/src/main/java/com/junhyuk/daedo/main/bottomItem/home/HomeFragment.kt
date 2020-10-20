@@ -34,6 +34,7 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        val activityBox = activity
         mAdapter = CommentRecyclerviewAdapter(requireContext(), personList) {
             //bottomSheetDialog 호출 recyclerview 안 버튼 클릭시 bottomSheetDialog 가 호출 된다.
             val bottomSheet = BottomSheetDialog()
@@ -44,9 +45,6 @@ class HomeFragment : Fragment() {
         view.comment_recycler_view?.adapter = mAdapter
         view.comment_recycler_view.setHasFixedSize(true)
 
-        val activityBox = activity
-        Log.d("activityBox","activityBox${activityBox!!.application}")
-
         val lm = LinearLayoutManager(context)
         view.comment_recycler_view.layoutManager = lm
         view.comment_recycler_view.addItemDecoration(ItemSize(100));
@@ -56,11 +54,11 @@ class HomeFragment : Fragment() {
             Log.d("HomeFragment", "HomeFragment")
             comment = this.edit_comment.text.toString()
             Log.d("test", "test:$comment")
-
+            //작성한 댓글 서버통신 클래스로 값 전달
             sendComment.sendComment(comment, activityBox!!.application)
+            //댓글 목록 받아오는 클래스로 값 전달
             getComment.getCommentList(
                 activityBox.application,
-                requireContext(),
                 mAdapter,
                 personList
             )

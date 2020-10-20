@@ -1,7 +1,6 @@
 package com.junhyuk.daedo.feed.getCommentList
 
 import android.app.Application
-import android.content.Context
 import android.util.Log
 import com.junhyuk.daedo.application.DaedoApplication
 import com.junhyuk.daedo.feed.getCommentNetwork.CommentData
@@ -16,9 +15,8 @@ class GetCommentList {
 
     internal fun getCommentList(
         getApplication: Application,
-        context: Context,
         cAdapter: CommentRecyclerviewAdapter,
-        personList : ArrayList<CommentData>
+        commentList : ArrayList<CommentData>
     ) {
 
         val token: String =
@@ -33,7 +31,9 @@ class GetCommentList {
                     if (response.code() == 200) {
                         personListTmp = response.body()!!
                         Log.d("responseBody","responseBody${response.body()}")
-                        personList.addAll(personListTmp)
+                        //댓글 목록에 추가
+                        commentList.addAll(personListTmp)
+                        //댓글 목록 업데이트
                         cAdapter.notifyDataSetChanged()
                     }
                     if (response.code() == 401) {

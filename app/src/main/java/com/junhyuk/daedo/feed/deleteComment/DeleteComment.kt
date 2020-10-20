@@ -19,7 +19,7 @@ class DeleteComment {
         ){
         val token: String =
             EmailLoginBody.instance!!.access_token
-//            Log.d("CommentId","CommentId${CommentData.instance!!.comment_id}")
+            Log.d("CommentId","CommentId${CommentData.instance!!.comment_id}")
 
         val commentId : String = CommentData.instance!!.comment_id
 
