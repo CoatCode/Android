@@ -28,4 +28,10 @@ interface CommentInterface{
         @Path("comment-id") comment : String,
         @Header("Authorization") type:String
     ): Call<Void>
+    @PUT("/feed/post/7/comment/{comment-id}")
+    fun correctComment(
+        //@Path("post-id") post : String,
+        @Path("comment-id") comment : String,
+        @Header("Authorization") type:String
+    ): Call<Void>
 }

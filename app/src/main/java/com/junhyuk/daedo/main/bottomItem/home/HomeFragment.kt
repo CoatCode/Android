@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.junhyuk.daedo.R
@@ -40,6 +41,7 @@ class HomeFragment : Fragment() {
              // bottomSheet.show(childFragmentManager,bottomSheet.tag)
         }
 
+
         val view = inflater.inflate(R.layout.fragment_home, container, false)
         view.comment_recycler_view?.adapter = mAdapter
         view.comment_recycler_view.setHasFixedSize(true)
@@ -51,7 +53,6 @@ class HomeFragment : Fragment() {
         view.write_comment?.setOnClickListener {
             Log.d("HomeFragment", "HomeFragment")
             comment = this.edit_comment.text.toString()
-            Log.d("test", "test:$comment")
             //작성한 댓글 서버통신 클래스로 값 전달
             sendComment.sendComment(comment, activityBox!!.application)
             //댓글 목록 받아오는 클래스로 값 전달
@@ -65,4 +66,5 @@ class HomeFragment : Fragment() {
     }
 
 }
+
 
