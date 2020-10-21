@@ -32,6 +32,6 @@ interface CommentInterface{
     fun correctComment(
         //@Path("post-id") post : String,
         @Path("comment-id") comment : String,
-        @Header("Authorization") type:String
+        @Header("Authorization") type : String
     ): Call<Void>
 }
