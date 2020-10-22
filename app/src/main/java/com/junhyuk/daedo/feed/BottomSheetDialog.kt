@@ -10,6 +10,7 @@ import android.widget.EditText
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.junhyuk.daedo.R
 import com.junhyuk.daedo.feed.correctComment.CorrectComment
+import com.junhyuk.daedo.feed.correctComment.CorrectCommentBody
 import com.junhyuk.daedo.feed.deleteComment.DeleteComment
 import com.junhyuk.daedo.feed.getCommentNetwork.CommentData
 import kotlinx.android.synthetic.main.bottom_sheet_layout.view.*
@@ -27,7 +28,7 @@ class BottomSheetDialog(Comment: CommentData, view: View?) : BottomSheetDialogFr
     private val fragmentHomeView = view
     private val comment = Comment
     private val correctComment = CorrectComment()
-    private val activityBox = requireActivity()
+
 
 
     override fun onCreateView(
@@ -42,14 +43,14 @@ class BottomSheetDialog(Comment: CommentData, view: View?) : BottomSheetDialogFr
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val editComment: EditText? = fragmentHomeView?.findViewById(R.id.edit_comment)
-
+        val activityBox = requireActivity()
         val bottomSheet = BottomSheetDialog(comment, view)
         val dia = dialog
 
 
         //댓글 수정 버튼
         view.comment_correct.setOnClickListener {
-            correctComment.correctComment(activityBox.application, commentContent)
+            correctComment.correctComment(activityBox.application,commentId, commentContent)
             //editComment?.showKeyboard()
             editComment?.setText(commentContent)!!
             if (dia != null) {
@@ -70,7 +71,8 @@ class BottomSheetDialog(Comment: CommentData, view: View?) : BottomSheetDialogFr
         }
     }
     private fun correct(){
-        correctComment.correctComment(activityBox.application,commentId)
+        val activityBox = requireActivity()
+    //    correctComment.correctComment(activityBox.application,commentId)
     }
 
 }

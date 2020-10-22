@@ -1,5 +1,6 @@
 package com.junhyuk.daedo.feed.network
 
+import com.junhyuk.daedo.feed.correctComment.CorrectCommentBody
 import com.junhyuk.daedo.feed.getCommentNetwork.CommentData
 import com.junhyuk.daedo.feed.writeCommentNetwork.WriteCommentBody
 import retrofit2.Call
@@ -32,6 +33,7 @@ interface CommentInterface{
     fun correctComment(
         //@Path("post-id") post : String,
         @Path("comment-id") comment : String,
-        @Header("Authorization") type : String
+        @Header("Authorization") type : String,
+        @Body sendComment: CorrectCommentBody
     ): Call<Void>
 }

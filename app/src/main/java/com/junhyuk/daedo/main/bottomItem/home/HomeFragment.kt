@@ -1,7 +1,6 @@
 package com.junhyuk.daedo.main.bottomItem.home
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -52,10 +51,11 @@ class HomeFragment : Fragment() {
         view.comment_recycler_view.addItemDecoration(ItemSize(100))
         //댓글 작성 버튼 누를 시 SendComment 클래스 호출하고 입력받은 댓글을 넘겨준다
         view.write_comment?.setOnClickListener {
-            Log.d("HomeFragment", "HomeFragment")
             comment = this.edit_comment.text.toString()
+
             //작성한 댓글 서버통신 클래스로 값 전달
             sendComment.sendComment(comment, activityBox!!.application)
+
             //댓글 목록 받아오는 클래스로 값 전달
             getComment.getCommentList(
                 activityBox.application,

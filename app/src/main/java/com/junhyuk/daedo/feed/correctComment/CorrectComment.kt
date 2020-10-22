@@ -14,16 +14,18 @@ class CorrectComment {
 
     internal fun correctComment(
         getApplication: Application,
-        commentId : String
+        commentId : String,
+        commentContent : CorrectCommentBody
        // editText: String
     ) {
-        val token: String = EmailLoginBody.instance!!.access_token
 
+        val token: String = EmailLoginBody.instance!!.access_token
+        Log.d("correctId","correctId : $commentId")
         (getApplication as DaedoApplication).retrofit.create(CommentInterface::class.java)
-            .correctComment(commentId,"Bearer $token")
+            .correctComment(commentId,"Bearer $token",commentContent)
             .enqueue(object : Callback<Void> {
                 override fun onResponse(call: Call<Void>, response: Response<Void>) {
-                    Log.d("deletefghh", "delete : ${response.code()}")
+                    Log.d("CorrectComment", "CorrectComment : ${response.code()}")
                 }
 
                 override fun onFailure(call: Call<Void>, t: Throwable) {
