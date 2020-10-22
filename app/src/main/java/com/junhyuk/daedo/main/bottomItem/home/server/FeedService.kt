@@ -1,5 +1,6 @@
 package com.junhyuk.daedo.main.bottomItem.home.server
 
+import com.junhyuk.daedo.main.bottomItem.home.data.FeedData
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -10,6 +11,6 @@ interface FeedService {
     @GET("/feed/post/all")
     fun requestFeed(
         @Query ("page") page: Int
-    ): Call<FeedResponse>
+    ): Call<List<FeedData>>
 
 }

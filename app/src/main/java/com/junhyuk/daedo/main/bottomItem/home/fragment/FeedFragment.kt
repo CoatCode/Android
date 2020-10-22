@@ -5,13 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.junhyuk.daedo.R
-import com.junhyuk.daedo.main.bottomItem.home.workinRetrofit.SetUpRetrofit
+import com.junhyuk.daedo.main.bottomItem.home.adapter.FeedAdapter
+import com.junhyuk.daedo.main.bottomItem.home.model.FeedViewModel
+import kotlinx.android.synthetic.main.fragment_feed.view.*
+
 
 class FeedFragment : Fragment() {
-
-    //서버 통신
-    private lateinit var setUpRetrofit: SetUpRetrofit
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -21,7 +23,17 @@ class FeedFragment : Fragment() {
 
         val view = inflater.inflate(R.layout.fragment_feed, container, false)
 
-        setUpRetrofit = SetUpRetrofit()
+        view.feedRecyclerView.setHasFixedSize(true)
+
+        val feedViewModel = ViewModelProvider(this).get(FeedViewModel::class.java)
+
+        val feedAdapter = FeedAdapter(activity?.applicationContext!!)
+
+        feedViewModel.feedPagedList.observe(viewLifecycleOwner, Observer {
+            feedAdapter.submitList(it)
+        })
+
+        view.feedRecyclerView.adapter = feedAdapter
 
         return view
 
