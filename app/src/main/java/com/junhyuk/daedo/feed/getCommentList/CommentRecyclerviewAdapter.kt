@@ -1,6 +1,5 @@
 package com.junhyuk.daedo.feed.getCommentList
 
-import android.app.Application
 import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
@@ -16,14 +15,12 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.junhyuk.daedo.R
 import com.junhyuk.daedo.feed.BottomSheetDialog
-import com.junhyuk.daedo.feed.deleteComment.DeleteComment
 import com.junhyuk.daedo.feed.getCommentNetwork.CommentData
 import java.time.ZonedDateTime
 
 //recyclerview adapter
-class CommentRecyclerviewAdapter(private val context: Context, private val personList : ArrayList<CommentData>,val itemClick: (CommentData) -> Unit) : RecyclerView.Adapter<CommentRecyclerviewAdapter.Holder>(){
+class CommentRecyclerviewAdapter(private val context: Context, private val personList : ArrayList<CommentData>,val view : View?, val itemClick: (CommentData) -> Unit) : RecyclerView.Adapter<CommentRecyclerviewAdapter.Holder>(){
 
-    var index = 1
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val view = LayoutInflater.from(context).inflate(R.layout.comment_recycler_view_item, parent, false)
@@ -57,9 +54,9 @@ class CommentRecyclerviewAdapter(private val context: Context, private val perso
         private val button = itemView.findViewById<ImageButton>(R.id.comment_option)
 
         fun bind (Comment: CommentData) {
+
             val getTime = GetCommentTime()
-            val deleteComment = DeleteComment()
-            val activityBox = Application()
+
             val year = ZonedDateTime.parse(Comment.created_at).year
             val month = ZonedDateTime.parse(Comment.created_at).monthValue
             val day = ZonedDateTime.parse(Comment.created_at).dayOfMonth
@@ -86,11 +83,10 @@ class CommentRecyclerviewAdapter(private val context: Context, private val perso
             commentTime?.text =  getTime.formatTimeString(year,month,day,hour,minute,second)
             button.setOnClickListener{
                 itemClick(Comment)
-                val bottomSheet = BottomSheetDialog(Comment)
-            //    deleteComment.deleteComment(activityBox,Comment.comment_id)
-                BottomSheetDialog(Comment)
+                val bottomSheet = BottomSheetDialog(Comment,view)
+                BottomSheetDialog(Comment,view)
                 bottomSheet.show((context as AppCompatActivity).supportFragmentManager,bottomSheet.tag)
-                Log.d("test","test : ${Comment.comment_id}")
+
             }
         }
     }

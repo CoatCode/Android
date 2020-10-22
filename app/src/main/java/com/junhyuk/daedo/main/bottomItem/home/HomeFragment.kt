@@ -5,7 +5,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.junhyuk.daedo.R
@@ -29,13 +28,16 @@ class HomeFragment : Fragment() {
     private var comment: String = ""
     private lateinit var mAdapter: CommentRecyclerviewAdapter
 
+
+
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val activityBox = activity
-        mAdapter = CommentRecyclerviewAdapter(requireContext(), personList) {
+        mAdapter = CommentRecyclerviewAdapter(requireContext(), personList,view) {
             //bottomSheetDialog 호출 recyclerview 안 버튼 클릭시 bottomSheetDialog 가 호출 된다.
              // val bottomSheet = BottomSheetDialog()
              // bottomSheet.show(childFragmentManager,bottomSheet.tag)
@@ -62,8 +64,10 @@ class HomeFragment : Fragment() {
                 personList
             )
         }
+
         return view
     }
+
 
 }
 
