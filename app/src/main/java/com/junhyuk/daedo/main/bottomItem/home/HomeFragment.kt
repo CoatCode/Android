@@ -37,14 +37,13 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val activityBox = activity
+        val view = inflater.inflate(R.layout.fragment_home, container, false)
         mAdapter = CommentRecyclerviewAdapter(requireContext(), personList,view) {
             //bottomSheetDialog 호출 recyclerview 안 버튼 클릭시 bottomSheetDialog 가 호출 된다.
              // val bottomSheet = BottomSheetDialog()
              // bottomSheet.show(childFragmentManager,bottomSheet.tag)
         }
 
-
-        val view = inflater.inflate(R.layout.fragment_home, container, false)
         view.comment_recycler_view?.adapter = mAdapter
         view.comment_recycler_view.setHasFixedSize(true)
 

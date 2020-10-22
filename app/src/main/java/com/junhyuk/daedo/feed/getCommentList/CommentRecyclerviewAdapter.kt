@@ -1,5 +1,6 @@
 package com.junhyuk.daedo.feed.getCommentList
 
+import android.app.Activity
 import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
@@ -15,6 +16,7 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.junhyuk.daedo.R
 import com.junhyuk.daedo.feed.BottomSheetDialog
+import com.junhyuk.daedo.feed.deleteComment.DeleteComment
 import com.junhyuk.daedo.feed.getCommentNetwork.CommentData
 import java.time.ZonedDateTime
 
@@ -54,8 +56,9 @@ class CommentRecyclerviewAdapter(private val context: Context, private val perso
         private val button = itemView.findViewById<ImageButton>(R.id.comment_option)
 
         fun bind (Comment: CommentData) {
-
+            val activityBox = Activity()
             val getTime = GetCommentTime()
+            val deleteComment = DeleteComment()
 
             val year = ZonedDateTime.parse(Comment.created_at).year
             val month = ZonedDateTime.parse(Comment.created_at).monthValue
