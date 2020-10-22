@@ -15,14 +15,14 @@ class CorrectComment {
     internal fun correctComment(
         getApplication: Application,
         commentId : String,
-        commentContent : CorrectCommentBody
+        commentContent : String
        // editText: String
     ) {
 
         val token: String = EmailLoginBody.instance!!.access_token
         Log.d("correctId","correctId : $commentId")
         (getApplication as DaedoApplication).retrofit.create(CommentInterface::class.java)
-            .correctComment(commentId,"Bearer $token",commentContent)
+            .correctComment(commentId,"Bearer $token",CorrectCommentBody(commentContent))
             .enqueue(object : Callback<Void> {
                 override fun onResponse(call: Call<Void>, response: Response<Void>) {
                     Log.d("CorrectComment", "CorrectComment : ${response.code()}")

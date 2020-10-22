@@ -31,6 +31,8 @@ class GetCommentList {
                     if (response.code() == 200) {
                         personListTmp = response.body()!!
                         Log.d("responseBody","responseBody${response.body()}")
+                        //댓글 목록 초기화
+                        commentList.clear()
                         //댓글 목록에 추가
                         commentList.addAll(personListTmp)
                         //댓글 목록 업데이트

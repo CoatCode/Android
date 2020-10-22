@@ -22,7 +22,7 @@ class HomeFragment : Fragment() {
 
     private companion object
 
-    var personList =
+    var commentList =
         arrayListOf<CommentData>()
     private var comment: String = ""
     private lateinit var mAdapter: CommentRecyclerviewAdapter
@@ -37,7 +37,7 @@ class HomeFragment : Fragment() {
     ): View? {
         val activityBox = activity
         val view = inflater.inflate(R.layout.fragment_home, container, false)
-        mAdapter = CommentRecyclerviewAdapter(requireContext(), personList,view) {
+        mAdapter = CommentRecyclerviewAdapter(requireContext(), commentList,view) {
             //bottomSheetDialog 호출 recyclerview 안 버튼 클릭시 bottomSheetDialog 가 호출 된다.
              // val bottomSheet = BottomSheetDialog()
              // bottomSheet.show(childFragmentManager,bottomSheet.tag)
@@ -60,7 +60,7 @@ class HomeFragment : Fragment() {
             getComment.getCommentList(
                 activityBox.application,
                 mAdapter,
-                personList
+                commentList
             )
         }
 

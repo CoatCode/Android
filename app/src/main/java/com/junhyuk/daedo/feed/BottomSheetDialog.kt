@@ -10,8 +10,8 @@ import android.widget.EditText
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.junhyuk.daedo.R
 import com.junhyuk.daedo.feed.correctComment.CorrectComment
-import com.junhyuk.daedo.feed.correctComment.CorrectCommentBody
 import com.junhyuk.daedo.feed.deleteComment.DeleteComment
+import com.junhyuk.daedo.feed.getCommentList.CommentRecyclerviewAdapter
 import com.junhyuk.daedo.feed.getCommentNetwork.CommentData
 import kotlinx.android.synthetic.main.bottom_sheet_layout.view.*
 
@@ -21,13 +21,15 @@ import kotlinx.android.synthetic.main.bottom_sheet_layout.view.*
 *
 *
 */
-class BottomSheetDialog(Comment: CommentData, view: View?) : BottomSheetDialogFragment() {
+class BottomSheetDialog(Comment: CommentData, view: View?, mAdapter : CommentRecyclerviewAdapter,commentList : ArrayList<CommentData>) : BottomSheetDialogFragment() {
     private val deleteComment = DeleteComment()
     private val commentId = Comment.comment_id
     private val commentContent = Comment.content
     private val fragmentHomeView = view
     private val comment = Comment
     private val correctComment = CorrectComment()
+    private val adapter = mAdapter
+    private val commentList = commentList
 
 
 
@@ -44,13 +46,13 @@ class BottomSheetDialog(Comment: CommentData, view: View?) : BottomSheetDialogFr
         super.onViewCreated(view, savedInstanceState)
         val editComment: EditText? = fragmentHomeView?.findViewById(R.id.edit_comment)
         val activityBox = requireActivity()
-        val bottomSheet = BottomSheetDialog(comment, view)
+        val bottomSheet = BottomSheetDialog(comment, view, adapter, commentList)
         val dia = dialog
 
 
         //댓글 수정 버튼
         view.comment_correct.setOnClickListener {
-            correctComment.correctComment(activityBox.application,commentId, commentContent)
+            correctComment.correctComment(activityBox.application,commentId,commentContent)
             //editComment?.showKeyboard()
             editComment?.setText(commentContent)!!
             if (dia != null) {
@@ -61,9 +63,9 @@ class BottomSheetDialog(Comment: CommentData, view: View?) : BottomSheetDialogFr
 
         //댓글 삭제 버튼
         view.comment_delete?.setOnClickListener {
-            bottomSheet.deleteComment.deleteComment(activityBox.application, commentId)
+            bottomSheet.deleteComment.deleteComment(activityBox.application,commentId,adapter,commentList)
             val imm = context?.getSystemService(INPUT_METHOD_SERVICE) as? InputMethodManager
-            imm?.hideSoftInputFromWindow(editComment?.getWindowToken(), 0)
+            imm?.hideSoftInputFromWindow(editComment?.windowToken, 0)
             if (dia != null) {
                 dismissAllowingStateLoss()
             }

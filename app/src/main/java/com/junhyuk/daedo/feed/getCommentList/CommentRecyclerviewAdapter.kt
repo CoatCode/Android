@@ -21,7 +21,7 @@ import com.junhyuk.daedo.feed.getCommentNetwork.CommentData
 import java.time.ZonedDateTime
 
 //recyclerview adapter
-class CommentRecyclerviewAdapter(private val context: Context, private val personList : ArrayList<CommentData>,val view : View?, val itemClick: (CommentData) -> Unit) : RecyclerView.Adapter<CommentRecyclerviewAdapter.Holder>(){
+class CommentRecyclerviewAdapter(private val context: Context, private val commentList : ArrayList<CommentData>, val view : View?, val itemClick: (CommentData) -> Unit) : RecyclerView.Adapter<CommentRecyclerviewAdapter.Holder>(){
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
@@ -30,11 +30,11 @@ class CommentRecyclerviewAdapter(private val context: Context, private val perso
     }
 
     override fun getItemCount(): Int {
-        return personList.size
+        return commentList.size
     }
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
-        holder.bind(personList[position])
+        holder.bind(commentList[position])
         //recyclerview item 간격 조정 코드
         val layoutParams = holder.itemView.layoutParams
         layoutParams.height = layoutParams.height
@@ -59,7 +59,7 @@ class CommentRecyclerviewAdapter(private val context: Context, private val perso
             val activityBox = Activity()
             val getTime = GetCommentTime()
             val deleteComment = DeleteComment()
-
+            val adapter = CommentRecyclerviewAdapter(context,commentList,view, itemClick)
             val year = ZonedDateTime.parse(Comment.created_at).year
             val month = ZonedDateTime.parse(Comment.created_at).monthValue
             val day = ZonedDateTime.parse(Comment.created_at).dayOfMonth
@@ -86,8 +86,8 @@ class CommentRecyclerviewAdapter(private val context: Context, private val perso
             commentTime?.text =  getTime.formatTimeString(year,month,day,hour,minute,second)
             button.setOnClickListener{
                 itemClick(Comment)
-                val bottomSheet = BottomSheetDialog(Comment,view)
-                BottomSheetDialog(Comment,view)
+                val bottomSheet = BottomSheetDialog(Comment,view,adapter,commentList)
+                BottomSheetDialog(Comment,view,adapter,commentList)
                 bottomSheet.show((context as AppCompatActivity).supportFragmentManager,bottomSheet.tag)
 
             }
