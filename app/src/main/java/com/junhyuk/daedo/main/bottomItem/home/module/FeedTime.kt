@@ -41,19 +41,19 @@ class FeedTime {
                 msg = "방금 전"
             }
             TimeData.SEC.let { diffTime /= it; diffTime } < TimeData.MIN -> {
-                msg = diffTime.toString() + "minutes ago"
+                msg = "$diffTime minutes ago"
             }
             TimeData.MIN.let { diffTime /= it; diffTime } < TimeData.HOUR -> {
-                msg = diffTime.toString() + "hours ago"
+                msg = "$diffTime hours ago"
             }
             TimeData.HOUR.let { diffTime /= it; diffTime } < TimeData.DAY -> {
-                msg = diffTime.toString() + "days ago"
+                msg = "$diffTime days ago"
             }
             TimeData.DAY.let { diffTime /= it; diffTime } < TimeData.MONTH -> {
-                msg = diffTime.toString() + "months ago"
+                msg = "$diffTime months ago"
             }
             else -> {
-                msg = diffTime.toString() + "years ago"
+                msg = "$diffTime years ago"
             }
         }
         return msg
