@@ -3,16 +3,8 @@
     package="com.junhyuk.daedo">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="MANAGE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
-    <queries>
-        <intent>
-            <action android:name="android.intent.action.GET_CONTENT" />
-            <data android:mimeType="image/jpeg" />
-        </intent>
-    </queries>
-
     <application
         android:name=".application.DaedoApplication"
         android:allowBackup="false"
@@ -20,15 +12,14 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:largeHeap="true"
-        android:requestLegacyExternalStorage="true"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:usesCleartextTraffic="true">
-        <activity
-            android:name=".main.bottomItem.post.activity.PostActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustNothing" />
+        android:usesCleartextTraffic="true"
+        android:requestLegacyExternalStorage="true">
 
+        <activity android:name=".main.bottomItem.post.activity.PostActivity"
+            android:windowSoftInputMode="adjustNothing"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".main.activity.MainActivity"
             android:label="@string/title_activity_feed"
@@ -42,6 +33,8 @@
         <activity
             android:name=".emailLogin.emailLoginActivity.EmailLoginActivity"
             android:screenOrientation="portrait" />
+
+
         <activity
             android:name=".intro.Intro"
             android:screenOrientation="portrait">

@@ -5,7 +5,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.junhyuk.daedo.R
 import com.junhyuk.daedo.intro.Intro
-import com.junhyuk.daedo.workingNetwork.sha512.Sha512
 import kotlinx.android.synthetic.main.activity_email_login.*
 
 /*
@@ -15,7 +14,7 @@ import kotlinx.android.synthetic.main.activity_email_login.*
 */
 class EmailLoginActivity : AppCompatActivity() {
 
-    private var sha512class = Sha512()
+    private var sha512class = com.junhyuk.daedo.workingNetwork.sha512.Sha512()
 
     private val getEmailLogin = com.junhyuk.daedo.emailLogin.emailLoginActivity.GetEmailLogin()
     
@@ -34,7 +33,7 @@ class EmailLoginActivity : AppCompatActivity() {
         val actionBar = supportActionBar
         actionBar?.hide()
 
-        //로그인 xml에서 우측 상단 x버튼 클릭
+        //로그인 xml 에서 우측 상단 x버튼 클릭
         x_button.setOnClickListener {
             startActivity(Intent(this, Intro::class.java))
             finish()
@@ -51,7 +50,6 @@ class EmailLoginActivity : AppCompatActivity() {
             password = sha512
             //getEmailLogin 클래스로 사용자가 입력한 값 전달
             getEmailLogin.getEmailLogin(email, password, application, this)
-
 
         }
     }

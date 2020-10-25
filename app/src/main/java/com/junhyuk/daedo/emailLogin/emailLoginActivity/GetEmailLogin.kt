@@ -7,7 +7,7 @@ import android.graphics.Color
 import android.util.Log
 import cn.pedant.SweetAlert.SweetAlertDialog
 import com.junhyuk.daedo.application.DaedoApplication
-import com.junhyuk.daedo.dataBase.userDataHandler.UserDataActivity
+import com.junhyuk.daedo.dataBase.userDataHandler.UserDataClass
 import com.junhyuk.daedo.emailLogin.oauth.Oauth
 import com.junhyuk.daedo.emailLogin.server.EmailLoginBody
 import com.junhyuk.daedo.main.activity.MainActivity
@@ -28,7 +28,7 @@ class GetEmailLogin {
         //Oauth 2.0
         val api = Oauth.getInstance()
         //유저 정보를 담는 activity
-        val getUser = UserDataActivity()
+        val getUser = UserDataClass()
         //dialog 변수
         val sweetAlertDialog = SweetAlertDialog(context, SweetAlertDialog.PROGRESS_TYPE)
         sweetAlertDialog.progressHelper.barColor = Color.parseColor("#0DE930")
@@ -64,7 +64,6 @@ class GetEmailLogin {
 
                         //서버로부터 받은 정보들을 EmailLoginBody 변수에 담아준다
                         EmailLoginBody.instance = response.body()
-                        Log.d("LoginResponseData", "LoginResponseData = " + EmailLoginBody.instance)
                         getUser.getUserData(getApplication, context)
 
                     }

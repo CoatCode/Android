@@ -52,16 +52,13 @@ open class SignUpNameActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up_name)
-
         //엑션바 숨기기
         val actionBar = supportActionBar
         actionBar?.hide()
-
         //intent 데이터
         val intent: Intent = intent //이메일 비밀번호 인텐트 데이터
         email = intent.extras?.getString("userInfoEmail").toString() //이메일 저장
         password = intent.extras?.getString("userInfoPassword").toString() //password 저장
-
         //sha256 암호화
         val encodePassword: String = sha512Class.sha512(password) //password sha512 암호화
         password = encodePassword //password 저장
@@ -70,9 +67,7 @@ open class SignUpNameActivity : AppCompatActivity() {
 
         //갤러리에서 프로필 사진 가져오기
         user_image.setOnClickListener {
-
             val imageIntent = Intent() //구글 갤러리 접근 intent 변수
-
             //구글 갤러리 접근
             imageIntent.type = "image/*"
             imageIntent.action = Intent.ACTION_GET_CONTENT
