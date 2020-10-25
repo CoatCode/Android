@@ -5,7 +5,6 @@ import android.content.pm.PackageManager
 import android.database.Cursor
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.graphics.Matrix
 import android.net.Uri
 import android.os.Bundle
 import android.provider.OpenableColumns
@@ -18,12 +17,13 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.junhyuk.daedo.R
-import com.junhyuk.daedo.signUp.base64.Base64Encoding
 import com.junhyuk.daedo.signUp.rotateImage.RotateImage
 import com.junhyuk.daedo.signUp.workingRetrofit.SetupRetrofit
 import com.junhyuk.daedo.workingNetwork.sha512.Sha512
 import kotlinx.android.synthetic.main.activity_sign_up_name.*
-import java.lang.Boolean
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import java.io.ByteArrayOutputStream
 
 
 /*
@@ -40,10 +40,10 @@ open class SignUpNameActivity : AppCompatActivity() {
     private var email: String = ""
     private var password: String = ""
     private var userName: String = ""
-    private var base64: String = ""
+    private var profileImage: RequestBody? = null
+    private var imageName: String = ""
 
-    //서버 통신을 할때 필요한 클래스
-    private val base64Encoding = Base64Encoding() //Base64 인코딩
+
     private val setupRetrofit = SetupRetrofit() //retrofit setup
     private val rotateImageClass = RotateImage() //이미지 회전
     private val sha512Class = Sha512() //sha512 인코딩
@@ -83,7 +83,7 @@ open class SignUpNameActivity : AppCompatActivity() {
 
         //sign_up 버튼을 누르면 모든 값을 서버로 전송
         sign_up_button.setOnClickListener {
-            setupRetrofit.setupRetrofit(email, password, userName, base64, application, this)
+            setupRetrofit.setupRetrofit(email, password, userName, profileImage, imageName, application, this)
         }
 
         //이름이 null 인지 아닌지 판단
@@ -123,43 +123,22 @@ open class SignUpNameActivity : AppCompatActivity() {
 
         val returnUri: Uri
         val returnCursor: Cursor?
-        var imageSize = 0
-        var imageNameFormat = ""
-
-        //정상적인 응답이 왔을때
-        if (requestCode == 101 && resultCode == RESULT_OK){
-            //이미지 정보
-            returnUri = data?.data!!
-
-            //이미지 커서
-            returnCursor = contentResolver.query(returnUri, null, null, null, null)
-
-            //이미지 포멧
-            val nameIndex = returnCursor!!.getColumnIndex(OpenableColumns.DISPLAY_NAME)
-            returnCursor.moveToFirst()
-            val imageName = returnCursor.getString(nameIndex)
-            val imageData = imageName.split(".")
-            imageNameFormat = imageData[(imageData.size - 1)]
-
-            //이미지 용량 사이즈
-            val sizeIndex = returnCursor.getColumnIndex(OpenableColumns.SIZE)
-            returnCursor.moveToFirst()
-            imageSize = returnCursor.getInt(sizeIndex) / 1024000
-            returnCursor.close()
-        }
 
         // 이미지 파일이 넘어 왔을 경우
-        if (requestCode == 101 && resultCode == RESULT_OK && imageSize < 10) {
+        if (requestCode == 101 && resultCode == RESULT_OK) {
             try {
+
+                //이미지 정보
+                returnUri = data?.data!!
+
                 //이미지 파일 받아오기
-                val inputStream = contentResolver.openInputStream(data?.data!!) //input 스트림
+                val inputStream = contentResolver.openInputStream(returnUri) //input 스트림
                 var bm: Bitmap = BitmapFactory.decodeStream(inputStream) //비트맵 변환
-                inputStream?.close()
-
                 bm = rotateImageClass.rotateImage(data.data!!, bm, contentResolver) //이미지 회전
-
-                //이미지 resize
-                bm = bitmapResizePrc(bm, 180, 180)
+                val bos = ByteArrayOutputStream()
+                bm.compress(Bitmap.CompressFormat.JPEG, 100, bos)
+                profileImage = RequestBody.create(MultipartBody.FORM, bos.toByteArray())
+                inputStream?.close()
 
                 //화면에 이미지 표시
                 Glide.with(this)
@@ -169,10 +148,14 @@ open class SignUpNameActivity : AppCompatActivity() {
                     .transform(CenterCrop(), RoundedCorners(1000000000))
                     .into(user_image)
 
-                base64 = "" //base64 초기화
+                returnCursor = contentResolver.query(returnUri, null, null, null, null)
 
-                //base64 인코딩
-                base64 = base64Encoding.encoding(imageNameFormat, bm, applicationContext)
+                //이미지 이름
+                val nameIndex = returnCursor!!.getColumnIndex(OpenableColumns.DISPLAY_NAME)
+                returnCursor.moveToFirst()
+                imageName = returnCursor.getString(nameIndex)
+
+                returnCursor.close()
 
             } catch (e: Exception) {
                 e.printStackTrace()
@@ -182,11 +165,6 @@ open class SignUpNameActivity : AppCompatActivity() {
         //어떤 파일도 넘어오지 않았을 때
         else if (requestCode == 101 && resultCode == RESULT_CANCELED) {
             Toast.makeText(this, "취소", Toast.LENGTH_SHORT).show()
-        }
-
-        //파일 크기가 10메가 이상일 때
-        else {
-            Toast.makeText(this, "파일 최대 크기는 10MB 입니다.", Toast.LENGTH_LONG).show()
         }
     }
 
@@ -206,36 +184,5 @@ open class SignUpNameActivity : AppCompatActivity() {
                 }
             }
         }
-    }
-
-
-    //resize 이미지 crop
-    private fun bitmapResizePrc(Src: Bitmap, newHeight: Int, newWidth: Int): Bitmap {
-
-        var width = Src.width
-        var height = Src.height
-
-        // calculate the scale - in this case = 0.4f
-        val scaleWidth = newWidth.toFloat() / width
-        val scaleHeight = newHeight.toFloat() / height
-
-        // create matrix for the manipulation
-        val matrix = Matrix()
-        // resize the bit map
-        matrix.postScale(scaleWidth, scaleHeight)
-
-        // recreate the new Bitmap
-        val resizedBitmap = Bitmap.createBitmap(Src, 0, 0, width, height, matrix, true)
-
-        // check
-        width = resizedBitmap.width
-        height = resizedBitmap.height
-        Log.i(
-            "ImageResize", "Image Resize Result : " + Boolean.toString(
-                newHeight == height && newWidth == width
-            )
-        )
-
-        return resizedBitmap
     }
 }

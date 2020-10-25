@@ -8,8 +8,8 @@ import android.text.TextUtils
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.junhyuk.daedo.emailLogin.emailLoginActivity.EmailLoginActivity
 import com.junhyuk.daedo.R
+import com.junhyuk.daedo.emailLogin.emailLoginActivity.EmailLoginActivity
 import com.junhyuk.daedo.signUp.activity.SignUpActivity
 import kotlinx.android.synthetic.main.activity_intro.*
 
@@ -48,6 +48,14 @@ class Intro : AppCompatActivity() {
             ) != PackageManager.PERMISSION_GRANTED
         ) {
             temp += Manifest.permission.READ_EXTERNAL_STORAGE + " "
+        }
+
+        if (ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            temp += Manifest.permission.WRITE_EXTERNAL_STORAGE + " "
         }
 
         if (ContextCompat.checkSelfPermission(

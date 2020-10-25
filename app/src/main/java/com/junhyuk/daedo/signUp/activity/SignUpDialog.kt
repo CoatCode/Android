@@ -31,6 +31,7 @@ class SignUpDialog {
                         startActivity(context, intent, null)
                         (context as Activity).finish()
                         ActivityCompat.finishAffinity(context)
+                        dialog.dismiss()
                     }
                     .setContentText("이메일을 확인해 주세요")
                     .show()
@@ -51,7 +52,18 @@ class SignUpDialog {
                     .show()
             }
 
-            else -> {
+            500 -> {
+                sweetAlertDialog.dismiss()
+                val dialog = SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
+
+                dialog.setCancelable(false)
+
+                dialog.setTitleText("서버 통신에 실패하였습니다.")
+                    .setConfirmClickListener {
+                        dialog.dismiss()
+                    }
+                    .setContentText("관리자에게 문의하세요")
+                    .show()
             }
         }
     }
