@@ -31,6 +31,7 @@ class SignUpDialog {
                         startActivity(context, intent, null)
                         (context as Activity).finish()
                         ActivityCompat.finishAffinity(context)
+                        dialog.dismiss()
                     }
                     .setContentText("이메일을 확인해 주세요")
                     .show()

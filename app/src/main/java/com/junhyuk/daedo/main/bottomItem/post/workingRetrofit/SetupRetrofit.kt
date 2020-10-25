@@ -52,7 +52,9 @@ class SetupRetrofit {
 
         builder.addFormDataPart("title", postTitle)
         builder.addFormDataPart("content", postContent)
-        builder.addFormDataPart("tag", hashTag)
+        if (hashTag.isNotBlank() || hashTag.isNotEmpty()){
+            builder.addFormDataPart("tag", hashTag)
+        }
 
         var index = 1
         requestBody.forEach {
