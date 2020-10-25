@@ -86,4 +86,5 @@ dependencies {
 
     // optional - RxJava support
     implementation "androidx.paging:paging-rxjava2:$paging_version" // use -ktx for Kotlin
+    implementation 'me.relex:circleindicator:2.1.4'
 }
