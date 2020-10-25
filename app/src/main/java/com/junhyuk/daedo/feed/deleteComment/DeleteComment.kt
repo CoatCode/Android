@@ -13,14 +13,13 @@ import retrofit2.Response
 
 
 class DeleteComment {
-    private var personListTmp = arrayListOf<CommentData>(
+    private var commentList = arrayListOf<CommentData>(
     )
-    
+
     internal fun deleteComment(
         getApplication: Application,
         commentId : String,
-        cAdapter : CommentRecyclerviewAdapter,
-        commentList : ArrayList<CommentData>
+        cAdapter : CommentRecyclerviewAdapter
 
     ) {
         val token: String = EmailLoginBody.instance!!.access_token
@@ -30,6 +29,11 @@ class DeleteComment {
             .enqueue(object : Callback<Void> {
                 override fun onResponse(call: Call<Void>, response: Response<Void>) {
                     Log.d("delete", "delete : ${response.code()}")
+                    commentList.clear()
+                    //댓글 목록에 추가
+                    commentList.addAll(commentList)
+                    //댓글 목록 업데이트
+                    cAdapter.notifyDataSetChanged()
 
             }
 

@@ -86,8 +86,8 @@ class CommentRecyclerviewAdapter(private val context: Context, private val comme
             commentTime?.text =  getTime.formatTimeString(year,month,day,hour,minute,second)
             button.setOnClickListener{
                 itemClick(Comment)
-                val bottomSheet = BottomSheetDialog(Comment,view,adapter,commentList)
-                BottomSheetDialog(Comment,view,adapter,commentList)
+                val bottomSheet = BottomSheetDialog(Comment,view,adapter)
+                BottomSheetDialog(Comment,view,adapter)
                 bottomSheet.show((context as AppCompatActivity).supportFragmentManager,bottomSheet.tag)
 
             }
