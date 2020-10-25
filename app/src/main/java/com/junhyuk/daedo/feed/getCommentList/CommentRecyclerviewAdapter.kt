@@ -21,8 +21,8 @@ import com.junhyuk.daedo.feed.getCommentNetwork.CommentData
 import java.time.ZonedDateTime
 
 //recyclerview adapter
-class CommentRecyclerviewAdapter(private val context: Context, private val commentList : ArrayList<CommentData>, val view : View?, val itemClick: (CommentData) -> Unit) : RecyclerView.Adapter<CommentRecyclerviewAdapter.Holder>(){
-
+class CommentRecyclerviewAdapter(private val context: Context, private val commentList : ArrayList<CommentData>, val view : View?,
+                                 val itemClick: (CommentData) -> Unit) : RecyclerView.Adapter<CommentRecyclerviewAdapter.Holder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val view = LayoutInflater.from(context).inflate(R.layout.comment_recycler_view_item, parent, false)
@@ -77,17 +77,23 @@ class CommentRecyclerviewAdapter(private val context: Context, private val comme
             Log.d("jsonTime","jsonTime : ${Comment.created_at}")
             Log.d("content","content : ${Comment.content}")
             Log.d("comment_id","comment_id : ${Comment.comment_id}")
+            //댓글 작성자 프로필 이미지를 넣어준다.
             Glide.with(context)
                 .load(Comment.owner?.profile)
                 .transform(CenterCrop(), RoundedCorners(1000000000))
                 .into(userProfile)
+            //댓글 내용
             commentContent?.text = Comment.content
+            //뎃글 작성자
             userName?.text = Comment.owner?.username
+            //댓글 작성 시간
             commentTime?.text =  getTime.formatTimeString(year,month,day,hour,minute,second)
+            //댓글 상세 버튼 클릭 이벤트
             button.setOnClickListener{
                 itemClick(Comment)
                 val bottomSheet = BottomSheetDialog(Comment,view,adapter)
                 BottomSheetDialog(Comment,view,adapter)
+                //bottomSheetDialog 를 띄운다
                 bottomSheet.show((context as AppCompatActivity).supportFragmentManager,bottomSheet.tag)
 
             }

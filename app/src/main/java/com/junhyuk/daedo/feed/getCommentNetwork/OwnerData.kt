@@ -14,15 +14,3 @@ var button : String
         var instance : OwnerData? = null
     }
 }
-
-//"comment_id": 0,
-//"owner": {
-//    "id": 0,
-//    "email": "",
-//    "username": "",
-//    "profile": "",
-//    "followers": 0,
-//    "following": 0
-//},
-//"content": "",
-//"created_at": ""

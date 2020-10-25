@@ -15,19 +15,18 @@ import com.junhyuk.daedo.feed.getCommentNetwork.CommentData
 import kotlinx.android.synthetic.main.bottom_sheet_layout.view.*
 
 
-/*
-* 하단 슬라이드뷰 fragment
-*
-*
-*/
+// 하단 슬라이드뷰 fragment
 class BottomSheetDialog(Comment: CommentData, view: View?, mAdapter : CommentRecyclerviewAdapter) : BottomSheetDialogFragment() {
+    //댓글 삭제 서버 통신 클래스
     private val deleteComment = DeleteComment()
+    //댓글 ID
     private val commentId = Comment.comment_id
+    //fragmentHomeView view 변수
     private val fragmentHomeView = view
+    //서버에서 받아온 값을 담아주는 data class
     private val comment = Comment
+    //CommentRecyclerViewAdapter
     private val adapter = mAdapter
-
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -45,9 +44,9 @@ class BottomSheetDialog(Comment: CommentData, view: View?, mAdapter : CommentRec
         val bottomSheet = BottomSheetDialog(comment, view, adapter)
         val dia = dialog
 
-
         //댓글 삭제 버튼
         view.comment_delete?.setOnClickListener {
+            //bottomSheet 호출
             bottomSheet.deleteComment.deleteComment(activityBox.application,commentId,adapter)
             val imm = context?.getSystemService(INPUT_METHOD_SERVICE) as? InputMethodManager
             imm?.hideSoftInputFromWindow(editComment?.windowToken, 0)

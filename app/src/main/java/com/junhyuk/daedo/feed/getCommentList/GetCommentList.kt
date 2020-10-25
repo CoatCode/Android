@@ -8,7 +8,7 @@ import com.junhyuk.daedo.feed.network.CommentInterface
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-
+//댓글 목록을 받아오는 클래스
 class GetCommentList {
     private var personListTmp = arrayListOf<CommentData>(
     )
@@ -18,9 +18,10 @@ class GetCommentList {
         cAdapter: CommentRecyclerviewAdapter,
         commentList : ArrayList<CommentData>
     ) {
-
+        //AccessToken 변수에 저장
         val token: String =
             com.junhyuk.daedo.emailLogin.server.EmailLoginBody.instance!!.access_token
+
         (getApplication as DaedoApplication).retrofit.create(CommentInterface::class.java)
             .getComment("Bearer $token")
             .enqueue(object : Callback<ArrayList<CommentData>> {

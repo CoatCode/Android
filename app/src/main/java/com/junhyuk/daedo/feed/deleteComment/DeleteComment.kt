@@ -11,7 +11,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-
+//댓글 삭제 클래스
 class DeleteComment {
     private var commentList = arrayListOf<CommentData>(
     )
@@ -22,17 +22,18 @@ class DeleteComment {
         cAdapter : CommentRecyclerviewAdapter
 
     ) {
+        //AccessToken
         val token: String = EmailLoginBody.instance!!.access_token
 
         (getApplication as DaedoApplication).retrofit.create(CommentInterface::class.java)
             .deleteComment(commentId,"Bearer $token")
             .enqueue(object : Callback<Void> {
                 override fun onResponse(call: Call<Void>, response: Response<Void>) {
-                    Log.d("delete", "delete : ${response.code()}")
+                    //댓글 목록 삭제
                     commentList.clear()
-                    //댓글 목록에 추가
+                    //댓글 목록 추가
                     commentList.addAll(commentList)
-                    //댓글 목록 업데이트
+                    //댓글 목록 갱신
                     cAdapter.notifyDataSetChanged()
 
             }

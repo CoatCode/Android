@@ -18,13 +18,9 @@ class CommentFragment : Fragment() {
 
     private companion object
 
-    var commentList =
-        arrayListOf<CommentData>()
+    var commentList = arrayListOf<CommentData>()
     private var comment: String = ""
     private lateinit var mAdapter: CommentRecyclerviewAdapter
-
-
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,9 +30,7 @@ class CommentFragment : Fragment() {
         val activityBox = activity
         val view = inflater.inflate(R.layout.fragment_comment, container, false)
         mAdapter = CommentRecyclerviewAdapter(requireContext(), commentList,view) {
-            //bottomSheetDialog 호출 recyclerview 안 버튼 클릭시 bottomSheetDialog 가 호출 된다.
-            // val bottomSheet = BottomSheetDialog()
-            // bottomSheet.show(childFragmentManager,bottomSheet.tag)
+
         }
 
         view.comment_recycler_view?.adapter = mAdapter
@@ -47,6 +41,7 @@ class CommentFragment : Fragment() {
         view.comment_recycler_view.addItemDecoration(ItemSize(100))
         //댓글 작성 버튼 누를 시 SendComment 클래스 호출하고 입력받은 댓글을 넘겨준다
         view.write_comment?.setOnClickListener {
+            //작성한 댓글 변수에 저장장
             comment = this.edit_comment.text.toString()
 
             //작성한 댓글 서버통신 클래스로 값 전달
