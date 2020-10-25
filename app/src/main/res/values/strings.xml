@@ -40,4 +40,10 @@
     <string name="_1_3k">1.3k</string>
     <string name="Hello">hello</string>
     <string name="showimagedetail">showImageDetail</string>
+    <string name="contentSample">What is Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry\'s com.</string>
+    <string name="tagSample">#Female #Design #Good #Kang #Female #Design</string>
+    <string name="shareButtonImage">shareButton</string>
+    <string name="_10_likes">10 Likes</string>
+    <string name="_34_view">34 view</string>
+    <string name="_13_comments">13 Comments</string>
 </resources>

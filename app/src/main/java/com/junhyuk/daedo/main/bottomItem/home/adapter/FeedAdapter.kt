@@ -9,13 +9,16 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.fragment.app.FragmentActivity
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.junhyuk.daedo.R
+import com.junhyuk.daedo.main.activity.MainActivity
 import com.junhyuk.daedo.main.bottomItem.home.data.FeedData
+import com.junhyuk.daedo.main.bottomItem.home.fragment.FeedDetailFragment
 import com.junhyuk.daedo.main.bottomItem.home.module.FeedTime
 import com.junhyuk.daedo.main.bottomItem.home.module.LikeClickModule
 import com.junhyuk.daedo.main.bottomItem.home.module.LikeModule
@@ -23,7 +26,7 @@ import com.junhyuk.daedo.main.bottomItem.home.paging.DiffUtilCallBack
 import kotlinx.android.synthetic.main.cardview_feed_item.view.*
 
 
-class FeedAdapter(private val context: Context) :
+class FeedAdapter(private val context: Context, private val activity: FragmentActivity) :
     PagedListAdapter<FeedData, FeedAdapter.Holder>(DiffUtilCallBack()) {
 
     private val feedPostTime = FeedTime()
@@ -40,7 +43,7 @@ class FeedAdapter(private val context: Context) :
         val feedData = getItem(position)
 
         holder.itemView.setOnClickListener {
-
+            (activity as MainActivity).replaceFragment(FeedDetailFragment())
         }
 
         likeModule.likeModule(context, feedData?.id!!, holder)
