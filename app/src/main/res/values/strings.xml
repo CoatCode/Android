@@ -38,4 +38,6 @@
     <string name="feedimage">FeedImage</string>
     <string name="this_design_good">This Design Good</string>
     <string name="_1_3k">1.3k</string>
+    <string name="Hello">hello</string>
+    <string name="showimagedetail">showImageDetail</string>
 </resources>
