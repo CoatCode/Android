@@ -46,4 +46,6 @@
     <string name="_10_likes">10 Likes</string>
     <string name="_34_view">34 view</string>
     <string name="_13_comments">13 Comments</string>
+    <string name="commentTime">댓글시간</string>
+    <string name="content">댓글내용</string>
 </resources>
