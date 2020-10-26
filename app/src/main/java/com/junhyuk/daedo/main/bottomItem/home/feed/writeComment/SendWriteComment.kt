@@ -1,11 +1,11 @@
-package com.junhyuk.daedo.feed.writeComment
+package com.junhyuk.daedo.main.bottomItem.home.feed.writeComment
 
 import android.app.Application
 import android.util.Log
 import com.junhyuk.daedo.application.DaedoApplication
 import com.junhyuk.daedo.emailLogin.server.EmailLoginBody
-import com.junhyuk.daedo.feed.network.CommentInterface
-import com.junhyuk.daedo.feed.writeCommentNetwork.WriteCommentBody
+import com.junhyuk.daedo.main.bottomItem.home.feed.network.CommentInterface
+import com.junhyuk.daedo.main.bottomItem.home.feed.writeCommentNetwork.WriteCommentBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

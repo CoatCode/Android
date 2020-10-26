@@ -1,4 +1,4 @@
-package com.junhyuk.daedo.feed.getCommentList
+package com.junhyuk.daedo.main.bottomItem.home.feed.getCommentList
 
 import android.app.Activity
 import android.content.Context
@@ -15,9 +15,9 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.junhyuk.daedo.R
-import com.junhyuk.daedo.feed.BottomSheetDialog
-import com.junhyuk.daedo.feed.deleteComment.DeleteComment
-import com.junhyuk.daedo.feed.getCommentNetwork.CommentData
+import com.junhyuk.daedo.main.bottomItem.home.feed.BottomSheetDialog
+import com.junhyuk.daedo.main.bottomItem.home.feed.deleteComment.DeleteComment
+import com.junhyuk.daedo.main.bottomItem.home.feed.getCommentNetwork.CommentData
 import java.time.ZonedDateTime
 
 //recyclerview adapter

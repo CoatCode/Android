@@ -18,7 +18,7 @@ class FeedDetailFragment : Fragment() {
 
         val view = inflater.inflate(R.layout.fragment_feed_detail_item, container, false)
 
-
+        
 
         return view
 

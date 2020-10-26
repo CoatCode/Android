@@ -1,4 +1,4 @@
-package com.junhyuk.daedo.feed.getCommentList
+                        package com.junhyuk.daedo.main.bottomItem.home.feed.getCommentList
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.junhyuk.daedo.R
-import com.junhyuk.daedo.feed.getCommentNetwork.CommentData
-import com.junhyuk.daedo.feed.writeComment.SendWriteComment
+import com.junhyuk.daedo.main.bottomItem.home.feed.getCommentNetwork.CommentData
+import com.junhyuk.daedo.main.bottomItem.home.feed.writeComment.SendWriteComment
 import kotlinx.android.synthetic.main.fragment_comment.*
 import kotlinx.android.synthetic.main.fragment_comment.view.*
 
