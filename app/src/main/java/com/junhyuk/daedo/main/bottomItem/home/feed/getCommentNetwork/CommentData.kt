@@ -1,4 +1,4 @@
-package com.junhyuk.daedo.feed.getCommentNetwork
+package com.junhyuk.daedo.main.bottomItem.home.feed.getCommentNetwork
 
 data class CommentData(
     var comment_id: String = "",

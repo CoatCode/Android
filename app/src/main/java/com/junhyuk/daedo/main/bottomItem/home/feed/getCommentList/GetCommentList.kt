@@ -1,10 +1,10 @@
-package com.junhyuk.daedo.feed.getCommentList
+package com.junhyuk.daedo.main.bottomItem.home.feed.getCommentList
 
 import android.app.Application
 import android.util.Log
 import com.junhyuk.daedo.application.DaedoApplication
-import com.junhyuk.daedo.feed.getCommentNetwork.CommentData
-import com.junhyuk.daedo.feed.network.CommentInterface
+import com.junhyuk.daedo.main.bottomItem.home.feed.getCommentNetwork.CommentData
+import com.junhyuk.daedo.main.bottomItem.home.feed.network.CommentInterface
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

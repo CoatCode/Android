@@ -1,4 +1,4 @@
-package com.junhyuk.daedo.feed
+package com.junhyuk.daedo.main.bottomItem.home.feed
 
 import android.content.Context.INPUT_METHOD_SERVICE
 import android.os.Bundle
@@ -9,9 +9,9 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.junhyuk.daedo.R
-import com.junhyuk.daedo.feed.deleteComment.DeleteComment
-import com.junhyuk.daedo.feed.getCommentList.CommentRecyclerviewAdapter
-import com.junhyuk.daedo.feed.getCommentNetwork.CommentData
+import com.junhyuk.daedo.main.bottomItem.home.feed.deleteComment.DeleteComment
+import com.junhyuk.daedo.main.bottomItem.home.feed.getCommentList.CommentRecyclerviewAdapter
+import com.junhyuk.daedo.main.bottomItem.home.feed.getCommentNetwork.CommentData
 import kotlinx.android.synthetic.main.bottom_sheet_layout.view.*
 
 
