@@ -7,41 +7,42 @@
     android:gravity="bottom"
     android:layout_gravity="bottom"
     android:orientation="vertical">
-    <Button
-        android:id="@+id/write_comment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="151dp"
-        android:layout_marginEnd="154dp"
-        android:layout_marginBottom="68dp"
-        android:text="댓글 작성"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <EditText
-        android:id="@+id/edit_comment"
-        android:layout_width="250dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="71dp"
-        android:layout_marginEnd="72dp"
-        android:background="@android:color/transparent"
-        android:ems="10"
-        android:fontFamily="sans-serif"
-        android:hint="댓글"
-        android:inputType="text"
-        android:maxLines="1"
-        android:textCursorDrawable="@drawable/cursor"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.822" />
 
     <LinearLayout
-        android:layout_width="389dp"
+        android:layout_width="339dp"
+        android:layout_height="196dp"
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="589dp">
+
+        <EditText
+            android:id="@+id/edit_comment"
+            android:layout_width="250dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="71dp"
+            android:layout_marginEnd="72dp"
+            android:background="@android:color/transparent"
+            android:ems="10"
+            android:fontFamily="@font/noto_sans_regular"
+            android:hint="댓글을 입력해주세요..."
+            android:inputType="text"
+            android:maxLines="1"
+            android:textCursorDrawable="@drawable/cursor" />
+
+        <ImageButton
+            android:id="@+id/write_comment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="151dp"
+            android:layout_marginEnd="154dp"
+            android:layout_marginBottom="68dp"
+            android:background="@drawable/paperplane_114508_1" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="match_parent"
         android:layout_height="520dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
