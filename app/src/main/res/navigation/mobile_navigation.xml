@@ -9,7 +9,11 @@
         android:id="@+id/navigation_home"
         android:name="com.junhyuk.daedo.main.bottomItem.home.fragment.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_feedDetailFragment"
+            app:destination="@id/feedDetailFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_dashboard"
@@ -36,4 +40,8 @@
         android:label="@string/title_setting"
         tools:layout="@layout/setting_fragment"
         />
+    <fragment
+        android:id="@+id/feedDetailFragment"
+        android:name="com.junhyuk.daedo.main.bottomItem.home.fragment.FeedDetailFragment"
+        android:label="FeedDetailFragment" />
 </navigation>
