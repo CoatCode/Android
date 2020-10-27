@@ -48,4 +48,6 @@
     <string name="_13_comments">13 Comments</string>
     <string name="commentTime">댓글시간</string>
     <string name="content">댓글내용</string>
+    <string name="commentInput">댓글을 입력해주세요...</string>
+    <string name="other">other</string>
 </resources>

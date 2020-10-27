@@ -10,6 +10,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.FragmentActivity
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -43,7 +45,8 @@ class FeedAdapter(private val context: Context, private val activity: FragmentAc
         val feedData = getItem(position)
 
         holder.itemView.setOnClickListener {
-            (activity as MainActivity).replaceFragment(FeedDetailFragment())
+            val navController: NavController = Navigation.findNavController(it)
+            navController.navigate(R.id.action_navigation_home_to_feedDetailFragment)
         }
 
         likeModule.likeModule(context, feedData?.id!!, holder)

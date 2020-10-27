@@ -36,11 +36,9 @@ class CommentRecyclerviewAdapter(private val context: Context, private val comme
     override fun onBindViewHolder(holder: Holder, position: Int) {
         holder.bind(commentList[position])
         //recyclerview item 간격 조정 코드
-        val layoutParams = holder.itemView.layoutParams
-        layoutParams.height = layoutParams.height
-        holder.itemView.requestLayout()
-
-
+//        val layoutParams = holder.itemView.layoutParams
+//        layoutParams.height = layoutParams.height
+//        holder.itemView.requestLayout()
     }
 
     inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
