@@ -40,7 +40,7 @@ class CommentFragment : Fragment() {
         view.comment_recycler_view.layoutManager = lm
         view.comment_recycler_view.addItemDecoration(ItemSize(100))
         //댓글 작성 버튼 누를 시 SendComment 클래스 호출하고 입력받은 댓글을 넘겨준다
-        view.write_comment?.setOnClickListener {
+        view.write_comment_button?.setOnClickListener {
             //작성한 댓글 변수에 저장장
             comment = this.edit_comment.text.toString()
 
