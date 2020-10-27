@@ -32,7 +32,12 @@ class CommentFragment : Fragment() {
         mAdapter = CommentRecyclerviewAdapter(requireContext(), commentList,view) {
 
         }
-
+        //댓글 목록 받아오는 클래스로 값 전달
+        getComment.getCommentList(
+            activityBox!!.application,
+            mAdapter,
+            commentList
+        )
         view.comment_recycler_view?.adapter = mAdapter
         view.comment_recycler_view.setHasFixedSize(true)
 
@@ -47,12 +52,6 @@ class CommentFragment : Fragment() {
             //작성한 댓글 서버통신 클래스로 값 전달
             sendComment.sendComment(comment, activityBox!!.application)
 
-            //댓글 목록 받아오는 클래스로 값 전달
-            getComment.getCommentList(
-                activityBox.application,
-                mAdapter,
-                commentList
-            )
         }
 
         return view
