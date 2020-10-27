@@ -24,9 +24,9 @@ class DeleteComment {
     ) {
         //AccessToken
         val token: String = EmailLoginBody.instance!!.access_token
-
+        val postId : String = ""
         (getApplication as DaedoApplication).retrofit.create(CommentInterface::class.java)
-            .deleteComment(commentId,"Bearer $token")
+            .deleteComment(postId,commentId,"Bearer $token")
             .enqueue(object : Callback<Void> {
                 override fun onResponse(call: Call<Void>, response: Response<Void>) {
                     //댓글 목록 삭제

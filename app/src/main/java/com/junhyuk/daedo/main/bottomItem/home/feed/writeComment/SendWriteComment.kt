@@ -19,10 +19,11 @@ class SendWriteComment {
     ) {
         //로그인 할 때 받아놓은 access token
         val token : String = EmailLoginBody.instance!!.access_token
+        val postId : String = ""
         //DaedoApplication 호출
         (getApplication as DaedoApplication).retrofit.create(CommentInterface::class.java)
                 //작성한 댓글과 token 서버로 전송
-                .sendComment("Bearer $token", WriteCommentBody(comment))
+                .sendComment(postId,"Bearer $token", WriteCommentBody(comment))
                 .enqueue(object : Callback<WriteCommentBody> {
                     override fun onResponse(
                         call: Call<WriteCommentBody>,
