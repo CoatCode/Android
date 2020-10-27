@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/constraintLayout"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <LinearLayout
@@ -65,17 +65,21 @@
         android:layout_marginTop="4dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/ic_launcher" />
+        app:srcCompat="@mipmap/ic_launcher"
+        android:contentDescription="@string/profile" />
 
     <ImageButton
         android:id="@+id/comment_option"
         android:layout_width="24dp"
         android:layout_height="21dp"
-        android:layout_marginStart="288dp"
-        android:layout_marginTop="4dp"
         android:background="@drawable/glyphs_nav_toolbar_more"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.99"
         app:layout_constraintStart_toEndOf="@+id/user_profile"
-        app:layout_constraintTop_toTopOf="@+id/user_profile" />
+        app:layout_constraintTop_toTopOf="@+id/user_profile"
+        app:layout_constraintVertical_bias="0.0"
+        android:contentDescription="@string/other" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
