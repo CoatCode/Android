@@ -23,7 +23,7 @@ class GetCommentList {
             com.junhyuk.daedo.emailLogin.server.EmailLoginBody.instance!!.access_token
         val postId : String = ""
         (getApplication as DaedoApplication).retrofit.create(CommentInterface::class.java)
-            .getComment(postId,"Bearer $token")
+            .getComment("Bearer $token")
             .enqueue(object : Callback<ArrayList<CommentData>> {
                 override fun onResponse(
                     call: Call<ArrayList<CommentData>>,

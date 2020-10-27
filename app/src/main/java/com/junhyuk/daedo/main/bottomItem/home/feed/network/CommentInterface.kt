@@ -18,9 +18,9 @@ interface CommentInterface{
     ): Call<WriteCommentBody>
 
     //댓글 목록을 받아온다
-    @GET("/feed/post/{post-id}/comments")
+    @GET("/feed/post/3/comments")
     fun getComment(
-        @Path("post-id") post : String,
+       // @Path("post-id") post : String,
         @Header("Authorization") type: String
     ): Call<ArrayList<CommentData>>
 
