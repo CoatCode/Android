@@ -1,12 +1,12 @@
-package com.junhyuk.daedo.main.bottomItem.home.feed.deleteComment
+package com.junhyuk.daedo.main.bottomItem.home.comment.deleteComment
 
 import android.app.Application
 import android.util.Log
 import com.junhyuk.daedo.application.DaedoApplication
 import com.junhyuk.daedo.emailLogin.server.EmailLoginBody
-import com.junhyuk.daedo.main.bottomItem.home.feed.getCommentList.CommentRecyclerviewAdapter
-import com.junhyuk.daedo.main.bottomItem.home.feed.getCommentNetwork.CommentData
-import com.junhyuk.daedo.main.bottomItem.home.feed.network.CommentInterface
+import com.junhyuk.daedo.main.bottomItem.home.comment.getCommentList.CommentRecyclerviewAdapter
+import com.junhyuk.daedo.main.bottomItem.home.comment.getCommentNetwork.CommentData
+import com.junhyuk.daedo.main.bottomItem.home.comment.network.CommentInterface
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

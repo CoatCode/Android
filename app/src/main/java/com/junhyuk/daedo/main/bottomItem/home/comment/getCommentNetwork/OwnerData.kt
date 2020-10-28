@@ -1,4 +1,4 @@
-package com.junhyuk.daedo.main.bottomItem.home.feed.getCommentNetwork
+package com.junhyuk.daedo.main.bottomItem.home.comment.getCommentNetwork
 
 data class OwnerData(
 var id : String = "",
