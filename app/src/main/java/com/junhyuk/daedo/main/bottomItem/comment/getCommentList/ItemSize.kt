@@ -1,4 +1,4 @@
-package com.junhyuk.daedo.main.bottomItem.home.comment.getCommentList
+package com.junhyuk.daedo.main.bottomItem.comment.getCommentList
 
 import android.graphics.Rect
 import android.view.View

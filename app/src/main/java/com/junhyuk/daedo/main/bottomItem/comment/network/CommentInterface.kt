@@ -1,7 +1,7 @@
-package com.junhyuk.daedo.main.bottomItem.home.comment.network
+package com.junhyuk.daedo.main.bottomItem.comment.network
 
-import com.junhyuk.daedo.main.bottomItem.home.comment.getCommentNetwork.CommentData
-import com.junhyuk.daedo.main.bottomItem.home.comment.writeCommentNetwork.WriteCommentBody
+import com.junhyuk.daedo.main.bottomItem.comment.getCommentNetwork.CommentData
+import com.junhyuk.daedo.main.bottomItem.comment.writeCommentNetwork.WriteCommentBody
 import retrofit2.Call
 import retrofit2.http.*
 
