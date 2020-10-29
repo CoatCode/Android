@@ -20,6 +20,7 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.junhyuk.daedo.R
 import com.junhyuk.daedo.main.activity.MainActivity
 import com.junhyuk.daedo.main.bottomItem.home.data.FeedData
+import com.junhyuk.daedo.main.bottomItem.home.data.PostId
 import com.junhyuk.daedo.main.bottomItem.home.fragment.FeedDetailFragment
 import com.junhyuk.daedo.main.bottomItem.home.module.FeedTime
 import com.junhyuk.daedo.main.bottomItem.home.module.LikeClickModule
@@ -45,6 +46,7 @@ class FeedAdapter(private val context: Context, private val activity: FragmentAc
         val feedData = getItem(position)
 
         holder.itemView.setOnClickListener {
+            PostId.postId = feedData?.id!!
             val navController: NavController = Navigation.findNavController(it)
             navController.navigate(R.id.action_navigation_home_to_feedDetailFragment)
         }
