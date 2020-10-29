@@ -1,4 +1,4 @@
-package com.junhyuk.daedo.main.bottomItem.home.comment.getCommentList
+package com.junhyuk.daedo.main.bottomItem.comment.getCommentList
 
 import java.util.*
 //댓글 작성 시간을 구하는 클래스

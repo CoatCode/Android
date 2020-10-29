@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.junhyuk.daedo.R
-import com.junhyuk.daedo.main.bottomItem.home.comment.getCommentList.CommentFragment
+import com.junhyuk.daedo.main.bottomItem.comment.getCommentList.CommentFragment
 
 
 class FeedDetailFragment : Fragment(){
