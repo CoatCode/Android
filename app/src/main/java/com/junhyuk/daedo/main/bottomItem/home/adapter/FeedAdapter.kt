@@ -32,6 +32,7 @@ import kotlinx.android.synthetic.main.cardview_feed_item.view.*
 class FeedAdapter(private val context: Context, private val activity: FragmentActivity) :
     PagedListAdapter<FeedData, FeedAdapter.Holder>(DiffUtilCallBack()) {
 
+    //모듈 정의
     private val feedPostTime = FeedTime()
     private val likeClickModule = LikeClickModule()
     private val likeModule = LikeModule()
@@ -43,20 +44,24 @@ class FeedAdapter(private val context: Context, private val activity: FragmentAc
     }
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
-        val feedData = getItem(position)
+        val feedData = getItem(position) //서버에서 feedData 받아오기(pagingLibrary)
 
+        //게시물을 클릭하면 게시물 상세 프래그먼트로 네비케이트
         holder.itemView.setOnClickListener {
             PostId.postId = feedData?.id!!
             val navController: NavController = Navigation.findNavController(it)
             navController.navigate(R.id.action_navigation_home_to_feedDetailFragment)
         }
 
+        //처음 'adapter' 호출 시 'likeModule'을 통해 좋아요 한 게시물에 좋아요 표시
         likeModule.likeModule(context, feedData?.id!!, holder)
 
+        //heartButton 클릭 시 좋아요 모듈 호출(좋아요가 이닐 시 좋아요, 좋아요 일 시, 좋아요 취소)
         holder.heartButton.setOnClickListener {
             likeClickModule.likeClickModule(context, feedData.id, holder)
         }
 
+        //'Glide'를 통해서 프로필과 게시물 이미지를 표시
         Glide.with(context)
             .load(feedData.owner.image)
             .override(100)
@@ -67,8 +72,7 @@ class FeedAdapter(private val context: Context, private val activity: FragmentAc
             .load(feedData.image_urls[0])
             .into(holder.feedImage)
 
-        Log.d("feedTime", "data: ${System.currentTimeMillis()}")
-
+        //게시물 아이템에 게시물 관련 정보 띄우기
         holder.userName.text = feedData.owner.username
         holder.feedTime.text = feedPostTime.calFeedTime(feedData.created_at)
         holder.title.text = feedData.title
@@ -76,6 +80,7 @@ class FeedAdapter(private val context: Context, private val activity: FragmentAc
         holder.commentCount.text = feedData.comment_count.toString()
         holder.viewerCount.text = feedData.view_count.toString()
 
+        //댓글이 없을 시 댓글 프리뷰 X / 댓글이 있을 시 1개이면 1개만 표시, 1개 이상이면 2개 표시
         when {
             feedData.comment_count <= 0 -> {
                 holder.commentView.visibility = View.GONE
@@ -113,6 +118,7 @@ class FeedAdapter(private val context: Context, private val activity: FragmentAc
         }
     }
 
+    // 'onBindViewHolder'에서 쓰일 xml 아이템 뷰 선언
     class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var profileImageView: ImageView = itemView.profile
         var userName: TextView = itemView.name
