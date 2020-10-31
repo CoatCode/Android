@@ -5,6 +5,7 @@ import android.util.Log
 import com.junhyuk.daedo.application.DaedoApplication
 import com.junhyuk.daedo.main.bottomItem.comment.getCommentNetwork.CommentData
 import com.junhyuk.daedo.main.bottomItem.comment.network.CommentInterface
+import com.junhyuk.daedo.main.bottomItem.home.data.PostId
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -21,9 +22,9 @@ class GetCommentList {
         //AccessToken 변수에 저장
         val token: String =
             com.junhyuk.daedo.emailLogin.server.EmailLoginBody.instance!!.access_token
-        val postId : String = ""
+        val postId : Int = PostId.postId
         (getApplication as DaedoApplication).retrofit.create(CommentInterface::class.java)
-            .getComment("Bearer $token")
+            .getComment(postId,"Bearer $token")
             .enqueue(object : Callback<ArrayList<CommentData>> {
                 override fun onResponse(
                     call: Call<ArrayList<CommentData>>,
