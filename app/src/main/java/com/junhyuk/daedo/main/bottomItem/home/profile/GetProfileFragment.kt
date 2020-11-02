@@ -25,9 +25,6 @@ class GetProfileFragment : Fragment() {
                     "| ${i.email} | ${i.profile} | ${i.followers} | ${i.following}") }
         }
 
-        val activityBox = activity
-        val view = inflater.inflate(R.layout.fragment_comment, container, false)
-
-        return view
+        return inflater.inflate(R.layout.fragment_comment, container, false)
     }
 }
