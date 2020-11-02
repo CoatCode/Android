@@ -6,6 +6,7 @@ import com.bumptech.glide.Glide
 import com.junhyuk.daedo.R
 import com.junhyuk.daedo.emailLogin.server.EmailLoginBody
 import com.junhyuk.daedo.main.bottomItem.home.adapter.FeedAdapter
+import com.junhyuk.daedo.main.bottomItem.home.data.FeedData
 import com.junhyuk.daedo.main.bottomItem.home.data.LikeResponse
 import com.junhyuk.daedo.main.bottomItem.home.workinRetrofit.RetrofitClient
 import retrofit2.Call
@@ -16,7 +17,7 @@ class LikeClickModule {
 
     fun likeClickModule(
         context: Context,
-        position: Int,
+        feedData: FeedData,
         holder: FeedAdapter.Holder
     ) {
         val retrofitClient = RetrofitClient()
@@ -25,7 +26,7 @@ class LikeClickModule {
         retrofitClient
             .getInstance()
             ?.getApi()
-            ?.requestLikeBool("Bearer $token", position)
+            ?.requestLikeBool("Bearer $token", feedData.id)
             ?.enqueue(object : Callback<LikeResponse> {
                 override fun onResponse(
                     call: Call<LikeResponse>,
@@ -36,7 +37,7 @@ class LikeClickModule {
                             retrofitClient
                                 .getInstance()
                                 ?.getApi()
-                                ?.requestLikeCancel("Bearer $token", position)
+                                ?.requestLikeCancel("Bearer $token", feedData.id)
                                 ?.enqueue(object : Callback<LikeResponse> {
                                     override fun onResponse(
                                         call: Call<LikeResponse>,
@@ -49,6 +50,9 @@ class LikeClickModule {
                                                     "해당 게시물에 좋아요를 취소했습니다.",
                                                     Toast.LENGTH_SHORT
                                                 ).show()
+
+                                                feedData.like_count -= 1
+                                                holder.heartCount.text = feedData.like_count.toString()
 
                                                 Glide.with(context)
                                                     .load(R.drawable.good)
@@ -81,7 +85,7 @@ class LikeClickModule {
                             retrofitClient
                                 .getInstance()
                                 ?.getApi()
-                                ?.requestLike("Bearer $token", position)
+                                ?.requestLike("Bearer $token", feedData.id)
                                 ?.enqueue(object : Callback<LikeResponse> {
                                     override fun onResponse(
                                         call: Call<LikeResponse>,
@@ -94,6 +98,9 @@ class LikeClickModule {
                                                     "해당 게시물에 좋아요를 눌렀습니다.",
                                                     Toast.LENGTH_SHORT
                                                 ).show()
+
+                                                feedData.like_count += 1
+                                                holder.heartCount.text = feedData.like_count.toString()
 
                                                 Glide.with(context)
                                                     .load(R.drawable.good_color)

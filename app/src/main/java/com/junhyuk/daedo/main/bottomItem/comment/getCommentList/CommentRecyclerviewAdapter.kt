@@ -54,9 +54,9 @@ class CommentRecyclerviewAdapter(private val context: Context, private val comme
         private val button = itemView.findViewById<ImageButton>(R.id.comment_option)
 
         fun bind (Comment: CommentData) {
-            val activityBox = Activity()
+            Activity()
             val getTime = GetCommentTime()
-            val deleteComment = DeleteComment()
+            DeleteComment()
             val adapter = CommentRecyclerviewAdapter(context,commentList,view, itemClick)
             val year = ZonedDateTime.parse(Comment.created_at).year
             val month = ZonedDateTime.parse(Comment.created_at).monthValue

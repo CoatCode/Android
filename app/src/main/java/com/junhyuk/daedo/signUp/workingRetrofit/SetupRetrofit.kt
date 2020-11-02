@@ -72,7 +72,6 @@ class SetupRetrofit {
 
                     signUpDialog.connectionSuccess(
                         response.code(),
-                        response.message(),
                         context,
                         response.errorBody()?.string().toString(),
                         intent,

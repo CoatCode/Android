@@ -11,7 +11,6 @@ class SignUpDialog {
 
     internal fun connectionSuccess(
         responseCode: Int,
-        responseMsg: String,
         context: Context,
         responseBody: String,
         intent: Intent,

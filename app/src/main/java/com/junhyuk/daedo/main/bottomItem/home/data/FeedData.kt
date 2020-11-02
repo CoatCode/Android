@@ -7,7 +7,7 @@ data class FeedData (
     val comment: String,
     val image_urls: ArrayList<String>,
     val liked_people: ArrayList<String>,
-    val like_count: Int,
+    var like_count: Int,
     val view_count: Int,
     val comment_count: Int,
     val tag: ArrayList<String>,

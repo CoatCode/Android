@@ -14,7 +14,7 @@ class GetCommentTime {
         val hour = cal[Calendar.HOUR_OF_DAY]
         val min = cal[Calendar.MINUTE]
         val sec = cal[Calendar.SECOND]
-        var msg: String? = null
+        val msg: String
         if (year != YEAR) {
             val result = year - YEAR
             msg = result.toString() + "년 전"

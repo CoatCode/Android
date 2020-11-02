@@ -18,6 +18,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.junhyuk.daedo.R
+import com.junhyuk.daedo.dataBase.userDataHandler.UserInformation
 import com.junhyuk.daedo.main.activity.MainActivity
 import com.junhyuk.daedo.main.bottomItem.home.data.FeedData
 import com.junhyuk.daedo.main.bottomItem.home.data.PostId
@@ -35,7 +36,6 @@ class FeedAdapter(private val context: Context, private val activity: FragmentAc
     //모듈 정의
     private val feedPostTime = FeedTime()
     private val likeClickModule = LikeClickModule()
-    private val likeModule = LikeModule()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val view =
@@ -53,12 +53,24 @@ class FeedAdapter(private val context: Context, private val activity: FragmentAc
             navController.navigate(R.id.action_navigation_home_to_feedDetailFragment)
         }
 
-        //처음 'adapter' 호출 시 'likeModule'을 통해 좋아요 한 게시물에 좋아요 표시
-        likeModule.likeModule(context, feedData?.id!!, holder)
+
+        feedData!!.liked_people.forEach {
+            if (it == UserInformation.instance!!.id){
+                Glide.with(context)
+                    .load(R.drawable.good_color)
+                    .into(holder.heartButton)
+                return@forEach
+            }else{
+                Glide.with(context)
+                    .load(R.drawable.good)
+                    .into(holder.heartButton)
+            }
+        }
+
 
         //heartButton 클릭 시 좋아요 모듈 호출(좋아요가 이닐 시 좋아요, 좋아요 일 시, 좋아요 취소)
         holder.heartButton.setOnClickListener {
-            likeClickModule.likeClickModule(context, feedData.id, holder)
+            likeClickModule.likeClickModule(context, feedData, holder)
         }
 
         //'Glide'를 통해서 프로필과 게시물 이미지를 표시
