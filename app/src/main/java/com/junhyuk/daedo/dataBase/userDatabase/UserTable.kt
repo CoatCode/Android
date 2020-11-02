@@ -8,7 +8,7 @@ import androidx.room.PrimaryKey
 
 class UserTable(@PrimaryKey val idx : Int,
                 @ColumnInfo(name = "doNottouch") var doNotTouch: String? = null,
-                val id : String,
+                val id : Int,
                 val email : String?,
                 val Username : String?,
                 val profile : String?,

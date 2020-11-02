@@ -14,11 +14,12 @@ class AddDatabase(val context: Context) : Thread() {
             .userDao()
             ?.insert(addUser)
         //DB에 저장된 유저 정보를 불러오는 코드
-        val callUserInfor = UserDataBase.getDatabase(context)!!
+        val callUserInformation = UserDataBase.getDatabase(context)!!
             .userDao()
             ?.getAllUser()
-        if (callUserInfor != null) {
-            for(i in callUserInfor){ Log.d("UserDB", "${i.idx} | ${i.doNotTouch} | ${i.id} | ${i.Username} " +
+        Log.d("get","get$")
+        if (callUserInformation != null) {
+            for(i in callUserInformation){ Log.d("UserDB", "${i.idx} | ${i.doNotTouch} | ${i.id} | ${i.Username} " +
                     "| ${i.email} | ${i.profile} | ${i.followers} | ${i.following}") }
         }
 
