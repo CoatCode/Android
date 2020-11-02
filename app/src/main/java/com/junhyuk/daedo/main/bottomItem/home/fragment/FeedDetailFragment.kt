@@ -8,18 +8,21 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentStatePagerAdapter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.junhyuk.daedo.R
 import com.junhyuk.daedo.main.bottomItem.comment.getCommentList.CommentFragment
+import com.junhyuk.daedo.main.bottomItem.home.adapter.ImageSliderAdapter
 import com.junhyuk.daedo.main.bottomItem.home.data.FeedDetailData
 import com.junhyuk.daedo.main.bottomItem.home.profile.GetUserProfile
 import kotlinx.android.synthetic.main.fragment_feed_detail_item.view.*
+import kotlinx.android.synthetic.main.fragment_home.view.*
 import java.lang.StringBuilder
 
 
-class FeedDetailFragment : Fragment(){
+class FeedDetailFragment : Fragment() {
 
 
     override fun onCreateView(
@@ -41,24 +44,31 @@ class FeedDetailFragment : Fragment(){
         view.title.text = FeedDetailData.feedData.title
         view.contentText.text = FeedDetailData.feedData.content
         val stringBuilder = StringBuilder("")
-        if(!(FeedDetailData.feedData.tag.isNullOrEmpty())){
+        if (!(FeedDetailData.feedData.tag.isNullOrEmpty())) {
             FeedDetailData.feedData.tag.forEach {
                 stringBuilder.append(it)
             }
         }
         view.hashTag.text = stringBuilder
 
-        view?.profile?.setOnClickListener {
-            Log.d("test","test")
-            getUserProfile.getUserProfile(applicationBox!!.application)
-        }
+        val adapter = ImageSliderAdapter(
+            requireActivity().supportFragmentManager,
+            FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT
+        )
+        adapter.addItem(ImageSliderItemFragment(), FeedDetailData.feedData.image_urls, requireActivity().applicationContext)
+        view.feedImage.adapter = adapter
+        view.imageSlider.setViewPager(view.feedImage)
+
+            view?.profile?.setOnClickListener {
+                Log.d("test", "test")
+//            getUserProfile.getUserProfile(applicationBox!!.application)
+            }
         val fragmentTransaction = activity?.supportFragmentManager?.beginTransaction()
         fragmentTransaction?.add(R.id.commentFragment, CommentFragment())!!.commit()
 
         return view
 
     }
-
 
 
 }

@@ -6,7 +6,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 
 
-class PagerAdapter(fm: FragmentManager, behavior: Int) :
+open class PagerAdapter(fm: FragmentManager, behavior: Int) :
     FragmentStatePagerAdapter(fm, behavior) {
     private val items: ArrayList<Fragment> = ArrayList() //tab 의 view pager 에 들어갈 프레그먼트를 저장하는 리스트
 
