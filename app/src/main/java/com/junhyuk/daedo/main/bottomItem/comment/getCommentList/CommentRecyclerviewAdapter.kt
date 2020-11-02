@@ -1,6 +1,7 @@
 package com.junhyuk.daedo.main.bottomItem.comment.getCommentList
 
 import android.app.Activity
+import android.app.Application
 import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
@@ -18,6 +19,7 @@ import com.junhyuk.daedo.R
 import com.junhyuk.daedo.main.bottomItem.comment.BottomSheetDialog
 import com.junhyuk.daedo.main.bottomItem.comment.deleteComment.DeleteComment
 import com.junhyuk.daedo.main.bottomItem.comment.getCommentNetwork.CommentData
+import com.junhyuk.daedo.main.bottomItem.home.profile.GetUserProfile
 import java.time.ZonedDateTime
 
 //recyclerview adapter
@@ -54,9 +56,9 @@ class CommentRecyclerviewAdapter(private val context: Context, private val comme
         private val button = itemView.findViewById<ImageButton>(R.id.comment_option)
 
         fun bind (Comment: CommentData) {
-            val activityBox = Activity()
+            val applicationBox = Application()
             val getTime = GetCommentTime()
-            val deleteComment = DeleteComment()
+            val getUserProfile = GetUserProfile()
             val adapter = CommentRecyclerviewAdapter(context,commentList,view, itemClick)
             val year = ZonedDateTime.parse(Comment.created_at).year
             val month = ZonedDateTime.parse(Comment.created_at).monthValue
@@ -93,7 +95,9 @@ class CommentRecyclerviewAdapter(private val context: Context, private val comme
                 BottomSheetDialog(Comment,view,adapter)
                 //bottomSheetDialog 를 띄운다
                 bottomSheet.show((context as AppCompatActivity).supportFragmentManager,bottomSheet.tag)
-
+            }
+            userProfile.setOnClickListener {
+                getUserProfile.getUserProfile(applicationBox,Comment.owner!!.id)
             }
         }
     }

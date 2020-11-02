@@ -10,12 +10,12 @@ import retrofit2.Response
 
 class GetUserProfile (){
     internal fun getUserProfile(
-        getApplication: Application
+        getApplication: Application,
+        userId : Int
     ) {
 
-        val postId : Int = PostId.postId
         (getApplication as DaedoApplication).retrofit.create(UserProfileInterface::class.java)
-            .getUserProfile(postId)
+            .getUserProfile(userId)
             .enqueue(object : Callback<ArrayList<UserProfileData>> {
                 override fun onResponse(
                     call: Call<ArrayList<UserProfileData>>,
