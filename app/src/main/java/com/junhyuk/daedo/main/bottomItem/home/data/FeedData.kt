@@ -4,6 +4,7 @@ data class FeedData (
     val id: Int,
     val owner: FeedOwnerData,
     val title: String,
+    val content: String,
     val comment: String,
     val image_urls: ArrayList<String>,
     val liked_people: ArrayList<String>,
