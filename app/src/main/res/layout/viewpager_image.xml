@@ -5,12 +5,14 @@
     android:layout_height="wrap_content">
 
     <ImageView
+        android:id="@+id/imageSliderItem"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintDimensionRatio="4:3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/Image" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

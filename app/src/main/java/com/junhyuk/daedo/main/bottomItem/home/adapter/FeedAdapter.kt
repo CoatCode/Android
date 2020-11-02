@@ -59,7 +59,7 @@ class FeedAdapter(private val context: Context, private val activity: FragmentAc
 
 
         feedData!!.liked_people.forEach {
-            if (it == UserInformation.instance!!.id){
+            if (it == UserInformation.instance!!.id.toString()){
                 Glide.with(context)
                     .load(R.drawable.good_color)
                     .into(holder.heartButton)
