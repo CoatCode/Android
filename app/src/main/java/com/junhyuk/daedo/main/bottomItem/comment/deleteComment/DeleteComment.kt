@@ -7,6 +7,7 @@ import com.junhyuk.daedo.emailLogin.server.EmailLoginBody
 import com.junhyuk.daedo.main.bottomItem.comment.getCommentList.CommentRecyclerviewAdapter
 import com.junhyuk.daedo.main.bottomItem.comment.getCommentNetwork.CommentData
 import com.junhyuk.daedo.main.bottomItem.comment.network.CommentInterface
+import com.junhyuk.daedo.main.bottomItem.home.data.PostId
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -24,7 +25,7 @@ class DeleteComment {
     ) {
         //AccessToken
         val token: String = EmailLoginBody.instance!!.access_token
-        val postId : String = ""
+        val postId : Int = PostId.postId
         (getApplication as DaedoApplication).retrofit.create(CommentInterface::class.java)
             .deleteComment(postId,commentId,"Bearer $token")
             .enqueue(object : Callback<Void> {

@@ -6,7 +6,7 @@ import retrofit2.http.Path
 
 interface UserProfileInterface {
     @GET("/user/{user-id}/posts")
-    fun getComment(
-        @Path("user-id") post : String
+    fun getUserProfile(
+        @Path("user-id") post : Int
     ): Call<ArrayList<UserProfileData>>
 }
