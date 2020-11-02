@@ -27,17 +27,13 @@ class FeedFragment : Fragment() {
     ): View? {
 
         val view = inflater.inflate(R.layout.fragment_feed, container, false)
-        val applicationBox = Application()
-        val getUserProfile = GetUserProfile()
+
         view.feedRecyclerView.setHasFixedSize(true)
 
         val feedViewModel = ViewModelProvider(this).get(FeedViewModel::class.java)
 
         val feedAdapter = FeedAdapter(activity?.applicationContext!!, activity!!)
-        view?.profile?.setOnClickListener {
-            Log.d("test","test")
-            getUserProfile.getUserProfile(applicationBox)
-        }
+
         feedViewModel.feedPagedList.observe(viewLifecycleOwner, Observer {
             feedAdapter.submitList(it)
         })
