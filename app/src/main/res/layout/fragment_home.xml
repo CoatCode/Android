@@ -74,6 +74,7 @@
             </androidx.cardview.widget.CardView>
 
             <ImageView
+                android:id="@+id/my_profile"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:contentDescription="@string/search"
