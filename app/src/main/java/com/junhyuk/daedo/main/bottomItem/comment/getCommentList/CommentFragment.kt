@@ -50,7 +50,7 @@ class CommentFragment : Fragment() {
             comment = this.edit_comment.text.toString()
 
             //작성한 댓글 서버통신 클래스로 값 전달
-            sendComment.sendComment(comment, activityBox!!.application)
+            sendComment.sendComment(comment, activityBox.application)
 
         }
 
