@@ -17,6 +17,7 @@ class AddDatabase(val context: Context) : Thread() {
         val callUserInformation = UserDataBase.getDatabase(context)!!
             .userDao()
             ?.getAllUser()
+        Log.d("get","get$")
         if (callUserInformation != null) {
             for(i in callUserInformation){ Log.d("UserDB", "${i.idx} | ${i.doNotTouch} | ${i.id} | ${i.Username} " +
                     "| ${i.email} | ${i.profile} | ${i.followers} | ${i.following}") }
