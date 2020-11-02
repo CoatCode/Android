@@ -21,6 +21,7 @@ import com.junhyuk.daedo.R
 import com.junhyuk.daedo.dataBase.userDataHandler.UserInformation
 import com.junhyuk.daedo.main.activity.MainActivity
 import com.junhyuk.daedo.main.bottomItem.home.data.FeedData
+import com.junhyuk.daedo.main.bottomItem.home.data.FeedDetailData
 import com.junhyuk.daedo.main.bottomItem.home.data.PostId
 import com.junhyuk.daedo.main.bottomItem.home.fragment.FeedDetailFragment
 import com.junhyuk.daedo.main.bottomItem.home.module.FeedTime
@@ -48,6 +49,9 @@ class FeedAdapter(private val context: Context, private val activity: FragmentAc
 
         //게시물을 클릭하면 게시물 상세 프래그먼트로 네비케이트
         holder.itemView.setOnClickListener {
+            if (feedData != null) {
+                FeedDetailData.feedData = feedData
+            }
             PostId.postId = feedData?.id!!
             val navController: NavController = Navigation.findNavController(it)
             navController.navigate(R.id.action_navigation_home_to_feedDetailFragment)

@@ -44,8 +44,5 @@
         android:id="@+id/feedDetailFragment"
         android:name="com.junhyuk.daedo.main.bottomItem.home.fragment.FeedDetailFragment"
         android:label="FeedDetailFragment" >
-        <action
-            android:id="@+id/action_feedDetailFragment_to_navigation_home"
-            app:destination="@id/navigation_home" />
     </fragment>
 </navigation>
