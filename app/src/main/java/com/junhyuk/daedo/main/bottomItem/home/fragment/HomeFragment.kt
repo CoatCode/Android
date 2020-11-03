@@ -41,33 +41,25 @@ class HomeFragment : Fragment() {
         val applicationBox = activity
         val getUserProfile = GetUserProfile()
         var callUserId: Int = 0
+        var callUserProfile: String? = ""
         CoroutineScope(Dispatchers.IO).launch {
             callUserId = UserDataBase.getDatabase(requireContext())!!
                 .userDao()
                 ?.getAllUser()?.last()!!.id
-
-            Log.d("userId", "userId1 : $callUserId")
+            callUserProfile = UserDataBase.getDatabase(requireContext())!!
+                .userDao()
+                ?.getAllUser()?.last()!!.profile
             withContext(Dispatchers.Main) {
-                Log.d("userId", "userId : $callUserId")
-
+                Glide.with(requireContext())
+                    .load(callUserProfile)
+                    .transform(CenterCrop(), RoundedCorners(1000000000))
+                    .into(my_profile)
+            }
+            withContext(Dispatchers.Main) {
                 view?.my_profile?.setOnClickListener {
                     Log.d("test", "test")
                     getUserProfile.getUserProfile(applicationBox!!.application, callUserId)
                 }
-            }
-        }
-        var callUserString: String? = ""
-        CoroutineScope(Dispatchers.IO).launch {
-            callUserString = UserDataBase.getDatabase(requireContext())!!
-                .userDao()
-                ?.getAllUser()?.last()!!.profile
-
-            withContext(Dispatchers.Main) {
-                Glide.with(requireContext())
-                    .load(callUserString)
-                    .transform(CenterCrop(), RoundedCorners(1000000000))
-                    .into(my_profile)
-
             }
         }
         val pagerAdapter = PagerAdapter(

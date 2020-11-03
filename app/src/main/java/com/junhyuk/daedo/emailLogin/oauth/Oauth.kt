@@ -27,17 +27,12 @@ class Oauth {
                 val accessToken = EmailLoginBody.instance?.access_token
                 val refreshToken = EmailLoginBody.instance?.refresh_token
 
-
-
                 val newRequest: Request
 
-                if (accessToken != null && !accessToken.equals("")) {
-
-
+                if (accessToken != null && accessToken != "") {
                     newRequest =
                         it.request().newBuilder().addHeader("Authorization",accessToken)
                             .build()
-
                     if (response?.code() == 401) {
                         //401에러(토큰 만료 에러)가 뜰 때 RenewalToken 에 refresh_token 함수를 호출하여 토큰 갱신
                         RenewalToken(refreshToken)
@@ -52,7 +47,6 @@ class Oauth {
             builder.addNetworkInterceptor(StethoInterceptor())
             val client = builder.build()
             retrofitBuilder.client(client)
-
 
             val retrofit = retrofitBuilder.build()
             return retrofit.create(EmailLoginInterface::class.java)
