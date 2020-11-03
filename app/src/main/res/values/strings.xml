@@ -50,4 +50,6 @@
     <string name="content">댓글내용</string>
     <string name="commentInput">댓글을 입력해주세요...</string>
     <string name="other">other</string>
+    <string name="user_profile_name">족발먹고싶다</string>
+    <string name="user_profile_detail">30년 경력의 장충동 왕족발</string>
 </resources>
