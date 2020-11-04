@@ -46,8 +46,8 @@ class HomeFragment : Fragment() {
         var callUserProfile: String? = ""
         view.my_profile.setOnClickListener {
             Log.d("exam","exam")
-            val navController: NavController = Navigation.findNavController(it)
-            navController.navigate(R.id.action_navigation_home_to_profileFragment)
+
+            Log.d("exam","exam")
         }
 
         CoroutineScope(Dispatchers.IO).launch {
@@ -67,6 +67,8 @@ class HomeFragment : Fragment() {
                 view?.my_profile?.setOnClickListener {
                     Log.d("test", "test")
                     getUserProfile.getUserProfile(applicationBox!!.application, callUserId)
+                    val navController: NavController = Navigation.findNavController(it)
+                    navController.navigate(R.id.action_navigation_home_to_profileFragment)
                 }
             }
         }
