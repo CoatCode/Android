@@ -47,12 +47,24 @@
         android:name="com.junhyuk.daedo.main.bottomItem.setting.SettingFragment"
         android:label="@string/title_setting"
         tools:layout="@layout/setting_fragment" />
+
     <fragment
         android:id="@+id/feedDetailFragment"
         android:name="com.junhyuk.daedo.main.bottomItem.home.fragment.FeedDetailFragment"
         android:label="FeedDetailFragment">
         <action
             android:id="@+id/action_feedDetailFragment_to_navigation_home"
+            app:popUpTo="@id/feedDetailFragment"
+            app:popUpToInclusive="true"
             app:destination="@id/navigation_home" />
+        <action
+            android:id="@+id/action_feedDetailFragment_to_imageDetailFragment"
+            app:destination="@id/imageDetailFragment" />
     </fragment>
+
+    <fragment
+        android:id="@+id/imageDetailFragment"
+        android:name="com.junhyuk.daedo.main.bottomItem.home.fragment.ImageDetailFragment"
+        android:label="ImageDetailFragment"
+        />
 </navigation>
