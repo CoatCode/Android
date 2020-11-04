@@ -29,7 +29,7 @@
             app:srcCompat="@drawable/profile_img" />
 
         <TextView
-            android:id="@+id/profile_useR_name"
+            android:id="@+id/profile_user_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -38,7 +38,7 @@
             android:gravity="center"
             android:text="@string/user_profile_name"
             android:textSize="22sp"
-            app:layout_const1raintHorizontal_bias="1.0" />
+            />
 
         <TextView
             android:id="@+id/user_profile_detail"

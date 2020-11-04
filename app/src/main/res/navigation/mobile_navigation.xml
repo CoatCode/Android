@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_navigation_home_to_feedDetailFragment"
             app:destination="@id/feedDetailFragment" />
+        <action
+            android:id="@+id/action_navigation_home_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
 
     <fragment
@@ -44,5 +47,12 @@
         android:id="@+id/feedDetailFragment"
         android:name="com.junhyuk.daedo.main.bottomItem.home.fragment.FeedDetailFragment"
         android:label="FeedDetailFragment" >
+        <action
+            android:id="@+id/action_feedDetailFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.junhyuk.daedo.main.bottomItem.home.fragment.ProfileFragment"
+        android:label="ProfileFragment" />
 </navigation>

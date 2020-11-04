@@ -19,7 +19,7 @@
     <style name="MyActionBarTitle" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
         <item name="android:textColor">@color/colorBlack</item>
     </style>
-    <item name="profileLine">#</item>
+
 
 
 </resources>

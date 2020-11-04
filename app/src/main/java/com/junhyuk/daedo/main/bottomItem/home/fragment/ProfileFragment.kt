@@ -10,7 +10,6 @@ import com.junhyuk.daedo.R
 
 class ProfileFragment : Fragment(){
 
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

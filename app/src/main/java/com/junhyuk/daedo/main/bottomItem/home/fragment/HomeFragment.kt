@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentStatePagerAdapter
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
@@ -42,6 +44,12 @@ class HomeFragment : Fragment() {
         val getUserProfile = GetUserProfile()
         var callUserId: Int = 0
         var callUserProfile: String? = ""
+        view.my_profile.setOnClickListener {
+            Log.d("exam","exam")
+            val navController: NavController = Navigation.findNavController(it)
+            navController.navigate(R.id.action_navigation_home_to_profileFragment)
+        }
+
         CoroutineScope(Dispatchers.IO).launch {
             callUserId = UserDataBase.getDatabase(requireContext())!!
                 .userDao()
@@ -85,6 +93,7 @@ class HomeFragment : Fragment() {
             val tab: TabLayout.Tab? = view.tabLayout.getTabAt(i)
             tab?.text = textArrayList[i]
         }
+
 
         return view
 
