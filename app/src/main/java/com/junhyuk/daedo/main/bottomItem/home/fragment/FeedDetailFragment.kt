@@ -1,14 +1,17 @@
 package com.junhyuk.daedo.main.bottomItem.home.fragment
 
 import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import cn.pedant.SweetAlert.SweetAlertDialog
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
@@ -115,12 +118,34 @@ class FeedDetailFragment : Fragment() {
         view.comment_recycler_view.adapter = commentAdapter
 
         view.write_comment_button.setOnClickListener {
+
+            //로딩 다이얼로그
+            val sweetAlertDialog = SweetAlertDialog(context, SweetAlertDialog.PROGRESS_TYPE)
+            sweetAlertDialog.progressHelper.barColor = Color.parseColor("#0DE930")
+            sweetAlertDialog
+                .setTitleText("로딩 중")
+                .setCancelable(false)
+            sweetAlertDialog.show()
+
             //작성한 댓글 변수에 저장
             comment = this.edit_comment.text.toString()
 
             //작성한 댓글 서버통신 클래스로 값 전달
             sendComment.sendComment(comment, requireActivity().application)
 
+            view.edit_comment.text = null
+
+            getComment.getCommentList(
+                requireActivity().application,
+                commentAdapter,
+                commentList
+            )
+
+            sweetAlertDialog.dismiss()
+
+            view.parentLayout.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.colorMainBackground))
+
+            commentAdapter.notifyDataSetChanged()
         }
 
         var callUserInformation: Int

@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorMainBackground">
+    android:id="@+id/parentLayout"
+    android:background="@color/colorWhite">
 
 
     <androidx.core.widget.NestedScrollView
@@ -27,6 +28,7 @@
                 android:layout_height="wrap_content"
                 android:background="@color/colorWhite"
                 android:padding="10dp"
+                app:layout_constraintBottom_toTopOf="@+id/layout"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -276,6 +278,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:overScrollMode="never"
+                    android:background="@color/colorWhite"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
