@@ -1,14 +1,11 @@
 package com.junhyuk.daedo.main.bottomItem.home.fragment
 
-import android.app.Application
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentStatePagerAdapter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
@@ -19,7 +16,6 @@ import com.junhyuk.daedo.main.bottomItem.home.adapter.ImageSliderAdapter
 import com.junhyuk.daedo.main.bottomItem.home.data.FeedDetailData
 import com.junhyuk.daedo.main.bottomItem.home.profile.GetUserProfile
 import kotlinx.android.synthetic.main.fragment_feed_detail_item.view.*
-import kotlinx.android.synthetic.main.fragment_home.view.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -39,7 +35,34 @@ class FeedDetailFragment : Fragment() {
         val applicationBox = activity
         val getUserProfile = GetUserProfile()
         val view = inflater.inflate(R.layout.fragment_feed_detail_item, container, false)
-        var callUserInformation: Int = 0
+
+        Glide.with(requireActivity().applicationContext)
+            .load(FeedDetailData.feedData.owner.image)
+            .override(100)
+            .transform(CenterCrop(), RoundedCorners(1000000))
+            .into(view.profile)
+
+
+        val adapter = ImageSliderAdapter(
+            FeedDetailData.feedData.image_urls,
+            requireActivity().applicationContext
+        )
+
+        view.feedImage.adapter = adapter
+
+        view.imageSlider.setViewPager(view.feedImage)
+
+        view.title.text = FeedDetailData.feedData.title
+        view.contentText.text = FeedDetailData.feedData.content
+        val stringBuilder = StringBuilder("")
+        if (!(FeedDetailData.feedData.tag.isNullOrEmpty())) {
+            FeedDetailData.feedData.tag.forEach {
+                stringBuilder.append(it)
+            }
+        }
+        view.hashTag.text = stringBuilder
+
+        var callUserInformation: Int
         CoroutineScope(Dispatchers.IO).launch {
             callUserInformation = UserDataBase.getDatabase(requireContext())!!
                 .userDao()
@@ -57,34 +80,8 @@ class FeedDetailFragment : Fragment() {
                 fragmentTransaction?.add(R.id.commentFragment, CommentFragment())!!.commit()
 
             }
-            Glide.with(requireActivity().applicationContext)
-                .load(FeedDetailData.feedData.owner.image)
-                .override(100)
-                .transform(CenterCrop(), RoundedCorners(1000000))
-                .into(view.profile)
-
-            view.title.text = FeedDetailData.feedData.title
-            view.contentText.text = FeedDetailData.feedData.content
-            val stringBuilder = StringBuilder("")
-            if (!(FeedDetailData.feedData.tag.isNullOrEmpty())) {
-                FeedDetailData.feedData.tag.forEach {
-                    stringBuilder.append(it)
-                }
-            }
-            view.hashTag.text = stringBuilder
-
-            val adapter = ImageSliderAdapter(
-                requireActivity().supportFragmentManager,
-                FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT
-            )
-            adapter.addItem(
-                ImageSliderItemFragment(),
-                FeedDetailData.feedData.image_urls,
-                requireActivity().applicationContext
-            )
-            view.feedImage.adapter = adapter
-            view.imageSlider.setViewPager(view.feedImage)
         }
+
         return view
     }
 }
