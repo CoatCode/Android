@@ -57,6 +57,9 @@ class FeedAdapter(private val context: Context, private val activity: FragmentAc
             navController.navigate(R.id.action_navigation_home_to_feedDetailFragment)
         }
 
+        Glide.with(context)
+            .load(R.drawable.good)
+            .into(holder.heartButton)
 
         feedData!!.liked_people.forEach {
             if (it == UserInformation.instance!!.id.toString()){
