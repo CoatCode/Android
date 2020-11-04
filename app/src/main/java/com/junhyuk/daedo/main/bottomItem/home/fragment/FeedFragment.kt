@@ -32,7 +32,7 @@ class FeedFragment : Fragment() {
 
         val feedViewModel = ViewModelProvider(this).get(FeedViewModel::class.java)
 
-        val feedAdapter = FeedAdapter(activity?.applicationContext!!, requireActivity())
+        val feedAdapter = FeedAdapter(activity?.applicationContext!!)
 
         feedViewModel.feedPagedList.observe(viewLifecycleOwner, Observer {
             feedAdapter.submitList(it)

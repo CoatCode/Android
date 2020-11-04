@@ -25,6 +25,6 @@ class GetProfileFragment : Fragment() {
                     "| ${i.email} | ${i.profile} | ${i.followers} | ${i.following}") }
         }
 
-        return inflater.inflate(R.layout.fragment_comment, container, false)
+        return inflater.inflate(R.layout.fragment_profile, container, false)
     }
 }
