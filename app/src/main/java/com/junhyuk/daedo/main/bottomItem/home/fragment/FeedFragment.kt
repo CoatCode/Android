@@ -40,6 +40,11 @@ class FeedFragment : Fragment() {
 
         view.feedRecyclerView.adapter = feedAdapter
 
+        view.refreshLayout.setOnRefreshListener {
+            feedAdapter.notifyDataSetChanged()
+            view.refreshLayout.isRefreshing = false
+        }
+
         return view
 
     }

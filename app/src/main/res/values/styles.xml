@@ -3,7 +3,7 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">#00B1FF</item>
         <item name="colorPrimaryDark">@color/colorGray</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorAccent">@color/colorGray</item>
         <item name="actionBarStyle">@style/MyActionBar</item>
         <!--Status Bar 배경색-->
         <item name="android:statusBarColor">#ffffff</item>

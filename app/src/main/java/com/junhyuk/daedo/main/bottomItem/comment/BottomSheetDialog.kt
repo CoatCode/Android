@@ -47,7 +47,7 @@ class BottomSheetDialog(Comment: CommentData, view: View?, mAdapter : CommentRec
         //댓글 삭제 버튼
         view.comment_delete?.setOnClickListener {
             //bottomSheet 호출
-            bottomSheet.deleteComment.deleteComment(activityBox.application,commentId,adapter)
+            bottomSheet.deleteComment.deleteComment(activityBox.application ,commentId, adapter)
             val imm = context?.getSystemService(INPUT_METHOD_SERVICE) as? InputMethodManager
             imm?.hideSoftInputFromWindow(editComment?.windowToken, 0)
             if (dia != null) {
