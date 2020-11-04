@@ -9,6 +9,8 @@ import androidx.fragment.app.FragmentStatePagerAdapter
 import com.google.android.material.tabs.TabLayout
 import com.junhyuk.daedo.R
 import com.junhyuk.daedo.main.bottomItem.home.adapter.PagerAdapter
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
 
 
@@ -21,6 +23,8 @@ class HomeFragment : Fragment() {
     ): View? {
 
         val view = inflater.inflate(R.layout.fragment_home, container, false)
+
+        requireActivity().nav_view.visibility = View.VISIBLE
 
         view.viewPager.offscreenPageLimit = 3
 
