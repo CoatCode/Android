@@ -1,5 +1,6 @@
 package com.junhyuk.daedo.main.bottomItem.home.profile
 
+import android.app.Activity
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -11,10 +12,11 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.junhyuk.daedo.R
+import com.junhyuk.daedo.main.bottomItem.comment.getCommentList.CommentRecyclerviewAdapter
 import com.junhyuk.daedo.main.bottomItem.comment.getCommentNetwork.CommentData
 
 //recyclerview adapter
-class ProfileRecyclerViewAdapter(private val context: Context, private val postList : ArrayList<UserProfileData>, val view : View?,
+class ProfileRecyclerViewAdapter(private val context: Context, private val postList : ArrayList<UserProfileData>, val view : View?, val userId : Int,
                                  val itemClick: (UserProfileData) -> Unit) : RecyclerView.Adapter<ProfileRecyclerViewAdapter.Holder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
@@ -42,11 +44,9 @@ class ProfileRecyclerViewAdapter(private val context: Context, private val postL
         //유저 게시물3
         private val userProfile3 = itemView.findViewById<TextView>(R.id.user_post3)
 
+
         fun bind (profile: UserProfileData) {
-            Glide.with(context)
-                .load(profile.image_urls)
-                .transform(CenterCrop(), RoundedCorners(1000000000))
-                .into(userProfile1)
+
         }
     }
 }

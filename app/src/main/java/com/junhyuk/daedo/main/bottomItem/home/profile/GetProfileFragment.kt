@@ -1,6 +1,8 @@
 package com.junhyuk.daedo.main.bottomItem.home.profile
 
+import android.app.Activity
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -33,25 +35,34 @@ class GetProfileFragment : Fragment() {
         var callUserName: String? = ""
         var callUserDescription: String? = ""
         var callUserFollower: String? = ""
+        var callUserFollowing : String? = ""
         val getUserProfile = GetUserProfile()
         val applicationBox = activity
+        val postList = arrayListOf<UserProfileData>()
+        lateinit var mAdapter: ProfileRecyclerViewAdapter
+
         val view = inflater.inflate(R.layout.fragment_profile, container, false)
         CoroutineScope(Dispatchers.IO).launch {
             callUserId = UserDataBase.getDatabase(requireContext())!!
                 .userDao()
                 ?.getAllUser()?.last()!!.id
+            Log.d("id","id : $callUserId")
             callUserProfile = UserDataBase.getDatabase(requireContext())!!
                 .userDao()
                 ?.getAllUser()?.last()!!.profile
             callUserName = UserDataBase.getDatabase(requireContext())!!
                 .userDao()
                 ?.getAllUser()?.last()!!.Username
+            Log.d("Username","UserName : $callUserName")
             callUserDescription = UserDataBase.getDatabase(requireContext())!!
                 .userDao()
                 ?.getAllUser()?.last()!!.description
             callUserFollower = UserDataBase.getDatabase(requireContext())!!
                 .userDao()
                 ?.getAllUser()?.last()!!.followers
+            callUserFollowing = UserDataBase.getDatabase(requireContext())!!
+                .userDao()
+                ?.getAllUser()?.last()!!.following
             withContext(Dispatchers.Main) {
 
                 /*  Glide.with(requireContext())
@@ -61,11 +72,11 @@ class GetProfileFragment : Fragment() {
                 view?.profile_user_name?.text = callUserName
                 view?.user_profile_detail?.text = callUserDescription
                 view?.follower_count?.text = callUserFollower
-
-                getUserProfile.getUserProfile(applicationBox!!.application, callUserId)
+                view?.following_count?.text = callUserFollowing
+                getUserProfile.getUserProfile(applicationBox!!.application, callUserId,mAdapter,postList)
             }
         }
-        mAdapter = ProfileRecyclerViewAdapter(requireContext(), postList, view) {
+        mAdapter = ProfileRecyclerViewAdapter(requireContext(), postList, view, callUserId) {
         }
         view.profile_post?.adapter = mAdapter
         view.profile_post.setHasFixedSize(true)

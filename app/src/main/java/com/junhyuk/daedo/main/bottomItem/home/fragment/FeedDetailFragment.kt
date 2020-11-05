@@ -49,10 +49,10 @@ class FeedDetailFragment : Fragment() {
             withContext(Dispatchers.Main) {
                 Log.d("userId", "userId : $callUserInformation")
 
-                view?.profile?.setOnClickListener {
+               /* view?.profile?.setOnClickListener {
                     Log.d("test", "test")
                     getUserProfile.getUserProfile(applicationBox!!.application, callUserInformation)
-                }
+                }*/
                 val fragmentTransaction = activity?.supportFragmentManager?.beginTransaction()
                 fragmentTransaction?.add(R.id.commentFragment, CommentFragment())!!.commit()
 

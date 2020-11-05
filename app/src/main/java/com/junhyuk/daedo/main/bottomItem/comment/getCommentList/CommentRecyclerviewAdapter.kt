@@ -96,9 +96,9 @@ class CommentRecyclerviewAdapter(private val context: Context, private val comme
                 //bottomSheetDialog 를 띄운다
                 bottomSheet.show((context as AppCompatActivity).supportFragmentManager,bottomSheet.tag)
             }
-            userProfile.setOnClickListener {
+           /* userProfile.setOnClickListener {
                 getUserProfile.getUserProfile(applicationBox,Comment.owner!!.id)
-            }
+            }*/
         }
     }
 }

@@ -2,16 +2,21 @@ package com.junhyuk.daedo.main.bottomItem.home.profile
 
 import android.app.Application
 import android.util.Log
+import com.google.gson.internal.bind.ReflectiveTypeAdapterFactory
 import com.junhyuk.daedo.application.DaedoApplication
 import com.junhyuk.daedo.main.bottomItem.home.data.PostId
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class GetUserProfile (){
+class GetUserProfile {
+    var profilePostList = arrayListOf<UserProfileData>(
+    )
     internal fun getUserProfile(
         getApplication: Application,
-        userId : Int
+        userId : Int,
+        pAdapter : ProfileRecyclerViewAdapter,
+        postList : ArrayList<UserProfileData>
     ) {
 
         (getApplication as DaedoApplication).retrofit.create(UserProfileInterface::class.java)
@@ -22,7 +27,15 @@ class GetUserProfile (){
                     response: Response<ArrayList<UserProfileData>>
                 ) {
                     if (response.code() == 200) {
+                        Log.d("sibal","sibal: $userId")
                         Log.d("responseBody","responseBody${response.body()}")
+                        profilePostList = response.body()!!
+
+                        postList.clear()
+
+                        postList.addAll(profilePostList)
+
+                        pAdapter.notifyDataSetChanged()
                     }
                     if (response.code() == 401) {
                         Log.d("401", "401" + response.errorBody())
