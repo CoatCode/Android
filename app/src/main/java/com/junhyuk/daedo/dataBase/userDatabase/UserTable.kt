@@ -12,6 +12,7 @@ class UserTable(@PrimaryKey val idx : Int,
                 val email : String?,
                 val Username : String?,
                 val profile : String?,
+                val description : String,
                 val followers : String,
                 val following : String
 

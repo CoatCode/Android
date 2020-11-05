@@ -1,5 +1,6 @@
 package com.junhyuk.daedo.main.bottomItem.home.fragment
 
+import android.media.Image
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -16,6 +17,7 @@ import com.google.android.material.tabs.TabLayout
 import com.junhyuk.daedo.R
 import com.junhyuk.daedo.dataBase.userDatabase.UserDataBase
 import com.junhyuk.daedo.main.bottomItem.home.adapter.PagerAdapter
+import com.junhyuk.daedo.main.bottomItem.home.profile.GetProfileFragment
 import com.junhyuk.daedo.main.bottomItem.home.profile.GetUserProfile
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
@@ -41,9 +43,9 @@ class HomeFragment : Fragment() {
         val followFeedFragment = FollowFeedFragment()
         val hotFeedFragment = HotFeedFragment()
         val applicationBox = activity
-        val getUserProfile = GetUserProfile()
         var callUserId: Int = 0
         var callUserProfile: String? = ""
+        var callUserName : String? = ""
         view.my_profile.setOnClickListener {
             Log.d("exam","exam")
 
@@ -57,6 +59,9 @@ class HomeFragment : Fragment() {
             callUserProfile = UserDataBase.getDatabase(requireContext())!!
                 .userDao()
                 ?.getAllUser()?.last()!!.profile
+            callUserName = UserDataBase.getDatabase(requireContext())!!
+                .userDao()
+                ?.getAllUser()?.last()!!.Username
             withContext(Dispatchers.Main) {
                 Glide.with(requireContext())
                     .load(callUserProfile)
@@ -66,9 +71,10 @@ class HomeFragment : Fragment() {
             withContext(Dispatchers.Main) {
                 view?.my_profile?.setOnClickListener {
                     Log.d("test", "test")
-                    getUserProfile.getUserProfile(applicationBox!!.application, callUserId)
-                    val navController: NavController = Navigation.findNavController(it)
-                    navController.navigate(R.id.action_navigation_home_to_profileFragment)
+                    Navigation.findNavController(view).navigate(R.id.action_navigation_home_to_getProfileFragment)
+
+                    //  GetProfileFragment(callUserProfile,callUserName)
+                    Log.d("why","why")
                 }
             }
         }

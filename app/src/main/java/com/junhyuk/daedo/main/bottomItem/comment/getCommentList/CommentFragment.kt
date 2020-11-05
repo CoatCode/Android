@@ -30,7 +30,6 @@ class CommentFragment : Fragment() {
         val activityBox = activity
         val view = inflater.inflate(R.layout.fragment_comment, container, false)
         mAdapter = CommentRecyclerviewAdapter(requireContext(), commentList,view) {
-
         }
         //댓글 목록 받아오는 클래스로 값 전달
         getComment.getCommentList(
