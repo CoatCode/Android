@@ -15,7 +15,7 @@ import com.junhyuk.daedo.main.bottomItem.comment.getCommentNetwork.CommentData
 
 //recyclerview adapter
 class ProfileRecyclerViewAdapter(private val context: Context, private val postList : ArrayList<UserProfileData>, val view : View?,
-                                 val itemClick: (CommentData) -> Unit) : RecyclerView.Adapter<ProfileRecyclerViewAdapter.Holder>(){
+                                 val itemClick: (UserProfileData) -> Unit) : RecyclerView.Adapter<ProfileRecyclerViewAdapter.Holder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val view = LayoutInflater.from(context).inflate(R.layout.profile_post_recyclerview_item, parent, false)

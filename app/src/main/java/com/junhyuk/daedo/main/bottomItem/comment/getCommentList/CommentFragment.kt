@@ -1,4 +1,4 @@
-                        package com.junhyuk.daedo.main.bottomItem.comment.getCommentList
+package com.junhyuk.daedo.main.bottomItem.comment.getCommentList
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -29,7 +29,7 @@ class CommentFragment : Fragment() {
     ): View? {
         val activityBox = activity
         val view = inflater.inflate(R.layout.fragment_comment, container, false)
-        mAdapter = CommentRecyclerviewAdapter(requireContext(), commentList,view) {
+        mAdapter = CommentRecyclerviewAdapter(requireContext(), commentList, view) {
         }
         //댓글 목록 받아오는 클래스로 값 전달
         getComment.getCommentList(
@@ -39,7 +39,6 @@ class CommentFragment : Fragment() {
         )
         view.comment_recycler_view?.adapter = mAdapter
         view.comment_recycler_view.setHasFixedSize(true)
-
         val lm = LinearLayoutManager(context)
         view.comment_recycler_view.layoutManager = lm
         view.comment_recycler_view.addItemDecoration(ItemSize(100))

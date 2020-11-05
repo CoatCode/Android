@@ -21,18 +21,18 @@ import kotlinx.coroutines.withContext
 
 class GetProfileFragment : Fragment() {
     private lateinit var mAdapter: ProfileRecyclerViewAdapter
-    var commentList = arrayListOf<UserProfileData>()
+    var postList = arrayListOf<UserProfileData>(
+    )
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        var callUserId : Int = 0
-        var callUserProfile : String? = ""
-        var callUserName : String? = ""
-        var callUserDescription : String? = ""
-        mAdapter = ProfileRecyclerViewAdapter(requireContext(), commentList,view) {
-        }
+        var callUserId: Int = 0
+        var callUserProfile: String? = ""
+        var callUserName: String? = ""
+        var callUserDescription: String? = ""
+        var callUserFollower: String? = ""
         val getUserProfile = GetUserProfile()
         val applicationBox = activity
         val view = inflater.inflate(R.layout.fragment_profile, container, false)
@@ -49,19 +49,29 @@ class GetProfileFragment : Fragment() {
             callUserDescription = UserDataBase.getDatabase(requireContext())!!
                 .userDao()
                 ?.getAllUser()?.last()!!.description
+            callUserFollower = UserDataBase.getDatabase(requireContext())!!
+                .userDao()
+                ?.getAllUser()?.last()!!.followers
             withContext(Dispatchers.Main) {
-              /*  Glide.with(requireContext())
-                    .load(callUserProfile)
-                    .transform(CenterCrop(), RoundedCorners(1000000000))
-                    .into(my_profile)*/
+
+                /*  Glide.with(requireContext())
+                      .load(callUserProfile)
+                      .transform(CenterCrop(), RoundedCorners(1000000000))
+                      .into(my_profile)*/
                 view?.profile_user_name?.text = callUserName
                 view?.user_profile_detail?.text = callUserDescription
-                val lm = LinearLayoutManager(context)
-                view.comment_recycler_view.layoutManager = lm
-                view.comment_recycler_view.addItemDecoration(ItemSize(100))
+                view?.follower_count?.text = callUserFollower
+
                 getUserProfile.getUserProfile(applicationBox!!.application, callUserId)
             }
         }
+        mAdapter = ProfileRecyclerViewAdapter(requireContext(), postList, view) {
+        }
+        view.profile_post?.adapter = mAdapter
+        view.profile_post.setHasFixedSize(true)
+        val lm = LinearLayoutManager(context)
+        view?.profile_post?.layoutManager = lm
+        view?.profile_post?.addItemDecoration(ItemSize(100))
         return view
     }
 }
