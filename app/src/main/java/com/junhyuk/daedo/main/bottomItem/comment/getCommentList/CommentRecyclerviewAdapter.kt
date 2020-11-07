@@ -92,7 +92,7 @@ class CommentRecyclerviewAdapter(
                 )
             }
             userProfile.setOnClickListener {
-                getUserProfile.getUserProfile(applicationBox, Comment.owner!!.id)
+               // getUserProfile.getUserProfile(applicationBox, Comment.owner!!.id)
             }
         }
     }
