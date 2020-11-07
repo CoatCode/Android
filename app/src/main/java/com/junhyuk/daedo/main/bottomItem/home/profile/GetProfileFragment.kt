@@ -22,9 +22,7 @@ import kotlinx.coroutines.withContext
 
 
 class GetProfileFragment : Fragment() {
-    private lateinit var mAdapter: ProfileRecyclerViewAdapter
-    var postList = arrayListOf<UserProfileData>(
-    )
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

@@ -26,7 +26,8 @@
             android:layout_gravity="center"
             android:layout_marginTop="80sp"
             android:foregroundGravity="center"
-            app:srcCompat="@drawable/profile_img" />
+            app:srcCompat="@drawable/profile_img"
+           />
 
         <TextView
             android:id="@+id/profile_user_name"
@@ -53,7 +54,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25sp"
+            android:layout_marginTop="30sp"
             android:orientation="horizontal">
 
             <TextView
@@ -133,7 +134,7 @@
                 android:id="@+id/profile_post"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="10dp"
                 android:background="#fcfcfc" />
     </LinearLayout>
 
