@@ -83,9 +83,17 @@ class FeedAdapter(private val context: Context) :
             .transform(CenterCrop(), RoundedCorners(1000000))
             .into(holder.profileImageView)
 
-        Glide.with(context)
-            .load(feedData.image_urls[0])
-            .into(holder.feedImage)
+        if(feedData.image_urls.size > 0){
+
+            Glide.with(context)
+                .load(feedData.image_urls[0])
+                .into(holder.feedImage)
+
+        }else{
+            Glide.with(context)
+                .load(R.drawable.intro_background)
+                .into(holder.feedImage)
+        }
 
         //게시물 아이템에 게시물 관련 정보 띄우기
         holder.userName.text = feedData.owner.username
