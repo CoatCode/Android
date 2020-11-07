@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:background="@color/colorBlack">
 
-    <ImageView
+    <com.github.chrisbanes.photoview.PhotoView
+        android:id="@+id/imageDetail"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"

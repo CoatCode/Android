@@ -10,6 +10,7 @@ import com.google.android.material.tabs.TabLayout
 import com.junhyuk.daedo.R
 import com.junhyuk.daedo.main.bottomItem.home.adapter.PagerAdapter
 import kotlinx.android.synthetic.main.fragment_home.view.*
+import kotlinx.android.synthetic.main.viewpager_image.view.*
 
 
 class ImageSliderItemFragment : Fragment() {

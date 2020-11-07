@@ -1,7 +1,6 @@
 package com.junhyuk.daedo.main.bottomItem.home.adapter
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +8,6 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.fragment.app.FragmentActivity
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.paging.PagedListAdapter
@@ -19,19 +17,16 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.junhyuk.daedo.R
 import com.junhyuk.daedo.dataBase.userDataHandler.UserInformation
-import com.junhyuk.daedo.main.activity.MainActivity
 import com.junhyuk.daedo.main.bottomItem.home.data.FeedData
 import com.junhyuk.daedo.main.bottomItem.home.data.FeedDetailData
 import com.junhyuk.daedo.main.bottomItem.home.data.PostId
-import com.junhyuk.daedo.main.bottomItem.home.fragment.FeedDetailFragment
 import com.junhyuk.daedo.main.bottomItem.home.module.FeedTime
 import com.junhyuk.daedo.main.bottomItem.home.module.LikeClickModule
-import com.junhyuk.daedo.main.bottomItem.home.module.LikeModule
 import com.junhyuk.daedo.main.bottomItem.home.paging.DiffUtilCallBack
 import kotlinx.android.synthetic.main.cardview_feed_item.view.*
 
 
-class FeedAdapter(private val context: Context, private val activity: FragmentActivity) :
+class FeedAdapter(private val context: Context) :
     PagedListAdapter<FeedData, FeedAdapter.Holder>(DiffUtilCallBack()) {
 
     //모듈 정의
@@ -51,12 +46,16 @@ class FeedAdapter(private val context: Context, private val activity: FragmentAc
         holder.itemView.setOnClickListener {
             if (feedData != null) {
                 FeedDetailData.feedData = feedData
+                FeedDetailData.date = feedPostTime.calFeedTime(feedData.created_at)
             }
             PostId.postId = feedData?.id!!
             val navController: NavController = Navigation.findNavController(it)
             navController.navigate(R.id.action_navigation_home_to_feedDetailFragment)
         }
 
+        Glide.with(context)
+            .load(R.drawable.good)
+            .into(holder.heartButton)
 
         feedData!!.liked_people.forEach {
             if (it == UserInformation.instance!!.id.toString()){
@@ -84,9 +83,17 @@ class FeedAdapter(private val context: Context, private val activity: FragmentAc
             .transform(CenterCrop(), RoundedCorners(1000000))
             .into(holder.profileImageView)
 
-        Glide.with(context)
-            .load(feedData.image_urls[0])
-            .into(holder.feedImage)
+        if(feedData.image_urls.size > 0){
+
+            Glide.with(context)
+                .load(feedData.image_urls[0])
+                .into(holder.feedImage)
+
+        }else{
+            Glide.with(context)
+                .load(R.drawable.intro_background)
+                .into(holder.feedImage)
+        }
 
         //게시물 아이템에 게시물 관련 정보 띄우기
         holder.userName.text = feedData.owner.username
