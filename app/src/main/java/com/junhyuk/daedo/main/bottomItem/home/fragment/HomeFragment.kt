@@ -2,6 +2,7 @@ package com.junhyuk.daedo.main.bottomItem.home.fragment
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,12 +10,22 @@ import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentStatePagerAdapter
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.google.android.material.tabs.TabLayout
 import com.junhyuk.daedo.R
+import com.junhyuk.daedo.dataBase.userDatabase.UserDataBase
 import com.junhyuk.daedo.main.bottomItem.home.adapter.PagerAdapter
+import com.junhyuk.daedo.main.bottomItem.home.profile.GetUserProfile
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
+import kotlinx.android.synthetic.main.fragment_profile.view.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 
 class HomeFragment : Fragment() {
@@ -60,6 +71,49 @@ class HomeFragment : Fragment() {
         for(i in 0..2){
             val tab: TabLayout.Tab? = view.tabLayout.getTabAt(i)
             tab?.text = textArrayList[i]
+        }
+        var callUserId: Int = 0
+        var callUserProfile: String? = ""
+        var callUserName: String? = ""
+        var callUserDescription: String? = ""
+        var callUserFollower: String? = ""
+        var callUserFollowing : String? = ""
+        val getUserProfile = GetUserProfile()
+        CoroutineScope(Dispatchers.IO).launch {
+            callUserId = UserDataBase.getDatabase(requireContext())!!
+                .userDao()
+                ?.getAllUser()?.last()!!.id
+            Log.d("id","id : $callUserId")
+            callUserProfile = UserDataBase.getDatabase(requireContext())!!
+                .userDao()
+                ?.getAllUser()?.last()!!.profile
+            callUserName = UserDataBase.getDatabase(requireContext())!!
+                .userDao()
+                ?.getAllUser()?.last()!!.Username
+            Log.d("Username","UserName : $callUserName")
+            callUserDescription = UserDataBase.getDatabase(requireContext())!!
+                .userDao()
+                ?.getAllUser()?.last()!!.description
+            callUserFollower = UserDataBase.getDatabase(requireContext())!!
+                .userDao()
+                ?.getAllUser()?.last()!!.followers
+            callUserFollowing = UserDataBase.getDatabase(requireContext())!!
+                .userDao()
+                ?.getAllUser()?.last()!!.following
+            withContext(Dispatchers.Main) {
+
+                  Glide.with(requireContext())
+                      .load(callUserProfile)
+                      .transform(CenterCrop(), RoundedCorners(1000000000))
+                      .into(my_profile)
+                my_profile.setOnClickListener {
+                    findNavController().navigate(R.id.action_navigation_home_to_getProfileFragment)
+                }
+                view?.profile_user_name?.text = callUserName
+                view?.user_profile_detail?.text = callUserDescription
+                view?.follower_count?.text = callUserFollower
+                view?.following_count?.text = callUserFollowing
+            }
         }
 
         return view

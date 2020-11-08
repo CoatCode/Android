@@ -160,7 +160,7 @@ class FeedDetailFragment : Fragment() {
 
                 view?.profile?.setOnClickListener {
                     Log.d("test", "test")
-                    getUserProfile.getUserProfile(requireActivity().application, callUserInformation)
+                    //getUserProfile.getUserProfile(requireActivity().application, callUserInformation)
                 }
 
             }

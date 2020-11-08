@@ -44,10 +44,6 @@ class CommentRecyclerviewAdapter(
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
         holder.bind(commentList[position])
-        //recyclerview item 간격 조정 코드
-//        val layoutParams = holder.itemView.layoutParams
-//        layoutParams.height = layoutParams.height
-//        holder.itemView.requestLayout()
     }
 
     inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -66,8 +62,6 @@ class CommentRecyclerviewAdapter(
         private val button = itemView.findViewById<ImageButton>(R.id.comment_option)
 
         fun bind(Comment: CommentData) {
-            val applicationBox = Application()
-            val getUserProfile = GetUserProfile()
             val adapter = CommentRecyclerviewAdapter(context, commentList, view, itemClick)
             //댓글 작성자 프로필 이미지를 넣어준다.
             Glide.with(context)

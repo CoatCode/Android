@@ -9,9 +9,11 @@
         android:id="@+id/navigation_home"
         android:name="com.junhyuk.daedo.main.bottomItem.home.fragment.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" >
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_navigation_home_to_feedDetailFragment"
+            app:popUpTo="@id/navigation_home"
+            app:popUpToInclusive="true"
             app:destination="@id/feedDetailFragment" />
         <action
             android:id="@+id/action_navigation_home_to_getProfileFragment"
@@ -24,11 +26,17 @@
         android:label="@string/title_dashboard"
         tools:layout="@layout/fragment_dashboard" />
 
-    <activity
+    <fragment
         android:id="@+id/navigation_post"
-        android:name="com.junhyuk.daedo.main.bottomItem.post.activity.PostActivity"
+        android:name="com.junhyuk.daedo.main.bottomItem.post.fragment.PostFragment"
         android:label="@string/title_post"
-        tools:layout="@layout/activity_post"/>
+        tools:layout="@layout/fragment_post">
+        <action
+            android:id="@+id/action_navigation_post_to_navigation_home2"
+            app:popUpTo="@id/navigation_post"
+            app:destination="@id/navigation_home"
+            app:popUpToInclusive="true"/>
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_notifications"
@@ -41,12 +49,27 @@
         android:id="@+id/navigation_setting"
         android:name="com.junhyuk.daedo.main.bottomItem.setting.SettingFragment"
         android:label="@string/title_setting"
-        tools:layout="@layout/setting_fragment"
-        />
+        tools:layout="@layout/setting_fragment" />
+
     <fragment
         android:id="@+id/feedDetailFragment"
         android:name="com.junhyuk.daedo.main.bottomItem.home.fragment.FeedDetailFragment"
-        android:label="FeedDetailFragment" />
+        android:label="FeedDetailFragment">
+        <action
+            android:id="@+id/action_feedDetailFragment_to_navigation_home"
+            app:popUpTo="@id/feedDetailFragment"
+            app:popUpToInclusive="true"
+            app:destination="@id/navigation_home" />
+        <action
+            android:id="@+id/action_feedDetailFragment_to_imageDetailFragment"
+            app:destination="@id/imageDetailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/imageDetailFragment"
+        android:name="com.junhyuk.daedo.main.bottomItem.home.fragment.ImageDetailFragment"
+        android:label="ImageDetailFragment"
+        />
     <fragment
         android:id="@+id/getProfileFragment"
         android:name="com.junhyuk.daedo.main.bottomItem.home.profile.GetProfileFragment"

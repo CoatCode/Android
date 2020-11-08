@@ -8,12 +8,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.junhyuk.daedo.R
 import com.junhyuk.daedo.dataBase.userDatabase.UserDataBase
 import com.junhyuk.daedo.main.bottomItem.comment.getCommentList.CommentRecyclerviewAdapter
 import com.junhyuk.daedo.main.bottomItem.comment.getCommentList.ItemSize
 import com.junhyuk.daedo.main.bottomItem.comment.getCommentNetwork.CommentData
-import kotlinx.android.synthetic.main.fragment_comment.view.*
+import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.fragment_profile.*
 import kotlinx.android.synthetic.main.fragment_profile.view.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -63,10 +67,10 @@ class GetProfileFragment : Fragment() {
                 ?.getAllUser()?.last()!!.following
             withContext(Dispatchers.Main) {
 
-                /*  Glide.with(requireContext())
+                  Glide.with(requireContext())
                       .load(callUserProfile)
                       .transform(CenterCrop(), RoundedCorners(1000000000))
-                      .into(my_profile)*/
+                      .into(user_profile_image)
                 view?.profile_user_name?.text = callUserName
                 view?.user_profile_detail?.text = callUserDescription
                 view?.follower_count?.text = callUserFollower

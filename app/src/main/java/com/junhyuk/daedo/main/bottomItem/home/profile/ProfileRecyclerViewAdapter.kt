@@ -30,23 +30,20 @@ class ProfileRecyclerViewAdapter(private val context: Context, private val postL
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
         holder.bind(postList[position])
-        //recyclerview item 간격 조정 코드
-//        val layoutParams = holder.itemView.layoutParams
-//        layoutParams.height = layoutParams.height
-//        holder.itemView.requestLayout()
     }
 
     inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         //유저 게시물1
-        private val userProfile1 = itemView.findViewById<ImageView>(R.id.user_post1)
+        private val userProfile1 = itemView.findViewById<ImageView>(R.id.user_post1).toString()
         //유저 게시물2
-        private val userProfile2 = itemView.findViewById<TextView>(R.id.user_post2)
+        private val userProfile2 = itemView.findViewById<ImageView>(R.id.user_post2)
         //유저 게시물3
-        private val userProfile3 = itemView.findViewById<TextView>(R.id.user_post3)
+        private val userProfile3 = itemView.findViewById<ImageView>(R.id.user_post3)
 
 
         fun bind (profile: UserProfileData) {
 
+            userProfile1.
         }
     }
 }
