@@ -16,7 +16,6 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.junhyuk.daedo.R
-import com.junhyuk.daedo.dataBase.userDataHandler.UserInformation
 import com.junhyuk.daedo.dataBase.userDatabase.UserDataBase
 import com.junhyuk.daedo.main.bottomItem.comment.getCommentList.CommentRecyclerviewAdapter
 import com.junhyuk.daedo.main.bottomItem.comment.getCommentList.GetCommentList
@@ -26,7 +25,9 @@ import com.junhyuk.daedo.main.bottomItem.home.adapter.ImageSliderAdapter
 import com.junhyuk.daedo.main.bottomItem.home.data.FeedDetailData
 import com.junhyuk.daedo.main.bottomItem.home.module.LikeClickModule
 import com.junhyuk.daedo.main.bottomItem.home.module.LikeModule
-import com.junhyuk.daedo.main.bottomItem.home.profile.GetUserProfile
+import com.junhyuk.daedo.main.bottomItem.profile.GetUserProfile
+import com.junhyuk.daedo.main.bottomItem.profile.ProfileRecyclerViewAdapter
+import com.junhyuk.daedo.main.bottomItem.profile.UserProfileData
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_feed_detail_item.edit_comment
 import kotlinx.android.synthetic.main.fragment_feed_detail_item.view.*
@@ -61,13 +62,15 @@ class FeedDetailFragment : Fragment() {
     ): View? {
         val getUserProfile = GetUserProfile()
         val view = inflater.inflate(R.layout.fragment_feed_detail_item, container, false)
+        val postList = arrayListOf<UserProfileData>()
+        lateinit var mAdapter: ProfileRecyclerViewAdapter
 
         requireActivity().nav_view.visibility = View.VISIBLE
 
         commentAdapter = CommentRecyclerviewAdapter(requireContext(), commentList,view){}
 
         Glide.with(requireActivity().applicationContext)
-            .load(FeedDetailData.feedData.owner.image)
+            .load(FeedDetailData.feedData.owner.profile)
             .override(100)
             .transform(CenterCrop(), RoundedCorners(1000000))
             .into(view.profile)
@@ -160,7 +163,8 @@ class FeedDetailFragment : Fragment() {
 
                 view?.profile?.setOnClickListener {
                     Log.d("test", "test")
-                    //getUserProfile.getUserProfile(requireActivity().application, callUserInformation)
+                    //getUserProfile.getUserProfile(requireActivity().application, callUserInformation,mAdapter,postList)
+                    //findNavController().navigate(R.id.action_feedDetailFragment_to_getProfileFragment)
                 }
 
             }

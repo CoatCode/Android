@@ -33,11 +33,16 @@ class Oauth {
                     newRequest =
                         it.request().newBuilder().addHeader("Authorization",accessToken)
                             .build()
-                    if (response?.code() == 401) {
-                        //401에러(토큰 만료 에러)가 뜰 때 RenewalToken 에 refresh_token 함수를 호출하여 토큰 갱신
-                        RenewalToken(refreshToken)
-                    }
-                } else newRequest = it.request()
+
+                }
+                else if (response?.code() == 401) {
+                    //401에러(토큰 만료 에러)가 뜰 때 RenewalToken 에 refresh_token 함수를 호출하여 토큰 갱신
+                    RenewalToken(refreshToken)
+                    newRequest =
+                        it.request().newBuilder().addHeader("Authorization",accessToken)
+                            .build()
+                }
+                else newRequest = it.request()
                 it.proceed(newRequest)
 
             }

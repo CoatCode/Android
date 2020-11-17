@@ -10,6 +10,13 @@ import com.junhyuk.daedo.R
 
 class MainActivity : AppCompatActivity() {
 
+    var userId = 0
+    var userProfile = ""
+    var userDescription = ""
+    var userName = ""
+    var followers : Int = 0
+    var following : Int = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)

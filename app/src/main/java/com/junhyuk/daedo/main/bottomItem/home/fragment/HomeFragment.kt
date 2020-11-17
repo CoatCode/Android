@@ -1,7 +1,11 @@
 package com.junhyuk.daedo.main.bottomItem.home.fragment
 
+import android.app.Activity
+import android.app.Application
 import android.content.Context
 import android.os.Bundle
+import android.provider.Contacts
+import android.provider.Contacts.SettingsColumns.KEY
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -16,11 +20,13 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.google.android.material.tabs.TabLayout
 import com.junhyuk.daedo.R
 import com.junhyuk.daedo.dataBase.userDatabase.UserDataBase
+import com.junhyuk.daedo.main.activity.MainActivity
 import com.junhyuk.daedo.main.bottomItem.home.adapter.PagerAdapter
-import com.junhyuk.daedo.main.bottomItem.home.profile.GetUserProfile
+import com.junhyuk.daedo.main.bottomItem.profile.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
+import kotlinx.android.synthetic.main.fragment_profile.*
 import kotlinx.android.synthetic.main.fragment_profile.view.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -76,14 +82,18 @@ class HomeFragment : Fragment() {
         var callUserProfile: String? = ""
         var callUserName: String? = ""
         var callUserDescription: String? = ""
-        var callUserFollower: String? = ""
-        var callUserFollowing : String? = ""
+        var callUserFollower: Int?
+        var callUserFollowing : Int?
         val getUserProfile = GetUserProfile()
+        lateinit var mAdapter: ProfileRecyclerViewAdapter
+        val postList = arrayListOf<UserProfileData>()
+        var getProfileFragment : GetProfileFragment? = GetProfileFragment()
         CoroutineScope(Dispatchers.IO).launch {
             callUserId = UserDataBase.getDatabase(requireContext())!!
                 .userDao()
                 ?.getAllUser()?.last()!!.id
             Log.d("id","id : $callUserId")
+
             callUserProfile = UserDataBase.getDatabase(requireContext())!!
                 .userDao()
                 ?.getAllUser()?.last()!!.profile
@@ -101,23 +111,27 @@ class HomeFragment : Fragment() {
                 .userDao()
                 ?.getAllUser()?.last()!!.following
             withContext(Dispatchers.Main) {
-
                   Glide.with(requireContext())
                       .load(callUserProfile)
                       .transform(CenterCrop(), RoundedCorners(1000000000))
                       .into(my_profile)
+
                 my_profile.setOnClickListener {
+                    (activity as MainActivity).userId = callUserId
+                    (activity as MainActivity).userProfile = callUserProfile.toString()
+                    (activity as MainActivity).userDescription = callUserDescription.toString()
+                    (activity as MainActivity).userName = callUserName.toString()
+                    (activity as MainActivity).followers = callUserFollower!!.toInt()
+                    (activity as MainActivity).following = callUserFollowing!!.toInt()
                     findNavController().navigate(R.id.action_navigation_home_to_getProfileFragment)
                 }
-                view?.profile_user_name?.text = callUserName
-                view?.user_profile_detail?.text = callUserDescription
-                view?.follower_count?.text = callUserFollower
-                view?.following_count?.text = callUserFollowing
+
+                //view?.user_profile_detail?.text = callUserDescription
+                //view?.follower_count?.text = callUserFollower.toString()
+                //view?.following_count?.text = callUserFollowing.toString()
             }
         }
-
         return view
-
     }
 
     //뒤로가기

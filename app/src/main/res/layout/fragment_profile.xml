@@ -68,8 +68,8 @@
 
         <ImageView
             android:id="@+id/user_profile_image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
             android:layout_gravity="center"
             android:layout_marginStart="150dp"
             android:layout_marginTop="68dp"
@@ -102,17 +102,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginStart="129dp"
-            android:layout_marginEnd="129dp"
             android:gravity="center"
             android:text="@string/user_profile_detail"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.844" />
+            app:layout_constraintVertical_bias="0.851" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -146,24 +143,19 @@
         app:srcCompat="@drawable/left_arrow"
         android:contentDescription="TODO" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="330dp"
-        android:orientation="vertical"
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/profile_post"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="15dp"
+        android:background="#fcfcfc"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout6">
-
-
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/profile_post"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="#fcfcfc" />
-    </LinearLayout>
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout6"
+        app:spanCount="3" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

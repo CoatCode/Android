@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
@@ -76,9 +77,16 @@ class FeedAdapter(private val context: Context) :
             likeClickModule.likeClickModule(context, feedData, holder)
         }
 
+        //프로필 클릭
+        holder.profileImageView.setOnClickListener {
+
+            val navController: NavController = Navigation.findNavController(it)
+            navController.navigate(R.id.action_navigation_home_to_getProfileFragment)
+        }
+
         //'Glide'를 통해서 프로필과 게시물 이미지를 표시
         Glide.with(context)
-            .load(feedData.owner.image)
+            .load(feedData.owner.profile)
             .override(100)
             .transform(CenterCrop(), RoundedCorners(1000000))
             .into(holder.profileImageView)
@@ -112,7 +120,7 @@ class FeedAdapter(private val context: Context) :
             feedData.comment_count == 1 -> {
                 holder.commentView.visibility = View.VISIBLE
                 Glide.with(context)
-                    .load(feedData.comment_preview[0].owner.image)
+                    .load(feedData.comment_preview[0].owner.profile)
                     .transform(CenterCrop(), RoundedCorners(1000000))
                     .into(holder.commentProfile)
                 holder.commentName.text = feedData.comment_preview[0].owner.username
@@ -124,14 +132,14 @@ class FeedAdapter(private val context: Context) :
                 holder.commentView2.visibility = View.VISIBLE
 
                 Glide.with(context)
-                    .load(feedData.comment_preview[0].owner.image)
+                    .load(feedData.comment_preview[0].owner.profile)
                     .transform(CenterCrop(), RoundedCorners(1000000))
                     .into(holder.commentProfile)
                 holder.commentName.text = feedData.comment_preview[0].owner.username
                 holder.commentText.text = feedData.comment_preview[0].content
 
                 Glide.with(context)
-                    .load(feedData.comment_preview[1].owner.image)
+                    .load(feedData.comment_preview[1].owner.profile)
                     .transform(CenterCrop(), RoundedCorners(1000000))
                     .into(holder.commentProfile2)
                 holder.commentName2.text = feedData.comment_preview[1].owner.username

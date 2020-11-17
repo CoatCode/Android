@@ -1,8 +1,6 @@
 package com.junhyuk.daedo.main.bottomItem.home.fragment
 
-import android.app.Application
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,10 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.junhyuk.daedo.R
 import com.junhyuk.daedo.main.bottomItem.home.adapter.FeedAdapter
 import com.junhyuk.daedo.main.bottomItem.home.model.FeedViewModel
-import com.junhyuk.daedo.main.bottomItem.home.profile.GetUserProfile
-import kotlinx.android.synthetic.main.activity_email_login.*
 import kotlinx.android.synthetic.main.fragment_feed.view.*
-import kotlinx.android.synthetic.main.fragment_feed_detail_item.view.*
 
 
 class FeedFragment : Fragment() {

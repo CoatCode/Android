@@ -7,14 +7,14 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "UserInformation")
 
 class UserTable(@PrimaryKey val idx : Int,
-                @ColumnInfo(name = "doNottouch") var doNotTouch: String? = null,
+                @ColumnInfo(name = "doNotTouch") var doNotTouch: String? = null,
                 val id : Int,
                 val email : String?,
                 val Username : String?,
                 val profile : String?,
-                val description : String,
-                val followers : String,
-                val following : String
+                val description : String?,
+                val followers : Int,
+                val following : Int
 
 
 

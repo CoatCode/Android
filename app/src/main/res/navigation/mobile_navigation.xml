@@ -63,6 +63,9 @@
         <action
             android:id="@+id/action_feedDetailFragment_to_imageDetailFragment"
             app:destination="@id/imageDetailFragment" />
+        <action
+            android:id="@+id/action_feedDetailFragment_to_getProfileFragment"
+            app:destination="@id/getProfileFragment" />
     </fragment>
 
     <fragment
@@ -72,6 +75,6 @@
         />
     <fragment
         android:id="@+id/getProfileFragment"
-        android:name="com.junhyuk.daedo.main.bottomItem.home.profile.GetProfileFragment"
+        android:name="com.junhyuk.daedo.main.bottomItem.profile.GetProfileFragment"
         android:label="GetProfileFragment" />
 </navigation>

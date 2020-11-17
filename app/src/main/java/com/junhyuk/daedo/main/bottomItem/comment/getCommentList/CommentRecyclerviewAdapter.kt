@@ -1,9 +1,6 @@
 package com.junhyuk.daedo.main.bottomItem.comment.getCommentList
 
-import android.app.Activity
-import android.app.Application
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,12 +13,13 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.junhyuk.daedo.R
+import com.junhyuk.daedo.dataBase.userDatabase.UserDataBase
 import com.junhyuk.daedo.main.bottomItem.comment.BottomSheetDialog
-import com.junhyuk.daedo.main.bottomItem.comment.deleteComment.DeleteComment
 import com.junhyuk.daedo.main.bottomItem.comment.getCommentNetwork.CommentData
 import com.junhyuk.daedo.main.bottomItem.home.module.FeedTime
-import com.junhyuk.daedo.main.bottomItem.home.profile.GetUserProfile
-import java.time.ZonedDateTime
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 //recyclerview adapter
 class CommentRecyclerviewAdapter(
@@ -47,7 +45,7 @@ class CommentRecyclerviewAdapter(
     }
 
     inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        //recyclerview 에 올릴 프로토스 사진
+        //유저 프로필 사진
         private val userProfile = itemView.findViewById<ImageView>(R.id.user_profile)
 
         //댓글 작성자
@@ -60,7 +58,7 @@ class CommentRecyclerviewAdapter(
         private val commentTime = itemView.findViewById<TextView>(R.id.comment_time)
 
         private val button = itemView.findViewById<ImageButton>(R.id.comment_option)
-
+        var callUserId: Int = 0
         fun bind(Comment: CommentData) {
             val adapter = CommentRecyclerviewAdapter(context, commentList, view, itemClick)
             //댓글 작성자 프로필 이미지를 넣어준다.
@@ -80,13 +78,19 @@ class CommentRecyclerviewAdapter(
                 val bottomSheet = BottomSheetDialog(Comment, view, adapter)
                 BottomSheetDialog(Comment, view, adapter)
                 //bottomSheetDialog 를 띄운다
-                bottomSheet.show(
-                    (context as AppCompatActivity).supportFragmentManager,
-                    bottomSheet.tag
-                )
-            }
-            userProfile.setOnClickListener {
-               // getUserProfile.getUserProfile(applicationBox, Comment.owner!!.id)
+                CoroutineScope(Dispatchers.IO).launch {
+                    callUserId = UserDataBase.getDatabase(context)!!
+                        .userDao()
+                        ?.getAllUser()?.last()!!.id
+                    if (callUserId == Comment.owner!!.id)
+                    bottomSheet.show(
+                        (context as AppCompatActivity).supportFragmentManager,
+                        bottomSheet.tag
+                    )
+                }
+                userProfile.setOnClickListener {
+                    // getUserProfile.getUserProfile(applicationBox, Comment.owner!!.id)
+                }
             }
         }
     }

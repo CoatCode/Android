@@ -4,7 +4,7 @@ data class FeedOwnerData (
     val id: Int,
     val email: String,
     val username: String,
-    val image: String,
+    val profile: String,
     val followers: Int,
     val following: Int
 )
