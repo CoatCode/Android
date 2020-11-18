@@ -36,7 +36,6 @@ class DeleteComment {
                     commentList.addAll(commentList)
                     //댓글 목록 갱신
                     cAdapter.notifyDataSetChanged()
-
             }
 
                 override fun onFailure(call: Call<Void>, t: Throwable) {

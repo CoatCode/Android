@@ -28,11 +28,12 @@ class GetUserProfile {
                     if (response.code() == 200) {
                         profilePostList = response.body()!!
 
-                        postList.clear()
+                        //postList.clear()
 
                         postList.addAll(profilePostList)
 
                         pAdapter.notifyDataSetChanged()
+                        Log.d("severResponse","response : ${profilePostList}")
                     }
                     if (response.code() == 401) {
                         Log.d("401", "401" + response.errorBody())
