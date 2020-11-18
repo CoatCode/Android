@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.fragment_feed_detail_item.view.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-
+/*
 class FollowClickModule {
 
     //recycler Adapter 용
@@ -276,3 +276,5 @@ class FollowClickModule {
     }
 
 }
+*/
+ 
