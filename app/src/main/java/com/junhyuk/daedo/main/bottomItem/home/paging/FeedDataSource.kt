@@ -2,7 +2,9 @@ package com.junhyuk.daedo.main.bottomItem.home.paging
 
 import android.util.Log
 import androidx.paging.PageKeyedDataSource
+import com.junhyuk.daedo.main.bottomItem.home.data.FeedAll
 import com.junhyuk.daedo.main.bottomItem.home.data.FeedData
+import com.junhyuk.daedo.main.bottomItem.home.data.FeedDetailData
 import com.junhyuk.daedo.main.bottomItem.home.workinRetrofit.RetrofitClient
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
@@ -33,6 +35,8 @@ class FeedDataSource : PageKeyedDataSource<Int, FeedData>() {
                     ) {
                         if (response.body() != null) {
                             feedDataList = response.body() as ArrayList<FeedData>
+                            FeedAll.feeds.clear()
+                            FeedAll.feeds.addAll(feedDataList)
                             Log.d("안드 스발것", "data: $feedDataList")
                             callback.onResult(response.body()!!, null, firstPage + 1)
                         }

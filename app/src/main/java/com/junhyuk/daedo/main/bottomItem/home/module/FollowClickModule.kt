@@ -19,10 +19,9 @@ import retrofit2.Response
 class FollowClickModule {
 
     //recycler Adapter 용
-    fun likeClickModule(
+    fun followClickModule(
         context: Context,
-        feedData: FeedData,
-        holder: FeedAdapter.Holder
+        feedData: FeedData
     ) {
         val retrofitClient = RetrofitClient()
         val token = EmailLoginBody.instance?.access_token
@@ -51,7 +50,7 @@ class FollowClickModule {
                                             200 -> {
                                                 Toast.makeText(
                                                     context,
-                                                    "해당 게시물에 좋아요를 취소했습니다.",
+                                                    "해당 유저 팔로우를 취소했습니다.",
                                                     Toast.LENGTH_SHORT
                                                 ).show()
 
@@ -59,7 +58,7 @@ class FollowClickModule {
                                                 holder.heartCount.text = feedData.like_count.toString()
 
                                                 Glide.with(context)
-                                                    .load(R.drawable.good)
+                                                    .load(R.drawable.followers)
                                                     .into(holder.heartButton)
                                             }
                                             400 -> {

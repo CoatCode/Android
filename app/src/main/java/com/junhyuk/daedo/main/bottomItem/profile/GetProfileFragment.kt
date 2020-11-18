@@ -1,12 +1,15 @@
 package com.junhyuk.daedo.main.bottomItem.profile
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
@@ -17,7 +20,7 @@ import kotlinx.android.synthetic.main.fragment_profile.view.*
 
 
 class GetProfileFragment : Fragment() {
-
+    private lateinit var callback: OnBackPressedCallback
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -31,7 +34,6 @@ class GetProfileFragment : Fragment() {
         val callUserDescription: String? = (activity as MainActivity).userDescription
         val callUserFollower: Int = (activity as MainActivity).followers
         val callUserFollowing : Int = (activity as MainActivity).following
-        var example : String
         val applicationBox = activity
         val getUserProfile = GetUserProfile()
         val picture = view.findViewById<ImageView>(R.id.user_profile_image)
@@ -49,10 +51,27 @@ class GetProfileFragment : Fragment() {
         mAdapter = ProfileRecyclerViewAdapter(requireContext(), postList, view, callUserId) {
         }
         getUserProfile.getUserProfile(applicationBox!!.application,callUserId,mAdapter,postList)
+        view.back_button_feed.setOnClickListener {
+            findNavController().navigate(R.id.action_getProfileFragment_to_navigation_home)
+        }
 
         view.profile_post.setHasFixedSize(true)
         view.profile_post?.adapter = mAdapter
 
         return view
+    }
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        callback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                findNavController().navigate(R.id.action_getProfileFragment_to_navigation_home)
+            }
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(this, callback)
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        callback.remove()
     }
 }

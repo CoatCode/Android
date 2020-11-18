@@ -1,5 +1,6 @@
 package com.junhyuk.daedo.main.bottomItem.home.adapter
 
+import android.app.Activity
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -18,6 +19,7 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.junhyuk.daedo.R
 import com.junhyuk.daedo.dataBase.userDataHandler.UserInformation
+import com.junhyuk.daedo.main.activity.MainActivity
 import com.junhyuk.daedo.main.bottomItem.home.data.FeedData
 import com.junhyuk.daedo.main.bottomItem.home.data.FeedDetailData
 import com.junhyuk.daedo.main.bottomItem.home.data.PostId
@@ -27,7 +29,7 @@ import com.junhyuk.daedo.main.bottomItem.home.paging.DiffUtilCallBack
 import kotlinx.android.synthetic.main.cardview_feed_item.view.*
 
 
-class FeedAdapter(private val context: Context) :
+class FeedAdapter(private val mainActivity: MainActivity, private val context: Context) :
     PagedListAdapter<FeedData, FeedAdapter.Holder>(DiffUtilCallBack()) {
 
     //모듈 정의
@@ -79,7 +81,12 @@ class FeedAdapter(private val context: Context) :
 
         //프로필 클릭
         holder.profileImageView.setOnClickListener {
-
+            mainActivity.userId = feedData.owner.id
+            mainActivity.userProfile = feedData.owner.profile
+            mainActivity.userName = feedData.owner.username
+            mainActivity.userDescription = feedData.owner.description
+            mainActivity.followers = feedData.owner.followers
+            mainActivity.following = feedData.owner.following
             val navController: NavController = Navigation.findNavController(it)
             navController.navigate(R.id.action_navigation_home_to_getProfileFragment)
         }

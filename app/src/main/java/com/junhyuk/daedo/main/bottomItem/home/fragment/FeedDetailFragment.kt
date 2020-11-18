@@ -10,6 +10,8 @@ import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import cn.pedant.SweetAlert.SweetAlertDialog
 import com.bumptech.glide.Glide
@@ -24,6 +26,7 @@ import com.junhyuk.daedo.main.bottomItem.comment.getCommentNetwork.CommentData
 import com.junhyuk.daedo.main.bottomItem.comment.writeComment.SendWriteComment
 import com.junhyuk.daedo.main.bottomItem.home.adapter.ImageSliderAdapter
 import com.junhyuk.daedo.main.bottomItem.home.data.FeedDetailData
+import com.junhyuk.daedo.main.bottomItem.home.data.FeedDetailData.Companion.feedData
 import com.junhyuk.daedo.main.bottomItem.home.module.LikeClickModule
 import com.junhyuk.daedo.main.bottomItem.home.module.LikeModule
 import com.junhyuk.daedo.main.bottomItem.profile.GetUserProfile
@@ -61,14 +64,11 @@ class FeedDetailFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val getUserProfile = GetUserProfile()
         val view = inflater.inflate(R.layout.fragment_feed_detail_item, container, false)
-        val postList = arrayListOf<UserProfileData>()
-        lateinit var mAdapter: ProfileRecyclerViewAdapter
 
         requireActivity().nav_view.visibility = View.VISIBLE
 
-        commentAdapter = CommentRecyclerviewAdapter(requireContext(), commentList,view){}
+        commentAdapter = CommentRecyclerviewAdapter((activity as MainActivity),requireContext(), commentList,view){}
 
         Glide.with(requireActivity().applicationContext)
             .load(FeedDetailData.feedData.owner.profile)
@@ -155,25 +155,22 @@ class FeedDetailFragment : Fragment() {
 
             commentAdapter.notifyDataSetChanged()
         }
-
-        var callUserInformation: Int?
-        CoroutineScope(Dispatchers.IO).launch {
-            callUserInformation = UserDataBase.getDatabase(requireContext())!!
-                .userDao()
-                ?.getAllUser()?.last()!!.id
-
-            Log.d("userId", "userId1 : $callUserInformation")
-            withContext(Dispatchers.Main) {
-                Log.d("userId", "userId : $callUserInformation")
-
                 view?.profile?.setOnClickListener {
                     Log.d("test", "test")
+                    (activity as MainActivity).userId = feedData.owner.id
+                    (activity as MainActivity).userProfile = feedData.owner.profile
+                    (activity as MainActivity).userName = feedData.owner.username
+                    (activity as MainActivity).userDescription = feedData.owner.description
+                    (activity as MainActivity).followers = feedData.owner.followers
+                    (activity as MainActivity).following = feedData.owner.following
+                    val navController: NavController = Navigation.findNavController(it)
+                    navController.navigate(R.id.action_feedDetailFragment_to_getProfileFragment)
                     //getUserProfile.getUserProfile(requireActivity().application, callUserInformation,mAdapter,postList)
                     //findNavController().navigate(R.id.action_feedDetailFragment_to_getProfileFragment)
                 }
 
-            }
-        }
+
+
 
         return view
     }

@@ -8,14 +8,18 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.junhyuk.daedo.R
 import com.junhyuk.daedo.dataBase.userDatabase.UserDataBase
+import com.junhyuk.daedo.main.activity.MainActivity
 import com.junhyuk.daedo.main.bottomItem.comment.BottomSheetDialog
 import com.junhyuk.daedo.main.bottomItem.comment.getCommentNetwork.CommentData
+import com.junhyuk.daedo.main.bottomItem.home.data.FeedDetailData.Companion.feedData
 import com.junhyuk.daedo.main.bottomItem.home.module.FeedTime
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -23,6 +27,7 @@ import kotlinx.coroutines.launch
 
 //recyclerview adapter
 class CommentRecyclerviewAdapter(
+    private val mainActivity : MainActivity,
     private val context: Context, private val commentList: ArrayList<CommentData>, val view: View?,
     val itemClick: (CommentData) -> Unit
 ) : RecyclerView.Adapter<CommentRecyclerviewAdapter.Holder>() {
@@ -60,7 +65,7 @@ class CommentRecyclerviewAdapter(
         private val button = itemView.findViewById<ImageButton>(R.id.comment_option)
         var callUserId: Int? = 0
         fun bind(Comment: CommentData) {
-            val adapter = CommentRecyclerviewAdapter(context, commentList, view, itemClick)
+            val adapter = CommentRecyclerviewAdapter(mainActivity,context, commentList, view, itemClick)
             //댓글 작성자 프로필 이미지를 넣어준다.
             Glide.with(context)
                 .load(Comment.owner?.profile)
@@ -72,6 +77,16 @@ class CommentRecyclerviewAdapter(
             userName?.text = Comment.owner?.username
             //댓글 작성 시간
             commentTime?.text = feedPostTime.calFeedTimeComment(Comment.created_at)
+            userProfile.setOnClickListener {
+                mainActivity.userId = Comment.owner!!.id
+                mainActivity.userProfile = Comment.owner!!.profile
+                mainActivity.userName = Comment.owner!!.username
+                mainActivity.userDescription = Comment.owner!!.description
+                mainActivity.followers = Comment.owner!!.followers
+                mainActivity.following = Comment.owner!!.following
+                val navController: NavController = Navigation.findNavController(it)
+                navController.navigate(R.id.action_feedDetailFragment_to_getProfileFragment)
+            }
             //댓글 상세 버튼 클릭 이벤트
             button.setOnClickListener {
                 itemClick(Comment)
@@ -88,9 +103,7 @@ class CommentRecyclerviewAdapter(
                         bottomSheet.tag
                     )
                 }
-                userProfile.setOnClickListener {
-                    // getUserProfile.getUserProfile(applicationBox, Comment.owner!!.id)
-                }
+
             }
         }
     }

@@ -49,21 +49,14 @@ class GetEmailLogin {
                     response: Response<EmailLoginBody>
 
                 ) {
+                    ClearDB(context).start()
                     //다음 화면으로 이동
                     val intent = Intent(context, MainActivity::class.java)
                     //로그인 시도시 결과에 따라 다른 dialog 가 뜬다
-                    loginDialog.connectionSuccess(
-                        response.code(),
-                        context,
-                        response.errorBody()?.string().toString(),
-                        intent,
-                        sweetAlertDialog
-                    )
 
                     //통신성공
                     if (response.code() == 200) {
                         //서버로부터 받은 정보들을 EmailLoginBody 변수에 담아준다
-                        ClearDB(context).start()
                         EmailLoginBody.instance = response.body()
                         getUser.getUserData(getApplication, context)
 
@@ -72,11 +65,15 @@ class GetEmailLogin {
                     //통신 실패
                     else if (response.code() == 401) {
                         Log.d("error", "error = " + response.errorBody())
-
+                        loginDialog.connectionSuccess(
+                            response.code(),
+                            context,
+                            response.errorBody()?.string().toString(),
+                            intent,
+                            sweetAlertDialog
+                        )
                     }
-
                 }
-
                 //서버와 연결 실패
                 override fun onFailure(call: Call<EmailLoginBody>, t: Throwable) {
                     //LoginDialog 를 호출하여 서버와의 연결 실패를 dialog 로 띄운다

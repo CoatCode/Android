@@ -89,7 +89,6 @@ class HomeFragment : Fragment() {
                 .userDao()
                 ?.getAllUser()?.last()!!.id
             Log.d("id","id : $callUserId")
-
             callUserProfile = UserDataBase.getDatabase(requireContext())!!
                 .userDao()
                 ?.getAllUser()?.last()!!.profile

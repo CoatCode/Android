@@ -1,8 +1,10 @@
 package com.junhyuk.daedo.main.bottomItem.home.data
 
+import com.junhyuk.daedo.main.bottomItem.profile.OwnerProfileData
+
 data class FeedData (
     val id: Int,
-    val owner: FeedOwnerData,
+    var owner: OwnerProfileData,
     val title: String,
     val content: String,
     val comment: String,

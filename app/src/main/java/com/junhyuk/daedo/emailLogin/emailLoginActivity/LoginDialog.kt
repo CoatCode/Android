@@ -6,6 +6,7 @@ import android.content.Intent
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import cn.pedant.SweetAlert.SweetAlertDialog
+import kotlinx.coroutines.delay
 
 class LoginDialog {
     internal fun connectionSuccess(

@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.junhyuk.daedo.R
+import com.junhyuk.daedo.main.activity.MainActivity
 import com.junhyuk.daedo.main.bottomItem.home.adapter.FeedAdapter
 import com.junhyuk.daedo.main.bottomItem.home.model.FeedViewModel
 import kotlinx.android.synthetic.main.fragment_feed.view.*
@@ -27,7 +28,7 @@ class FeedFragment : Fragment() {
 
         val feedViewModel = ViewModelProvider(this).get(FeedViewModel::class.java)
 
-        val feedAdapter = FeedAdapter(activity?.applicationContext!!)
+        val feedAdapter = FeedAdapter((activity as MainActivity), activity?.applicationContext!!)
 
         feedViewModel.feedPagedList.observe(viewLifecycleOwner, Observer {
             feedAdapter.submitList(it)

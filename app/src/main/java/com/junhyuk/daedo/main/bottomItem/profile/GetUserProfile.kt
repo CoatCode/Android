@@ -3,6 +3,7 @@ package com.junhyuk.daedo.main.bottomItem.profile
 import android.app.Application
 import android.util.Log
 import com.junhyuk.daedo.application.DaedoApplication
+import com.junhyuk.daedo.main.bottomItem.home.data.FeedDetailData
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -37,14 +38,9 @@ class GetUserProfile {
                         //postList.clear()
 
                         postList.addAll(profilePostList)
-
                         pAdapter.notifyDataSetChanged()
                         UserProfileData.instance = profilePostList;
 
-                        UserProfileData.instance.forEach{
-                            Log.d("severResponse","response : ${it.owner.id}")
-
-                        }
                     }
                     if (response.code() == 401) {
                         Log.d("401", "401" + response.errorBody())
