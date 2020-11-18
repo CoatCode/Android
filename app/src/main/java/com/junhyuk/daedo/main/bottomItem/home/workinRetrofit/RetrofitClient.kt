@@ -1,6 +1,7 @@
 package com.junhyuk.daedo.main.bottomItem.home.workinRetrofit
 
 import com.junhyuk.daedo.main.bottomItem.home.server.FeedService
+import com.junhyuk.daedo.main.bottomItem.profile.UserProfileInterface
 import com.junhyuk.daedo.workingNetwork.baseUrl.BaseUrl
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -29,5 +30,8 @@ class RetrofitClient() {
 
     internal fun getApi(): FeedService{
         return retrofit.create(FeedService::class.java)
+    }
+    internal fun getFollow(): UserProfileInterface{
+        return retrofit.create(UserProfileInterface::class.java)
     }
 }

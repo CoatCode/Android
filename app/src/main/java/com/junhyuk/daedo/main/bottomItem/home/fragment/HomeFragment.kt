@@ -84,10 +84,6 @@ class HomeFragment : Fragment() {
         var callUserDescription: String? = ""
         var callUserFollower: Int?
         var callUserFollowing : Int?
-        val getUserProfile = GetUserProfile()
-        lateinit var mAdapter: ProfileRecyclerViewAdapter
-        val postList = arrayListOf<UserProfileData>()
-        var getProfileFragment : GetProfileFragment? = GetProfileFragment()
         CoroutineScope(Dispatchers.IO).launch {
             callUserId = UserDataBase.getDatabase(requireContext())!!
                 .userDao()

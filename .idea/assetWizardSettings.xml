@@ -303,8 +303,8 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
-                            <entry key="outputName" value="ic_vector" />
-                            <entry key="sourceFile" value="E:\develop(UFS)\1.project\cocoGit\Android\app\src\main\res\drawable\Vector.svg" />
+                            <entry key="outputName" value="ic_follow" />
+                            <entry key="sourceFile" value="E:\Android-master\CoCoAndroid\app\src\main\res\drawable\follow.svg" />
                           </map>
                         </option>
                       </PersistentState>

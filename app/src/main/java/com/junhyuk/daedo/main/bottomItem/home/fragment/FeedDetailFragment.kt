@@ -17,6 +17,7 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.junhyuk.daedo.R
 import com.junhyuk.daedo.dataBase.userDatabase.UserDataBase
+import com.junhyuk.daedo.main.activity.MainActivity
 import com.junhyuk.daedo.main.bottomItem.comment.getCommentList.CommentRecyclerviewAdapter
 import com.junhyuk.daedo.main.bottomItem.comment.getCommentList.GetCommentList
 import com.junhyuk.daedo.main.bottomItem.comment.getCommentNetwork.CommentData
@@ -74,7 +75,10 @@ class FeedDetailFragment : Fragment() {
             .override(100)
             .transform(CenterCrop(), RoundedCorners(1000000))
             .into(view.profile)
-
+        view.profile.setOnClickListener {
+            (activity as MainActivity).userId = FeedDetailData.feedData.id
+            findNavController().navigate(R.id.action_navigation_home_to_getProfileFragment)
+        }
         view.name.text = FeedDetailData.feedData.owner.username
         view.date.text = FeedDetailData.date
 

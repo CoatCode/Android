@@ -1,12 +1,13 @@
 package com.junhyuk.daedo.main.bottomItem.profile
 
 data class OwnerProfileData(
-    var id : String = "",
+    var id : Int = 0,
     var email : String =  "",
-    var username : String? = "",
+    var username : String = "",
     var profile : String = "",
-    var followers : Int = 0,
-    var following : Int = 0
+    var description : String = "",
+    var following : Int = 0,
+    var followers : Int = 0
 ){
 companion object{
     var instance : OwnerProfileData? = null

@@ -6,9 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.junhyuk.daedo.R
+import androidx.navigation.fragment.findNavController
 
 //recyclerview adapter
 class ProfileRecyclerViewAdapter(private val context: Context, private val postList : ArrayList<UserProfileData>, val view : View?, val userId : Int,
@@ -42,7 +45,7 @@ class ProfileRecyclerViewAdapter(private val context: Context, private val postL
                     .into(userPost)
             }
             userPost.setOnClickListener {
-
+                view?.findNavController()?.navigate(R.id.action_getProfileFragment_to_feedDetailFragment)
             }
         }
     }

@@ -1,6 +1,7 @@
 package com.junhyuk.daedo.main.bottomItem.profile
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +12,7 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.junhyuk.daedo.R
 import com.junhyuk.daedo.main.activity.MainActivity
+import kotlinx.android.synthetic.main.activity_email_login.*
 import kotlinx.android.synthetic.main.fragment_profile.view.*
 
 
@@ -29,6 +31,7 @@ class GetProfileFragment : Fragment() {
         val callUserDescription: String? = (activity as MainActivity).userDescription
         val callUserFollower: Int = (activity as MainActivity).followers
         val callUserFollowing : Int = (activity as MainActivity).following
+        var example : String
         val applicationBox = activity
         val getUserProfile = GetUserProfile()
         val picture = view.findViewById<ImageView>(R.id.user_profile_image)
