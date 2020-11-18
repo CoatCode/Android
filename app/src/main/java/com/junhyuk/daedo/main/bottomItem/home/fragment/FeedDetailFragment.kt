@@ -79,6 +79,7 @@ class FeedDetailFragment : Fragment() {
             (activity as MainActivity).userId = FeedDetailData.feedData.id
             findNavController().navigate(R.id.action_navigation_home_to_getProfileFragment)
         }
+
         view.name.text = FeedDetailData.feedData.owner.username
         view.date.text = FeedDetailData.date
 
@@ -155,7 +156,7 @@ class FeedDetailFragment : Fragment() {
             commentAdapter.notifyDataSetChanged()
         }
 
-        var callUserInformation: Int
+        var callUserInformation: Int?
         CoroutineScope(Dispatchers.IO).launch {
             callUserInformation = UserDataBase.getDatabase(requireContext())!!
                 .userDao()

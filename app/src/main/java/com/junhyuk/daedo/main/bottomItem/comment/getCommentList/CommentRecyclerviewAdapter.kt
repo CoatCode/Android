@@ -58,7 +58,7 @@ class CommentRecyclerviewAdapter(
         private val commentTime = itemView.findViewById<TextView>(R.id.comment_time)
 
         private val button = itemView.findViewById<ImageButton>(R.id.comment_option)
-        var callUserId: Int = 0
+        var callUserId: Int? = 0
         fun bind(Comment: CommentData) {
             val adapter = CommentRecyclerviewAdapter(context, commentList, view, itemClick)
             //댓글 작성자 프로필 이미지를 넣어준다.

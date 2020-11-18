@@ -78,7 +78,7 @@ class HomeFragment : Fragment() {
             val tab: TabLayout.Tab? = view.tabLayout.getTabAt(i)
             tab?.text = textArrayList[i]
         }
-        var callUserId: Int = 0
+        var callUserId: Int? = 0
         var callUserProfile: String? = ""
         var callUserName: String? = ""
         var callUserDescription: String? = ""
@@ -113,7 +113,7 @@ class HomeFragment : Fragment() {
                       .into(my_profile)
 
                 my_profile.setOnClickListener {
-                    (activity as MainActivity).userId = callUserId
+                    (activity as MainActivity).userId = callUserId!!
                     (activity as MainActivity).userProfile = callUserProfile.toString()
                     (activity as MainActivity).userDescription = callUserDescription.toString()
                     (activity as MainActivity).userName = callUserName.toString()

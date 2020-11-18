@@ -8,6 +8,7 @@ import android.util.Log
 import cn.pedant.SweetAlert.SweetAlertDialog
 import com.junhyuk.daedo.application.DaedoApplication
 import com.junhyuk.daedo.dataBase.userDataHandler.UserDataClass
+import com.junhyuk.daedo.dataBase.userDatabase.UserDataBase
 import com.junhyuk.daedo.emailLogin.oauth.Oauth
 import com.junhyuk.daedo.emailLogin.server.EmailLoginBody
 import com.junhyuk.daedo.main.activity.MainActivity
@@ -61,10 +62,11 @@ class GetEmailLogin {
 
                     //통신성공
                     if (response.code() == 200) {
-
                         //서버로부터 받은 정보들을 EmailLoginBody 변수에 담아준다
+                        ClearDB(context).start()
                         EmailLoginBody.instance = response.body()
                         getUser.getUserData(getApplication, context)
+
 
                     }
                     //통신 실패
@@ -84,6 +86,12 @@ class GetEmailLogin {
 
             })
     }
-
-
+}
+class ClearDB(val context: Context) : Thread(){
+    override fun run() {
+        UserDataBase
+            .getDatabase(context)!!
+            .userDao()
+            ?.delete()
+    }
 }
